@@ -1,5 +1,5 @@
 COMPILER = g++
-CFLAGS = -std=c++11
+CFLAGS = -std=c++2a -O3
 VFLAGS = --leak-check=full -s --track-origins=yes
 SOURCES = $(wildcard *.cpp)
 

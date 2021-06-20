@@ -6,7 +6,6 @@
  * @brief Main 
 */
 
-#include <vector>
 #include <iostream>
 #include "stats.h"
 #include "typeEnums.h"

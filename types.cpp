@@ -49,7 +49,7 @@ TypeEffective::~TypeEffective()
     delete[] this->typeChart;
 }
 
-float TypeEffective::getMatchUp(us j)
+float TypeEffective::getMatchUp(us j) const
 {
     us effect = this->typeChart[j][this->typing];
     if (effect == 0)

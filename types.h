@@ -24,7 +24,7 @@ public:
 
     void readFile();
 
-    float getMatchUp(us j);
+    float getMatchUp(us j) const;
 
 private:
     us typeAmount;

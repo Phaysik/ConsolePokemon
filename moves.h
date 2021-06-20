@@ -23,7 +23,7 @@ class MoveAbstract
 {
 public:
     virtual void effect() = 0;
-    MoveAbstract(Types typing, us power, us accuracy, Pokemon *target) : typing(typing), power(power), accuracy(accuracy), target(target) {}
+    MoveAbstract(Types typing, us power, us accuracy, Stats *stats, Pokemon *target) : typing(typing), power(power), accuracy(accuracy), stats(stats), target(target) {}
     Types getType() const;
     us getPower() const;
     us getAccuracy() const;
@@ -33,28 +33,30 @@ protected:
     us power;
     us accuracy;
     Pokemon *target;
+    Stats *stats;
+    char *moveName;
 };
 
 class StatUp : public MoveAbstract
 {
 public:
-    StatUp(Types typing, us power, us accuracy, Stats *stats, Pokemon *target) : MoveAbstract(typing, power, accuracy, target) { this->stats = stats; }
+    StatUp(Types typing, us power, us accuracy, Stats *stats, Pokemon *target) : MoveAbstract(typing, power, accuracy, stats, target) { this->stats = stats; }
     void effect();
 
 private:
     us *statUps;
-    Stats *stats;
+    float *statUpMultipliers;
 };
 
 class StatDown : public MoveAbstract
 {
 public:
-    StatDown(Types typing, us power, us accuracy, Stats *stats, Pokemon *target) : MoveAbstract(typing, power, accuracy, target) { this->stats = stats; }
+    StatDown(Types typing, us power, us accuracy, Stats *stats, Pokemon *target) : MoveAbstract(typing, power, accuracy, stats, target) { this->stats = stats; }
     void effect();
 
 private:
-    us *statUps;
-    Stats *stats;
+    us *statDowns;
+    float *statDownMultipliers;
 };
 
 #endif
