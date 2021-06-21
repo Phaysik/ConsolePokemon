@@ -7,7 +7,10 @@
 */
 
 #include <iostream>
+#include <string>
+#include "trainer.h"
 #include "stats.h"
+#include "moves.h"
 #include "typeEnums.h"
 #include "pokemon.h"
 
@@ -15,14 +18,47 @@ int main()
 {
     Types typing[2] = {Grass, Poison};
     Stats *stats = new Stats(45, 49, 49, 65, 65, 45);
-    Pokemon bulbasaur(stats, typing, true);
+    Move movelist;
+    MoveAbstract *moves;
+
+    Trainer trainer;
+    Trainer opponent;
+
+    for (us i = 0; i < 5; ++i)
+    {
+        moves = new MoveAbstract[4];
+        moves[0] = movelist.growl;
+        moves[1] = movelist.tackle;
+        moves[2] = movelist.headbutt;
+        moves[3] = movelist.vinewhip;
+
+        opponent.setPokemonAtIndex(new Pokemon(stats, moves, typing, true, "bulbasaur" + std::to_string(i)), i);
+        trainer.setPokemonAtIndex(new Pokemon(stats, moves, typing, true, "bulbasaur" + std::to_string(i)), i);
+
+        delete[] moves;
+    }
 
     delete stats;
     stats = new Stats(39, 52, 43, 60, 50, 65);
     typing[0] = Fire;
-    Pokemon charmander(stats, typing, false);
+    moves = new MoveAbstract[4];
+    moves[0] = movelist.ember;
+    moves[1] = movelist.smokescreen;
+    moves[2] = movelist.flamethrower;
+    moves[3] = movelist.flareblitz;
+    trainer.setPokemonAtIndex(new Pokemon(stats, moves, typing, false, "charmander"), 2);
 
+    delete[] moves;
     delete stats;
+
+    //TODO set up a battle simulation
+    // for (us i = 0; i < 5; ++i)
+    // std::cout << opponent.getPokemonAtIndex(i)->getName() << "\t";
+    //
+    // std::cout << std::endl;
+    //
+    // for (us i = 0; i < 5; ++i)
+    // // trainer.getPokemonAtIndex(i)->getMove(0).effect(&trainer, &opponent);
 
     return 0;
 }

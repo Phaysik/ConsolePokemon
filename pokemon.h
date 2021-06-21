@@ -13,19 +13,19 @@
 #define us unsigned short
 #endif
 
-#include <vector>
 #include <unordered_map>
+#include <string>
 #include "typeEnums.h"
 
 // Forward declarations
-#include "moves.h"
+class MoveAbstract;
 class Stats;
 
 class Pokemon
 {
 public:
-    Pokemon();
-    Pokemon(Stats *stats, Types typing[], bool dualTyping);
+    Pokemon(){};
+    Pokemon(Stats *stats, MoveAbstract *moves, Types typing[], bool dualTyping, std::string name);
 
     ~Pokemon();
 
@@ -33,9 +33,16 @@ public:
 
     float getTypeMatchUp(us type);
 
+    std::string getName() const;
+
+    MoveAbstract getMove(us index);
+
 private:
     Stats *stats;
+    MoveAbstract *moves;
     bool dualTyping;
+    std::string name;
+    bool inBattle;
     Types *typing;
     std::unordered_map<us, float> typeMatchup;
 };

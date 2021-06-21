@@ -14,49 +14,44 @@
 #endif
 
 #include "typeEnums.h"
+#include <string>
 
 // Forward declarations
 class Stats;
 class Pokemon;
+class Trainer;
 
 class MoveAbstract
 {
 public:
-    virtual void effect() = 0;
-    MoveAbstract(Types typing, us power, us accuracy, Stats *stats, Pokemon *target) : typing(typing), power(power), accuracy(accuracy), stats(stats), target(target) {}
+    void effect(Trainer *trainer, Trainer *opponent);
+    MoveAbstract(){};
+    void operator=(MoveAbstract *moves);
+    MoveAbstract(Types typing, us power, us accuracy, us powerPoints, std::string moveName) : typing(typing), power(power), accuracy(accuracy), powerPoints(powerPoints), moveName(moveName) {}
     Types getType() const;
     us getPower() const;
     us getAccuracy() const;
+    std::string getMoveName();
 
 protected:
     Types typing;
     us power;
     us accuracy;
-    Pokemon *target;
-    Stats *stats;
-    char *moveName;
+    us powerPoints;
+    std::string moveName;
 };
 
-class StatUp : public MoveAbstract
+struct Move
 {
-public:
-    StatUp(Types typing, us power, us accuracy, Stats *stats, Pokemon *target) : MoveAbstract(typing, power, accuracy, stats, target) { this->stats = stats; }
-    void effect();
-
-private:
-    us *statUps;
-    float *statUpMultipliers;
-};
-
-class StatDown : public MoveAbstract
-{
-public:
-    StatDown(Types typing, us power, us accuracy, Stats *stats, Pokemon *target) : MoveAbstract(typing, power, accuracy, stats, target) { this->stats = stats; }
-    void effect();
-
-private:
-    us *statDowns;
-    float *statDownMultipliers;
+    MoveAbstract *growl = new MoveAbstract(Normal, 0, 100, 40, "Growl");
+    MoveAbstract *tackle = new MoveAbstract(Normal, 40, 100, 35, "Tackle");
+    MoveAbstract *headbutt = new MoveAbstract(Normal, 70, 100, 15, "Headbutt");
+    MoveAbstract *vinewhip = new MoveAbstract(Grass, 45, 100, 25, "Vinewhip");
+    MoveAbstract *ember = new MoveAbstract(Fire, 40, 100, 20, "Ember");
+    MoveAbstract *smokescreen = new MoveAbstract(Normal, 0, 100, 20, "Smokescreen");
+    MoveAbstract *flamethrower = new MoveAbstract(Fire, 90, 100, 15, "Flamethrower");
+    MoveAbstract *flareblitz = new MoveAbstract(Fire, 120, 100, 15, "Flare Blitz");
+    ~Move();
 };
 
 #endif

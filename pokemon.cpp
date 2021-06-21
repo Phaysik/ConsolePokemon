@@ -8,10 +8,18 @@
 
 #include "pokemon.h"
 #include "types.h"
+#include "moves.h"
 
-Pokemon::Pokemon(Stats *stats, Types typing[], bool dualTyping)
+Pokemon::Pokemon(Stats *stats, MoveAbstract *moves, Types typing[], bool dualTyping, std::string name)
 {
+    this->name = name;
+
     this->stats = stats;
+
+    this->moves = new MoveAbstract[4];
+
+    for (us i = 0; i < 4; ++i)
+        this->moves[i] = moves[i];
 
     this->typing = new Types[dualTyping + 1];
 
@@ -22,14 +30,6 @@ Pokemon::Pokemon(Stats *stats, Types typing[], bool dualTyping)
         this->typeMatchup[i] = 1;
 
     setTypeMatchups(dualTyping);
-
-    MoveAbstract **moves = new MoveAbstract *[2];
-    moves[0] = new StatUp(Fire, 20, 30, stats, this);
-    moves[1] = new StatDown(Water, 30, 30, stats, this);
-
-    delete moves[0];
-    delete moves[1];
-    delete[] moves;
 }
 
 void Pokemon::setTypeMatchups(bool dualTyping)
@@ -45,9 +45,16 @@ void Pokemon::setTypeMatchups(bool dualTyping)
     }
 }
 
+std::string Pokemon::getName() const
+{
+    return this->name;
+}
+
 Pokemon::~Pokemon()
 {
     delete[] this->typing;
+
+    delete[] this->moves;
 }
 
 float Pokemon::getTypeMatchUp(us type)
