@@ -2,14 +2,14 @@
  * @file pokemon.cpp
  * @author Matthew Moore
  * @date 06/20/2021
- * @revision 06/20/2021
+ * @revision 06/22/2021
  * @brief The declaration for the Pokemon class
 */
 
 #include "pokemon.h"
 #include "moves.h"
 
-Pokemon::Pokemon(Stats &stats, MoveAbstract *moves, Types typing[], bool dualTyping, std::string name)
+Pokemon::Pokemon(Stats &stats, MoveAbstract *moves, Types *typing, bool dualTyping, std::string name)
 {
     this->name = name;
 
@@ -69,4 +69,16 @@ Stats *Pokemon::getStats()
 MoveAbstract *Pokemon::getMove(us index)
 {
     return &this->moves[index];
+}
+
+void Pokemon::setBattleState(bool inBattle)
+{
+    this->inBattle = inBattle;
+    if (!this->inBattle)
+        this->getStats()->resetMultipliers();
+}
+
+bool Pokemon::getBattleState() const
+{
+    return this->inBattle;
 }

@@ -2,7 +2,7 @@
  * @file moves.h
  * @author Matthew Moore
  * @date 06/20/2021
- * @revision 06/20/2021
+ * @revision 06/22/2021
  * @brief The definition for the MoveAbstract and Moves class
 */
 
@@ -16,13 +16,12 @@
 #include "typeEnums.h"
 #include <string>
 
-// Forward declarations
-class Trainer;
+class Pokemon;
 
 class MoveAbstract
 {
 public:
-    void effect(Trainer *trainer, Trainer *opponent);
+    void effect(Pokemon **trainer, Pokemon **opponent, us userIndex, BattleType type);
     MoveAbstract(){};
     MoveAbstract &operator=(MoveAbstract &moves);
     MoveAbstract(Types typing, us power, us accuracy, us powerPoints, std::string moveName) : typing(typing), power(power), accuracy(accuracy), powerPoints(powerPoints), moveName(moveName) {}

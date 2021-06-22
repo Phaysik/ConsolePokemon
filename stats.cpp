@@ -2,7 +2,7 @@
  * @file stats.cpp
  * @author Matthew Moore
  * @date 06/20/2021
- * @revision 06/20/2021
+ * @revision 06/22/2021
  * @brief The declaration for the Stats class
 */
 
@@ -110,27 +110,36 @@ void Stats::setSpeed(us speed)
     this->speed = speed;
 }
 
-void Stats::setAttackMultiplier(us attackMultiplier)
+void Stats::setAttackMultiplier(float attackMultiplier)
 {
     this->attackMultiplier = attackMultiplier;
 }
 
-void Stats::setDefenseMultiplier(us defenseMultiplier)
+void Stats::setDefenseMultiplier(float defenseMultiplier)
 {
     this->defenseMultiplier = defenseMultiplier;
 }
 
-void Stats::setSpAMultiplier(us spAMultiplier)
+void Stats::setSpAMultiplier(float spAMultiplier)
 {
     this->spAMultiplier = spAMultiplier;
 }
 
-void Stats::setSpDMultiplier(us spDMultiplier)
+void Stats::setSpDMultiplier(float spDMultiplier)
 {
     this->spDMultiplier = spDMultiplier;
 }
 
-void Stats::setSpeedMultiplier(us speedMultiplier)
+void Stats::setSpeedMultiplier(float speedMultiplier)
 {
     this->speedMultiplier = speedMultiplier;
+}
+
+void Stats::resetMultipliers()
+{
+    this->attackMultiplier = 1;
+    this->defenseMultiplier = 1;
+    this->spAMultiplier = 1;
+    this->spDMultiplier = 1;
+    this->speedMultiplier = 1;
 }

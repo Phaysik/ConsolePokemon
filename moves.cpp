@@ -2,13 +2,11 @@
  * @file moves.cpp
  * @author Matthew Moore
  * @date 06/20/2021
- * @revision 06/20/2021
+ * @revision 06/22/2021
  * @brief The declaration for the MoveAbstract and Moves class
 */
 
 #include "moves.h"
-#include "stats.h"
-#include "pokemon.h"
 #include "trainer.h"
 
 Types MoveAbstract::getType() const
@@ -47,10 +45,14 @@ MoveAbstract &MoveAbstract::operator=(MoveAbstract &moves)
     return *this;
 }
 
-void MoveAbstract::effect(Trainer *trainer, Trainer *opponent)
+void MoveAbstract::effect(Pokemon **trainer, Pokemon **opponent, us userIndex, BattleType type)
 {
-    //TODO check only opponents pokemon in battle, access to all trainer's pokemon is permitted
-    if (this->moveName == "growl")
+    if (this->moveName == "Growl")
     {
+        if (userIndex > 0)
+            opponent[userIndex - 1]->getStats()->setDefenseMultiplier(0.5);
+        if (userIndex < type)
+            opponent[userIndex + 1]->getStats()->setDefenseMultiplier(0.5);
+        opponent[userIndex]->getStats()->setDefenseMultiplier(0.5);
     }
 }

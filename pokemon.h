@@ -2,7 +2,7 @@
  * @file pokemon.h
  * @author Matthew Moore
  * @date 06/20/2021
- * @revision 06/20/2021
+ * @revision 06/22/2021
  * @brief The class definition for the Pokemon Class
 */
 
@@ -27,7 +27,7 @@ class Pokemon
 {
 public:
     Pokemon(){};
-    Pokemon(Stats &stats, MoveAbstract *moves, Types typing[], bool dualTyping, std::string name);
+    Pokemon(Stats &stats, MoveAbstract *moves, Types *typing, bool dualTyping, std::string name);
 
     ~Pokemon();
 
@@ -40,6 +40,10 @@ public:
     MoveAbstract *getMove(us index);
 
     Stats *getStats();
+
+    void setBattleState(bool inBattle);
+
+    bool getBattleState() const;
 
 private:
     Stats stats;

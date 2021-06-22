@@ -2,7 +2,7 @@
  * @file stats.h
  * @author Matthew Moore
  * @date 06/20/2021
- * @revision 06/20/2021
+ * @revision 06/22/2021
  * @brief The definition for the Stats class
 */
 
@@ -41,11 +41,13 @@ public:
     void setSpD(us spD);
     void setSpeed(us speed);
 
-    void setAttackMultiplier(us attackMultiplier);
-    void setDefenseMultiplier(us defenseMultiplier);
-    void setSpAMultiplier(us spAMultiplier);
-    void setSpDMultiplier(us spDMultiplier);
-    void setSpeedMultiplier(us speedMultiplier);
+    void setAttackMultiplier(float attackMultiplier);
+    void setDefenseMultiplier(float defenseMultiplier);
+    void setSpAMultiplier(float spAMultiplier);
+    void setSpDMultiplier(float spDMultiplier);
+    void setSpeedMultiplier(float speedMultiplier);
+
+    void resetMultipliers();
 
 private:
     us hp;

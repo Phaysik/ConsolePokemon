@@ -9,6 +9,16 @@
 #ifndef TYPEENUMS_H
 #define TYPEENUMS_H
 
+enum BattleType
+{
+    Single,
+    Double,
+    Triple,
+    Quadruple,
+    Quintuple,
+    Sextuple
+};
+
 enum Types
 {
     Normal,

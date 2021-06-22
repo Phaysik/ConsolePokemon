@@ -2,7 +2,7 @@
  * @file main.cpp
  * @author Matthew Moore
  * @date 06/20/2021
- * @revision 06/20/2021
+ * @revision 06/22/2021
  * @brief Main 
 */
 
@@ -52,7 +52,7 @@ int main()
     delete stats;
 
     //TODO set up a battle simulation
-    // opponent.getPokemonAtIndex(2)->getMove(0).effect();
+    opponent.engage(trainer, Quintuple);
 
     // See the effect of the move
     for (us i = 0; i < 5; ++i)
