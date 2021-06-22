@@ -7,10 +7,9 @@
 */
 
 #include "pokemon.h"
-#include "types.h"
 #include "moves.h"
 
-Pokemon::Pokemon(Stats *stats, MoveAbstract *moves, Types typing[], bool dualTyping, std::string name)
+Pokemon::Pokemon(Stats &stats, MoveAbstract *moves, Types typing[], bool dualTyping, std::string name)
 {
     this->name = name;
 
@@ -60,4 +59,14 @@ Pokemon::~Pokemon()
 float Pokemon::getTypeMatchUp(us type)
 {
     return this->typeMatchup[type];
+}
+
+Stats *Pokemon::getStats()
+{
+    return &this->stats;
+}
+
+MoveAbstract *Pokemon::getMove(us index)
+{
+    return &this->moves[index];
 }

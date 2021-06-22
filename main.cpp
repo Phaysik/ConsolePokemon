@@ -32,8 +32,8 @@ int main()
         moves[2] = movelist.headbutt;
         moves[3] = movelist.vinewhip;
 
-        opponent.setPokemonAtIndex(new Pokemon(stats, moves, typing, true, "bulbasaur" + std::to_string(i)), i);
-        trainer.setPokemonAtIndex(new Pokemon(stats, moves, typing, true, "bulbasaur" + std::to_string(i)), i);
+        opponent.setPokemonAtIndex(new Pokemon(*stats, moves, typing, true, "bulbasaur" + std::to_string(i)), i);
+        trainer.setPokemonAtIndex(new Pokemon(*stats, moves, typing, true, "bulbasaur" + std::to_string(i)), i);
 
         delete[] moves;
     }
@@ -46,19 +46,22 @@ int main()
     moves[1] = movelist.smokescreen;
     moves[2] = movelist.flamethrower;
     moves[3] = movelist.flareblitz;
-    trainer.setPokemonAtIndex(new Pokemon(stats, moves, typing, false, "charmander"), 2);
+    trainer.setPokemonAtIndex(new Pokemon(*stats, moves, typing, false, "charmander"), 2);
 
     delete[] moves;
     delete stats;
 
     //TODO set up a battle simulation
-    // for (us i = 0; i < 5; ++i)
-    // std::cout << opponent.getPokemonAtIndex(i)->getName() << "\t";
-    //
-    // std::cout << std::endl;
-    //
-    // for (us i = 0; i < 5; ++i)
-    // // trainer.getPokemonAtIndex(i)->getMove(0).effect(&trainer, &opponent);
+    // opponent.getPokemonAtIndex(2)->getMove(0).effect();
+
+    // See the effect of the move
+    for (us i = 0; i < 5; ++i)
+    {
+        Pokemon *poke = trainer.getPokemonAtIndex(i);
+        Stats *pokeStats = poke->getStats();
+        std::cout << poke->getName() << "\tDefense: ";
+        std::cout << pokeStats->getDefense() << "\tDefense Multiplier: " << pokeStats->getDefenseMultiplier() << std::endl;
+    }
 
     return 0;
 }

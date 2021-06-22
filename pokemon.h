@@ -15,17 +15,19 @@
 
 #include <unordered_map>
 #include <string>
+#include <iostream>
+#include "stats.h"
+#include "moves.h"
 #include "typeEnums.h"
+#include "types.h"
 
 // Forward declarations
-class MoveAbstract;
-class Stats;
 
 class Pokemon
 {
 public:
     Pokemon(){};
-    Pokemon(Stats *stats, MoveAbstract *moves, Types typing[], bool dualTyping, std::string name);
+    Pokemon(Stats &stats, MoveAbstract *moves, Types typing[], bool dualTyping, std::string name);
 
     ~Pokemon();
 
@@ -35,10 +37,12 @@ public:
 
     std::string getName() const;
 
-    MoveAbstract getMove(us index);
+    MoveAbstract *getMove(us index);
+
+    Stats *getStats();
 
 private:
-    Stats *stats;
+    Stats stats;
     MoveAbstract *moves;
     bool dualTyping;
     std::string name;

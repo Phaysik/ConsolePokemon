@@ -19,7 +19,7 @@ public:
     Stats() {}
     Stats(us hp, us attack, us defense, us spA, us spD, us speed) : hp(hp), attack(attack), defense(defense), spA(spA), spD(spD), speed(speed), attackMultiplier(1), defenseMultiplier(1), spAMultiplier(1), spDMultiplier(1), speedMultiplier(1) {}
 
-    void operator=(Stats *stats);
+    Stats &operator=(const Stats &stats);
 
     us getHp() const;
     us getAttack() const;
@@ -27,6 +27,12 @@ public:
     us getSpA() const;
     us getSpD() const;
     us getSpeed() const;
+
+    float getAttackMultiplier() const;
+    float getDefenseMultiplier() const;
+    float getSpAMultiplier() const;
+    float getSpDMultiplier() const;
+    float getSpeedMultiplier() const;
 
     void setHp(us hp);
     void setAttack(us attack);

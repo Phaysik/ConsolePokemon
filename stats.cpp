@@ -8,19 +8,21 @@
 
 #include "stats.h"
 
-void Stats::operator=(Stats *stats)
+Stats &Stats::operator=(const Stats &stats)
 {
-    this->hp = stats->hp;
-    this->attack = stats->attack;
-    this->defense = stats->defense;
-    this->spA = stats->spA;
-    this->spD = stats->spD;
-    this->speed = stats->speed;
-    this->attackMultiplier = stats->attackMultiplier;
-    this->defenseMultiplier = stats->defenseMultiplier;
-    this->spAMultiplier = stats->spAMultiplier;
-    this->spDMultiplier = stats->spDMultiplier;
-    this->speedMultiplier = stats->speedMultiplier;
+    this->hp = stats.hp;
+    this->attack = stats.attack;
+    this->defense = stats.defense;
+    this->spA = stats.spA;
+    this->spD = stats.spD;
+    this->speed = stats.speed;
+    this->attackMultiplier = stats.attackMultiplier;
+    this->defenseMultiplier = stats.defenseMultiplier;
+    this->spAMultiplier = stats.spAMultiplier;
+    this->spDMultiplier = stats.spDMultiplier;
+    this->speedMultiplier = stats.speedMultiplier;
+
+    return *this;
 }
 
 us Stats::getHp() const
@@ -51,6 +53,31 @@ us Stats::getSpD() const
 us Stats::getSpeed() const
 {
     return this->speed * this->speedMultiplier;
+}
+
+float Stats::getAttackMultiplier() const
+{
+    return this->attackMultiplier;
+}
+
+float Stats::getDefenseMultiplier() const
+{
+    return this->defenseMultiplier;
+}
+
+float Stats::getSpAMultiplier() const
+{
+    return this->spAMultiplier;
+}
+
+float Stats::getSpDMultiplier() const
+{
+    return this->spDMultiplier;
+}
+
+float Stats::getSpeedMultiplier() const
+{
+    return this->speedMultiplier;
 }
 
 void Stats::setHp(us hp)
