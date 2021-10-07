@@ -37,7 +37,7 @@ public:
         \version 1.0
         \author Matthew Moore
     */
-    TypeEffective(Types typeToCheck);
+    TypeEffective(const Types typeToCheck);
 
     /*! \brief Empty destructor
         \date 10/07/2021
@@ -68,7 +68,7 @@ public:
         \version 1.0
         \author Matthew Moore 
     */
-    float getMatchUp(Types type) const;
+    float getMatchUp(const Types type) const;
 
 private:
     us typeAmount;             /*<! Amount of Pokemon types */

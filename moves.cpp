@@ -45,7 +45,7 @@ MoveAbstract &MoveAbstract::operator=(MoveAbstract &moves)
     return *this;
 }
 
-void MoveAbstract::effect(Pokemon **trainer, Pokemon **opponent, us userIndex, BattleType type)
+void MoveAbstract::effect(Pokemon **trainer, Pokemon **opponent, const us userIndex, const BattleType type) const
 {
     if (this->name == "Growl")
     {

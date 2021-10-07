@@ -48,7 +48,7 @@ public:
         \version 1.0
         \author Matthew Moore
     */
-    inline MoveAbstract(Types moveType, us movePower, us moveAccuracy, us movePowerPoints, std::string moveName) : typing(moveType), power(movePower), accuracy(moveAccuracy), powerPoints(movePowerPoints), name(moveName) {}
+    inline MoveAbstract(const Types moveType, const us movePower, const us moveAccuracy, const us movePowerPoints, const std::string &moveName) : typing(moveType), power(movePower), accuracy(moveAccuracy), powerPoints(movePowerPoints), name(moveName) {}
 
     /* Overloaded Functions */
 
@@ -75,7 +75,7 @@ public:
         \version 1.0
         \author Matthew Moore
     */
-    void effect(Pokemon **trainer, Pokemon **opponent, us userIndex, BattleType type);
+    void effect(Pokemon **trainer, Pokemon **opponent, const us userIndex, const BattleType type) const;
 
     /* Getters */
 

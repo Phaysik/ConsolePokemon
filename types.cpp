@@ -8,7 +8,7 @@
 
 #include "types.h"
 
-TypeEffective::TypeEffective(Types typeToCheck)
+TypeEffective::TypeEffective(const Types typeToCheck)
 {
     this->typeAmount = TYPES_MAX;
     this->typing = typeToCheck;
@@ -49,7 +49,7 @@ TypeEffective::~TypeEffective()
     delete[] this->typeChart;
 }
 
-float TypeEffective::getMatchUp(Types type) const
+float TypeEffective::getMatchUp(const Types type) const
 {
     us effect = this->typeChart[type][this->typing];
     if (effect == NOE)
