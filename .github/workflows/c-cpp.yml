@@ -10,11 +10,14 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       
-    - name: make
+    - name: Compile
       run: make
       
-    - name: make run
+    - name: Run
       run: make run
       
-    - name: make valgrind
+    - name: Installing valgrind
+      run: sudo apt install -y valgrind
+      
+    - name: memory Checking
       run: make valgrind
