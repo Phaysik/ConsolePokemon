@@ -1,0 +1,68 @@
+/mnt/c/Users/Owner/github/ConsolePokemon/types.h:20: warning: Compound TypeEffective is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/trainer.h:22: warning: Compound Trainer is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/stats.h:17: warning: Compound Stats is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/pokemon.h:27: warning: Compound Pokemon is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/moves.h:44: warning: Compound Move is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/moves.h:23: warning: Compound MoveAbstract is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/moves.h:45: warning: Member growl (variable) of class Move is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/moves.h:46: warning: Member tackle (variable) of class Move is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/moves.h:47: warning: Member headbutt (variable) of class Move is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/moves.h:48: warning: Member vinewhip (variable) of class Move is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/moves.h:49: warning: Member ember (variable) of class Move is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/moves.h:50: warning: Member smokescreen (variable) of class Move is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/moves.h:51: warning: Member flamethrower (variable) of class Move is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/moves.h:52: warning: Member flareblitz (variable) of class Move is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/moves.h:25: warning: Member effect(Pokemon **trainer, Pokemon **opponent, us userIndex, BattleType type) (function) of class MoveAbstract is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/moves.h:27: warning: Member operator=(MoveAbstract &moves) (function) of class MoveAbstract is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/moves.h:28: warning: Member MoveAbstract(Types typing, us power, us accuracy, us powerPoints, std::string moveName) (function) of class MoveAbstract is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/moves.h:29: warning: Member getType() const (function) of class MoveAbstract is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/moves.h:30: warning: Member getPower() const (function) of class MoveAbstract is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/moves.h:31: warning: Member setPower(us power) (function) of class MoveAbstract is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/moves.h:32: warning: Member getAccuracy() const (function) of class MoveAbstract is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/moves.h:33: warning: Member getMoveName() (function) of class MoveAbstract is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/moves.h:36: warning: Member typing (variable) of class MoveAbstract is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/moves.h:37: warning: Member power (variable) of class MoveAbstract is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/moves.h:38: warning: Member accuracy (variable) of class MoveAbstract is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/moves.h:39: warning: Member powerPoints (variable) of class MoveAbstract is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/moves.h:40: warning: Member moveName (variable) of class MoveAbstract is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/pokemon.h:30: warning: Member Pokemon(Stats &stats, MoveAbstract *moves, Types *typing, bool dualTyping, std::string name) (function) of class Pokemon is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/pokemon.h:34: warning: Member setTypeMatchups(bool dualTyping) (function) of class Pokemon is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/pokemon.h:36: warning: Member getTypeMatchUp(us type) (function) of class Pokemon is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/pokemon.h:38: warning: Member getName() const (function) of class Pokemon is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/pokemon.h:40: warning: Member getMove(us index) (function) of class Pokemon is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/pokemon.h:42: warning: Member getStats() (function) of class Pokemon is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/pokemon.h:44: warning: Member setBattleState(bool inBattle) (function) of class Pokemon is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/pokemon.h:46: warning: Member getBattleState() const (function) of class Pokemon is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/stats.h:20: warning: Member Stats(us hp, us attack, us defense, us spA, us spD, us speed) (function) of class Stats is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/stats.h:22: warning: Member operator=(const Stats &stats) (function) of class Stats is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/stats.h:24: warning: Member getHp() const (function) of class Stats is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/stats.h:25: warning: Member getAttack() const (function) of class Stats is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/stats.h:26: warning: Member getDefense() const (function) of class Stats is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/stats.h:27: warning: Member getSpA() const (function) of class Stats is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/stats.h:28: warning: Member getSpD() const (function) of class Stats is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/stats.h:29: warning: Member getSpeed() const (function) of class Stats is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/stats.h:31: warning: Member getAttackMultiplier() const (function) of class Stats is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/stats.h:32: warning: Member getDefenseMultiplier() const (function) of class Stats is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/stats.h:33: warning: Member getSpAMultiplier() const (function) of class Stats is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/stats.h:34: warning: Member getSpDMultiplier() const (function) of class Stats is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/stats.h:35: warning: Member getSpeedMultiplier() const (function) of class Stats is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/stats.h:37: warning: Member setHp(us hp) (function) of class Stats is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/stats.h:38: warning: Member setAttack(us attack) (function) of class Stats is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/stats.h:39: warning: Member setDefense(us defense) (function) of class Stats is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/stats.h:40: warning: Member setSpA(us spA) (function) of class Stats is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/stats.h:41: warning: Member setSpD(us spD) (function) of class Stats is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/stats.h:42: warning: Member setSpeed(us speed) (function) of class Stats is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/stats.h:44: warning: Member setAttackMultiplier(float attackMultiplier) (function) of class Stats is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/stats.h:45: warning: Member setDefenseMultiplier(float defenseMultiplier) (function) of class Stats is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/stats.h:46: warning: Member setSpAMultiplier(float spAMultiplier) (function) of class Stats is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/stats.h:47: warning: Member setSpDMultiplier(float spDMultiplier) (function) of class Stats is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/stats.h:48: warning: Member setSpeedMultiplier(float speedMultiplier) (function) of class Stats is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/stats.h:50: warning: Member resetMultipliers() (function) of class Stats is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/trainer.h:25: warning: Member setPokemonAtIndex(Pokemon *pokemon, us index) (function) of class Trainer is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/trainer.h:26: warning: Member getPokemonAtIndex(us index) (function) of class Trainer is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/trainer.h:27: warning: Member getAllInBattle(BattleType type) (function) of class Trainer is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/trainer.h:28: warning: Member getPokemon() (function) of class Trainer is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/trainer.h:30: warning: Member engage(Trainer &trainer, BattleType type) (function) of class Trainer is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/types.h:22: warning: Member TypeEffective(Types typing) (function) of class TypeEffective is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/types.h:25: warning: Member readFile() (function) of class TypeEffective is not documented.
+/mnt/c/Users/Owner/github/ConsolePokemon/types.h:27: warning: Member getMatchUp(us j) const (function) of class TypeEffective is not documented.
