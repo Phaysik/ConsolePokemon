@@ -24,10 +24,10 @@ public:
     void effect(Pokemon **trainer, Pokemon **opponent, us userIndex, BattleType type);
     MoveAbstract(){};
     MoveAbstract &operator=(MoveAbstract &moves);
-    MoveAbstract(Types typing, us power, us accuracy, us powerPoints, std::string moveName) : typing(typing), power(power), accuracy(accuracy), powerPoints(powerPoints), moveName(moveName) {}
+    MoveAbstract(Types moveType, us movePower, us moveAccuracy, us movePowerPoints, std::string moveName) : typing(moveType), power(movePower), accuracy(moveAccuracy), powerPoints(movePowerPoints), name(moveName) {}
     Types getType() const;
     us getPower() const;
-    void setPower(us power);
+    void setPower(us movePower);
     us getAccuracy() const;
     std::string getMoveName();
 
@@ -36,11 +36,13 @@ protected:
     us power;
     us accuracy;
     us powerPoints;
-    std::string moveName;
+    std::string name;
 };
 
 struct Move
 {
+    Move() {};
+    ~Move() {};
     MoveAbstract growl = MoveAbstract(Normal, 0, 100, 40, "Growl");
     MoveAbstract tackle = MoveAbstract(Normal, 40, 100, 35, "Tackle");
     MoveAbstract headbutt = MoveAbstract(Normal, 70, 100, 15, "Headbutt");

@@ -17,7 +17,7 @@ class Stats
 {
 public:
     Stats() {}
-    Stats(us hp, us attack, us defense, us spA, us spD, us speed) : hp(hp), attack(attack), defense(defense), spA(spA), spD(spD), speed(speed), attackMultiplier(1), defenseMultiplier(1), spAMultiplier(1), spDMultiplier(1), speedMultiplier(1) {}
+    Stats(us hpStat, us attackStat, us defenseStat, us spAStat, us spDStat, us speedStat) : hp(hpStat), attack(attackStat), defense(defenseStat), spA(spAStat), spD(spDStat), speed(speedStat), attackMultiplier(1), defenseMultiplier(1), spAMultiplier(1), spDMultiplier(1), speedMultiplier(1) {}
 
     Stats &operator=(const Stats &stats);
 
@@ -34,18 +34,18 @@ public:
     float getSpDMultiplier() const;
     float getSpeedMultiplier() const;
 
-    void setHp(us hp);
-    void setAttack(us attack);
-    void setDefense(us defense);
-    void setSpA(us spA);
-    void setSpD(us spD);
-    void setSpeed(us speed);
+    void setHp(us hpStat);
+    void setAttack(us attackStat);
+    void setDefense(us defenseStat);
+    void setSpA(us spAStat);
+    void setSpD(us spDStat);
+    void setSpeed(us speedStat);
 
-    void setAttackMultiplier(float attackMultiplier);
-    void setDefenseMultiplier(float defenseMultiplier);
-    void setSpAMultiplier(float spAMultiplier);
-    void setSpDMultiplier(float spDMultiplier);
-    void setSpeedMultiplier(float speedMultiplier);
+    void setAttackMultiplier(float attackMultiplierStat);
+    void setDefenseMultiplier(float defenseMultiplierStat);
+    void setSpAMultiplier(float spAMultiplierStat);
+    void setSpDMultiplier(float spDMultiplierStat);
+    void setSpeedMultiplier(float speedMultiplierStat);
 
     void resetMultipliers();
 

@@ -19,9 +19,9 @@ us MoveAbstract::getPower() const
     return this->power;
 }
 
-void MoveAbstract::setPower(us power)
+void MoveAbstract::setPower(us movePower)
 {
-    this->power = power;
+    this->power = movePower;
 }
 
 us MoveAbstract::getAccuracy() const
@@ -31,7 +31,7 @@ us MoveAbstract::getAccuracy() const
 
 std::string MoveAbstract::getMoveName()
 {
-    return this->moveName;
+    return this->name;
 }
 
 MoveAbstract &MoveAbstract::operator=(MoveAbstract &moves)
@@ -40,14 +40,14 @@ MoveAbstract &MoveAbstract::operator=(MoveAbstract &moves)
     this->power = moves.power;
     this->accuracy = moves.accuracy;
     this->powerPoints = moves.powerPoints;
-    this->moveName = moves.moveName;
+    this->name = moves.name;
 
     return *this;
 }
 
 void MoveAbstract::effect(Pokemon **trainer, Pokemon **opponent, us userIndex, BattleType type)
 {
-    if (this->moveName == "Growl")
+    if (this->name == "Growl")
     {
         if (userIndex > 0)
             opponent[userIndex - 1]->getStats()->setDefenseMultiplier(0.5);
@@ -55,4 +55,6 @@ void MoveAbstract::effect(Pokemon **trainer, Pokemon **opponent, us userIndex, B
             opponent[userIndex + 1]->getStats()->setDefenseMultiplier(0.5);
         opponent[userIndex]->getStats()->setDefenseMultiplier(0.5);
     }
+    else if (this->name == "Swords Dance")
+        trainer[userIndex]->getStats()->setAttackMultiplier(2);
 }

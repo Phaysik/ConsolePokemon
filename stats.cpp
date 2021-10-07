@@ -32,27 +32,27 @@ us Stats::getHp() const
 
 us Stats::getAttack() const
 {
-    return this->attack * this->attackMultiplier;
+    return static_cast<us>(this->attack * this->attackMultiplier);
 }
 
 us Stats::getDefense() const
 {
-    return this->defense * this->defenseMultiplier;
+    return static_cast<us>(this->defense * this->defenseMultiplier);
 }
 
 us Stats::getSpA() const
 {
-    return this->spA * this->spAMultiplier;
+    return static_cast<us>(this->spA * this->spAMultiplier);
 }
 
 us Stats::getSpD() const
 {
-    return this->spD * this->spDMultiplier;
+    return static_cast<us>(this->spD * this->spDMultiplier);
 }
 
 us Stats::getSpeed() const
 {
-    return this->speed * this->speedMultiplier;
+    return static_cast<us>(this->speed * this->speedMultiplier);
 }
 
 float Stats::getAttackMultiplier() const
@@ -80,59 +80,59 @@ float Stats::getSpeedMultiplier() const
     return this->speedMultiplier;
 }
 
-void Stats::setHp(us hp)
+void Stats::setHp(us hpStat)
 {
-    this->hp = hp;
+    this->hp = hpStat;
 }
 
-void Stats::setAttack(us attack)
+void Stats::setAttack(us attackStat)
 {
-    this->attack = attack;
+    this->attack = attackStat;
 }
 
-void Stats::setDefense(us defense)
+void Stats::setDefense(us defenseStat)
 {
-    this->defense = defense;
+    this->defense = defenseStat;
 }
 
-void Stats::setSpA(us spA)
+void Stats::setSpA(us spAStat)
 {
-    this->spA = spA;
+    this->spA = spAStat;
 }
 
-void Stats::setSpD(us spD)
+void Stats::setSpD(us spDStat)
 {
-    this->spD = spD;
+    this->spD = spDStat;
 }
 
-void Stats::setSpeed(us speed)
+void Stats::setSpeed(us speedStat)
 {
-    this->speed = speed;
+    this->speed = speedStat;
 }
 
-void Stats::setAttackMultiplier(float attackMultiplier)
+void Stats::setAttackMultiplier(float attackMultiplierStat)
 {
-    this->attackMultiplier = attackMultiplier;
+    this->attackMultiplier = attackMultiplierStat;
 }
 
-void Stats::setDefenseMultiplier(float defenseMultiplier)
+void Stats::setDefenseMultiplier(float defenseMultiplierStat)
 {
-    this->defenseMultiplier = defenseMultiplier;
+    this->defenseMultiplier = defenseMultiplierStat;
 }
 
-void Stats::setSpAMultiplier(float spAMultiplier)
+void Stats::setSpAMultiplier(float spAMultiplierStat)
 {
-    this->spAMultiplier = spAMultiplier;
+    this->spAMultiplier = spAMultiplierStat;
 }
 
-void Stats::setSpDMultiplier(float spDMultiplier)
+void Stats::setSpDMultiplier(float spDMultiplierStat)
 {
-    this->spDMultiplier = spDMultiplier;
+    this->spDMultiplier = spDMultiplierStat;
 }
 
-void Stats::setSpeedMultiplier(float speedMultiplier)
+void Stats::setSpeedMultiplier(float speedMultiplierStat)
 {
-    this->speedMultiplier = speedMultiplier;
+    this->speedMultiplier = speedMultiplierStat;
 }
 
 void Stats::resetMultipliers()

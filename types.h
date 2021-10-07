@@ -19,7 +19,7 @@
 class TypeEffective
 {
 public:
-    TypeEffective(Types typing);
+    TypeEffective(Types typesToCheck);
     ~TypeEffective();
 
     void readFile();

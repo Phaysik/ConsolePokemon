@@ -32,8 +32,8 @@ int main()
         moves[2] = movelist.headbutt;
         moves[3] = movelist.vinewhip;
 
-        opponent.setPokemonAtIndex(new Pokemon(*stats, moves, typing, true, "bulbasaur" + std::to_string(i)), i);
-        trainer.setPokemonAtIndex(new Pokemon(*stats, moves, typing, true, "bulbasaur" + std::to_string(i)), i);
+        opponent.setPokemonAtIndex(new Pokemon(*stats, moves, typing, true, "bulbasaur" + std::to_string(static_cast<long>(i))), i);
+        trainer.setPokemonAtIndex(new Pokemon(*stats, moves, typing, true, "bulbasaur" + std::to_string(static_cast<long>(i))), i);
 
         delete[] moves;
     }

@@ -8,10 +8,10 @@
 
 #include "types.h"
 
-TypeEffective::TypeEffective(Types typing)
+TypeEffective::TypeEffective(Types typesToCheck)
 {
     this->typeAmount = TYPES_MAX;
-    this->typing = typing;
+    this->typing = typesToCheck;
     this->typeChart = new Effectiveness *[this->typeAmount];
     for (us i = 0; i < this->typeAmount; ++i)
         this->typeChart[i] = new Effectiveness[this->typeAmount];
@@ -22,7 +22,7 @@ TypeEffective::TypeEffective(Types typing)
 void TypeEffective::readFile()
 {
     std::ifstream file("typechart.txt");
-    float val;
+    us val;
     us inputAmount = 0;
     while (!file.eof())
     {

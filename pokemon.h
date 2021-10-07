@@ -21,17 +21,15 @@
 #include "typeEnums.h"
 #include "types.h"
 
-// Forward declarations
-
 class Pokemon
 {
 public:
     Pokemon(){};
-    Pokemon(Stats &stats, MoveAbstract *moves, Types *typing, bool dualTyping, std::string name);
+    Pokemon(Stats &pokeStats, MoveAbstract *pokeMoves, Types *pokeTypes, bool pokeDualTyping, std::string pokeName);
 
     ~Pokemon();
 
-    void setTypeMatchups(bool dualTyping);
+    void setTypeMatchups(bool pokeDualTyping);
 
     float getTypeMatchUp(us type);
 
@@ -41,7 +39,7 @@ public:
 
     Stats *getStats();
 
-    void setBattleState(bool inBattle);
+    void setBattleState(bool pokeInBattle);
 
     bool getBattleState() const;
 

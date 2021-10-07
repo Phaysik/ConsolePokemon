@@ -28,7 +28,7 @@ public:
     void engage(Trainer &trainer, BattleType type);
 
 private:
-    Pokemon **pokemon;
+    Pokemon **trainerPokemon;
     Pokemon **inBattle;
 };
 

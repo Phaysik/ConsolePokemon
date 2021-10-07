@@ -9,31 +9,31 @@
 #include "pokemon.h"
 #include "moves.h"
 
-Pokemon::Pokemon(Stats &stats, MoveAbstract *moves, Types *typing, bool dualTyping, std::string name)
+Pokemon::Pokemon(Stats &pokeStats, MoveAbstract *pokeMoves, Types *pokeTypes, bool pokeDualTyping, std::string pokeName)
 {
-    this->name = name;
+    this->name = pokeName;
 
-    this->stats = stats;
+    this->stats = pokeStats;
 
     this->moves = new MoveAbstract[4];
 
     for (us i = 0; i < 4; ++i)
-        this->moves[i] = moves[i];
+        this->moves[i] = pokeMoves[i];
 
-    this->typing = new Types[dualTyping + 1];
+    this->typing = new Types[pokeDualTyping + 1];
 
-    for (us i = 0; i < dualTyping + 1; ++i)
-        this->typing[i] = typing[i];
+    for (us i = 0; i < pokeDualTyping + 1; ++i)
+        this->typing[i] = pokeTypes[i];
 
     for (us i = 0; i < TYPES_MAX; ++i)
         this->typeMatchup[i] = 1;
 
-    setTypeMatchups(dualTyping);
+    setTypeMatchups(pokeDualTyping);
 }
 
-void Pokemon::setTypeMatchups(bool dualTyping)
+void Pokemon::setTypeMatchups(bool pokeDualTyping)
 {
-    for (us i = 0; i < dualTyping + 1; ++i)
+    for (us i = 0; i < pokeDualTyping + 1; ++i)
     {
         TypeEffective typeEffective(this->typing[i]);
         for (us j = 0; j < TYPES_MAX; ++j)
@@ -71,9 +71,9 @@ MoveAbstract *Pokemon::getMove(us index)
     return &this->moves[index];
 }
 
-void Pokemon::setBattleState(bool inBattle)
+void Pokemon::setBattleState(bool pokeInBattle)
 {
-    this->inBattle = inBattle;
+    this->inBattle = pokeInBattle;
     if (!this->inBattle)
         this->getStats()->resetMultipliers();
 }
