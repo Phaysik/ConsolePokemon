@@ -52,12 +52,17 @@ enum Types
     TYPES_MAX
 };
 
+/*! \brief All the Pokemon types possible effectivenesses
+    \date 10/07/2021
+    \version 1.0
+    \author Matthew Moore
+*/
 enum Effectiveness
 {
-    NOE,
-    NVE,
-    NE,
-    SE
+    NOE, /*!< Not effective */
+    NVE, /*!< Not very effective */
+    NE,  /*!< Normal effective */
+    SE   /*!< Super effective */
 };
 
 #endif

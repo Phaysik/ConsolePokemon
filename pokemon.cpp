@@ -38,7 +38,7 @@ void Pokemon::setTypeMatchups(bool pokeDualTyping)
         TypeEffective typeEffective(this->typing[i]);
         for (us j = 0; j < TYPES_MAX; ++j)
         {
-            float effect = typeEffective.getMatchUp(j);
+            float effect = typeEffective.getMatchUp(static_cast<Types>(j));
             this->typeMatchup[j] *= effect;
         }
     }

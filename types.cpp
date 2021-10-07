@@ -8,10 +8,10 @@
 
 #include "types.h"
 
-TypeEffective::TypeEffective(Types typesToCheck)
+TypeEffective::TypeEffective(Types typeToCheck)
 {
     this->typeAmount = TYPES_MAX;
-    this->typing = typesToCheck;
+    this->typing = typeToCheck;
     this->typeChart = new Effectiveness *[this->typeAmount];
     for (us i = 0; i < this->typeAmount; ++i)
         this->typeChart[i] = new Effectiveness[this->typeAmount];
@@ -49,14 +49,14 @@ TypeEffective::~TypeEffective()
     delete[] this->typeChart;
 }
 
-float TypeEffective::getMatchUp(us j) const
+float TypeEffective::getMatchUp(Types type) const
 {
-    us effect = this->typeChart[j][this->typing];
-    if (effect == 0)
+    us effect = this->typeChart[type][this->typing];
+    if (effect == NOE)
         return 0;
-    else if (effect == 1)
+    else if (effect == NVE)
         return 0.5;
-    else if (effect == 3)
+    else if (effect == SE)
         return 2;
     return 1;
 }

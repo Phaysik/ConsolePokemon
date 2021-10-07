@@ -1,6 +1,6 @@
 /*! \file moves.h
-    \brief Header file for #Pokemon Moves.
-    \details Contains the function definitions for the #Pokemon Moves.
+    \brief Header file for Pokemon moves.
+    \details Contains the function definitions for the Pokemon moves.
     \date 10/07/2021
     \version 1.0
     \author Matthew Moore

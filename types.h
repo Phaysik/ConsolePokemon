@@ -1,36 +1,79 @@
-/*
- * @file types.h
- * @author Matthew Moore
- * @date 06/20/2021
- * @revision 06/20/2021
- * @brief The class definition for the TypeEffective class
+/*! \file types.h
+    \brief Header file for getting type effectiveness.
+    \details Contains the definitions for comparing types against one another.
+    \date 10/07/2021
+    \version 1.0
+    \author Matthew Moore
 */
 
 #ifndef TYPES_H
 #define TYPES_H
 
 #ifndef us
-#define us unsigned short
+#define us unsigned short /*!< Shorthand for unsigned short */
 #endif
 
 #include <fstream>
 #include "typeEnums.h"
 
+/*! \headerfile types.h 
+    \brief Type effectiveness
+    \details How types stack up against one another.
+    \date 10/07/2021
+    \version 1.0
+    \author Matthew Moore
+*/
 class TypeEffective
 {
 public:
-    TypeEffective(Types typesToCheck);
+    /* Constructors and Desctructors */
+
+    /*! \brief Creates a type chart
+        \details Creates a type chart based on the specifications of 'typechart.txt'
+        \param typeToCheck Create a type chart for this specific type
+        \pre The type must be part of #Types
+        \post The type chart will be stored in a 2D array filled with #Effectiveness values
+        \date 10/07/2021
+        \version 1.0
+        \author Matthew Moore
+    */
+    TypeEffective(Types typeToCheck);
+
+    /*! \brief Empty destructor
+        \date 10/07/2021
+        \version 1.0
+        \author Matthew Moore
+    */
     ~TypeEffective();
 
+    /* Member Functions */
+
+    /*! \brief Read the file 'typechart.txt'
+        \details Using 'typechart.txt', create a type chart based on the contents of the file
+        \pre Requires the type chart to already be allocated in memory
+        \date 10/07/2021
+        \version 1.0
+        \author Matthew Moore
+    */
     void readFile();
 
-    float getMatchUp(us j) const;
+    /* Getters */
+
+    /*! \brief Get type match up
+        \details Get the type matchup of #typing against the type param
+        \param type The type to get the matchup against
+        \retval float How effect #typing is against the type param
+        \pre The type param must be a valid #Types
+        \date 10/07/2021
+        \version 1.0
+        \author Matthew Moore 
+    */
+    float getMatchUp(Types type) const;
 
 private:
-    us typeAmount;
-    us typeCount;
-    Types typing;
-    Effectiveness **typeChart;
+    us typeAmount;             /*<! Amount of Pokemon types */
+    Types typing;              /*<! The typing of the Pokemon */
+    Effectiveness **typeChart; /*<! The 2D array of type matchups */
 };
 
 #endif
