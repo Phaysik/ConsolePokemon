@@ -45,14 +45,14 @@ Trainer::~Trainer()
 void Trainer::engage(Trainer &trainer, BattleType type)
 {
     //TODO this should all be in a loop until one sides Pokemon are all out
-    for (us i = 0; i < type + 1; ++i)
+    for (us i = 0; i < static_cast<us>(type + 1); ++i)
     {
         this->trainerPokemon[i]->setBattleState(true);
         trainer.trainerPokemon[i]->setBattleState(true);
     }
     this->trainerPokemon[2]->getMove(0)->effect(this->getPokemon(), trainer.getAllInBattle(type), 2, type);
 
-    for (us i = 0; i < type + 1; ++i)
+    for (us i = 0; i < static_cast<us>(type + 1); ++i)
     {
         this->trainerPokemon[i]->setBattleState(false);
         trainer.trainerPokemon[i]->setBattleState(false);
@@ -67,7 +67,7 @@ Pokemon **Trainer::getPokemon()
 Pokemon **Trainer::getAllInBattle(BattleType type)
 {
     us arrIndex = 0;
-    for (us i = 0; i < type + 1; ++i)
+    for (us i = 0; i < static_cast<us>(type + 1); ++i)
         if (this->trainerPokemon[i]->getBattleState())
             this->inBattle[arrIndex++] = this->trainerPokemon[i];
 
