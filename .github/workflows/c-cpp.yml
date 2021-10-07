@@ -19,5 +19,5 @@ jobs:
     - name: Installing valgrind
       run: sudo apt install -y valgrind
       
-    - name: memory Checking
+    - name: Memory Checking
       run: make valgrind
