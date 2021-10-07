@@ -19,7 +19,7 @@ us MoveAbstract::getPower() const
     return this->power;
 }
 
-void MoveAbstract::setPower(us movePower)
+void MoveAbstract::setPower(const us movePower)
 {
     this->power = movePower;
 }
@@ -29,7 +29,7 @@ us MoveAbstract::getAccuracy() const
     return this->power;
 }
 
-std::string MoveAbstract::getMoveName()
+std::string MoveAbstract::getMoveName() const
 {
     return this->name;
 }

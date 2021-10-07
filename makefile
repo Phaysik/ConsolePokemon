@@ -17,3 +17,7 @@ debug: ${SOURCES}
 
 valgrind: debug
 	valgrind ${VFLAGS} ./main
+
+.PHONY: docs
+docs: 
+	doxygen Doxyfile

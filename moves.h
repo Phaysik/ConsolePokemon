@@ -1,16 +1,16 @@
-/*
- * @file moves.h
- * @author Matthew Moore
- * @date 06/20/2021
- * @revision 06/22/2021
- * @brief The definition for the MoveAbstract and Moves class
+/*! \file moves.h
+    \brief Header file for #Pokemon Moves.
+    \details Contains the function definitions for the #Pokemon Moves.
+    \date 10/07/2021
+    \version 1.0
+    \author Matthew Moore
 */
 
 #ifndef MOVES_H
 #define MOVES_H
 
 #ifndef us
-#define us unsigned short
+#define us unsigned short /*!< Shorthand for unsigned short */
 #endif
 
 #include "typeEnums.h"
@@ -18,31 +18,147 @@
 
 class Pokemon;
 
+/*! \headerfile moves.h 
+    \brief What moves can do
+    \details Creates the properties of a %Pokemon move and the functions that will affect the battle
+    \date 10/07/2021
+    \version 1.0
+    \author Matthew Moore
+*/
 class MoveAbstract
 {
 public:
-    void effect(Pokemon **trainer, Pokemon **opponent, us userIndex, BattleType type);
-    MoveAbstract(){};
+    /* Constructors and Destructors */
+
+    /*! \brief Empty constructor
+        \date 10/07/2021
+        \version 1.0
+        \author Matthew Moore
+    */
+    inline MoveAbstract(){};
+
+    /*! \brief Parameterized constructor
+        \details Will initialize all member variables with the parameters
+        \param moveType The move's type
+        \param movePower The move's power
+        \param moveAccuracy The move's accuracy
+        \param movePowerPoints The move's power points
+        \param moveName The move's name
+        \date 10/07/2021
+        \version 1.0
+        \author Matthew Moore
+    */
+    inline MoveAbstract(Types moveType, us movePower, us moveAccuracy, us movePowerPoints, std::string moveName) : typing(moveType), power(movePower), accuracy(moveAccuracy), powerPoints(movePowerPoints), name(moveName) {}
+
+    /* Overloaded Functions */
+
+    /*! \brief Overload operator=
+        \details Will allow chaining for MoveAbstract class types
+        \param moves The move and all of it's information
+        \date 10/07/2021
+        \version 1.0
+        \author Matthew Moore
+    */
     MoveAbstract &operator=(MoveAbstract &moves);
-    MoveAbstract(Types moveType, us movePower, us moveAccuracy, us movePowerPoints, std::string moveName) : typing(moveType), power(movePower), accuracy(moveAccuracy), powerPoints(movePowerPoints), name(moveName) {}
+
+    /* Member Functions */
+
+    /*! \brief For a move effect
+        \details If the move has an effect, it will need to apply to the Pokemon in battle
+        \pre The Pokemon of the trainer and opponent both have to be initizlied
+        \post Some of the pokemon will have some status applied to them
+        \param trainer The Pokemon team of the the trainer who initialited combat
+        \param opponent The Pokemon team of the trainer who is against the engager
+        \param userIndex The index of trainer param
+        \param type The #BattleType of the battle
+        \date 10/07/2021
+        \version 1.0
+        \author Matthew Moore
+    */
+    void effect(Pokemon **trainer, Pokemon **opponent, us userIndex, BattleType type);
+
+    /* Getters */
+
+    /*! \brief Get the %Pokemon's move type
+        \retval #Types Returns the %Pokemon's move type
+        \pre Requires the #typing to already by initialized
+        \date 10/07/2021
+        \version 1.0
+        \author Matthew Moore
+    */
     Types getType() const;
+
+    /*! \brief Get the %Pokemon's move power
+        \retval #us Returns the %Pokemon's move Power
+        \pre Requires the #power to already by initialized
+        \date 10/07/2021
+        \version 1.0
+        \author Matthew Moore
+    */
     us getPower() const;
-    void setPower(us movePower);
+
+    /*! \brief Get the %Pokemon's move accuracy
+        \retval #us Returns the %Pokemon's move accuracy
+        \pre Requires the #accuracy to already by initialized
+        \date 10/07/2021
+        \version 1.0
+        \author Matthew Moore
+    */
     us getAccuracy() const;
-    std::string getMoveName();
+
+    /*! \brief Get the %Pokemon's move name
+        \retval string Returns the %Pokemon's move name
+        \pre Requires the #name to already by initialized
+        \date 10/07/2021
+        \version 1.0
+        \author Matthew Moore
+    */
+    std::string getMoveName() const;
+
+    /* Setters */
+
+    /*! \brief Sets the %Pokemon's move power
+        \post The %Pokemon's move #power will be set to movePower
+        \param movePower The new power for the move
+        \date 10/07/2021
+        \version 1.0
+        \author Matthew Moore
+    */
+    void setPower(const us movePower);
 
 protected:
-    Types typing;
-    us power;
-    us accuracy;
-    us powerPoints;
-    std::string name;
+    Types typing;     /*!< The move's type */
+    us power;         /*!< The move's power */
+    us accuracy;      /*!< The move's accuracy */
+    us powerPoints;   /*!< The move's power points */
+    std::string name; /*!< The move's name */
 };
 
+/*! \headerfile moves.h 
+    \brief Declaration for each %Pokemon move
+    \details Creates the move based on all of it's parameters
+    \date 10/07/2021
+    \version 1.0
+    \author Matthew Moore
+*/
 struct Move
 {
-    Move() {};
-    ~Move() {};
+    /* Constructors and Destructors */
+
+    /*! \brief Empty constructor
+        \date 10/07/2021
+        \version 1.0
+        \author Matthew Moore
+    */
+    Move(){};
+
+    /*! \brief Empty destructor
+        \date 10/07/2021
+        \version 1.0
+        \author Matthew Moore
+    */
+    ~Move(){};
+
     MoveAbstract growl = MoveAbstract(Normal, 0, 100, 40, "Growl");
     MoveAbstract tackle = MoveAbstract(Normal, 40, 100, 35, "Tackle");
     MoveAbstract headbutt = MoveAbstract(Normal, 70, 100, 15, "Headbutt");

@@ -1,14 +1,19 @@
-/*
- * @file typeEnums.h
- * @author Matthew Moore
- * @date 06/20/2021
- * @revision 06/20/2021
- * @brief The enums for Types and Effectiveness
+/*! \file typeEnums.h
+    \brief Header file for dealing with types.
+    \details Contains the enums for BattleType and Types.
+    \date 10/07/2021
+    \version 1.0
+    \author Matthew Moore
 */
 
 #ifndef TYPEENUMS_H
 #define TYPEENUMS_H
 
+/*! \brief All the %Pokemon battle's possible states
+    \date 10/07/2021
+    \version 1.0
+    \author Matthew Moore
+*/
 enum BattleType
 {
     Single,
@@ -19,6 +24,11 @@ enum BattleType
     Sextuple
 };
 
+/*! \brief All the Pokemon's Possible Types
+    \date 10/07/2021
+    \version 1.0
+    \author Matthew Moore
+*/
 enum Types
 {
     Normal,
