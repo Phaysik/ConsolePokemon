@@ -1,12 +1,14 @@
-/*
- * @file stats.cpp
- * @author Matthew Moore
- * @date 06/20/2021
- * @revision 06/22/2021
- * @brief The declaration for the Stats class
+/*! \file stats.cpp
+    \brief C++ file for Pokemon stats.
+    \details Contains the function definitions for the Pokemon stats.
+    \date 10/08/2021
+    \version 1.0
+    \author Matthew Moore
 */
 
 #include "stats.h"
+
+/* Overloaded Operators */
 
 Stats &Stats::operator=(const Stats &stats)
 {
@@ -24,6 +26,19 @@ Stats &Stats::operator=(const Stats &stats)
 
     return *this;
 }
+
+/* Member Functions */
+
+void Stats::resetMultipliers()
+{
+    this->attackMultiplier = 1;
+    this->defenseMultiplier = 1;
+    this->spAMultiplier = 1;
+    this->spDMultiplier = 1;
+    this->speedMultiplier = 1;
+}
+
+/* Getters */
 
 us Stats::getHp() const
 {
@@ -80,6 +95,8 @@ float Stats::getSpeedMultiplier() const
     return this->speedMultiplier;
 }
 
+/* Setters */
+
 void Stats::setHp(us hpStat)
 {
     this->hp = hpStat;
@@ -133,13 +150,4 @@ void Stats::setSpDMultiplier(float spDMultiplierStat)
 void Stats::setSpeedMultiplier(float speedMultiplierStat)
 {
     this->speedMultiplier = speedMultiplierStat;
-}
-
-void Stats::resetMultipliers()
-{
-    this->attackMultiplier = 1;
-    this->defenseMultiplier = 1;
-    this->spAMultiplier = 1;
-    this->spDMultiplier = 1;
-    this->speedMultiplier = 1;
 }

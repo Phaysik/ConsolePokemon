@@ -55,6 +55,7 @@ public:
     /*! \brief Overload operator=
         \details Will allow chaining for MoveAbstract class types
         \param moves The move and all of it's information
+        \retval MoveAbstract A clone of the moves param
         \date 10/07/2021
         \version 1.0
         \author Matthew Moore
