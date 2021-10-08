@@ -1,6 +1,6 @@
 /*! \file types.h
     \brief Header file for getting type effectiveness.
-    \details Contains the definitions for comparing types against one another.
+    \details Contains the declarations for comparing types against one another.
     \date 10/07/2021
     \version 1.0
     \author Matthew Moore
@@ -39,7 +39,7 @@ public:
     */
     TypeEffective(const Types typeToCheck);
 
-    /*! \brief Empty destructor
+    /*! \brief Delete #typeChart allocated memory
         \date 10/07/2021
         \version 1.0
         \author Matthew Moore
