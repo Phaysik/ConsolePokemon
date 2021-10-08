@@ -1,12 +1,14 @@
-/*
- * @file trainer.cpp
- * @author Matthew Moore
- * @date 06/20/2021
- * @revision 06/22/2021
- * @brief The declaration for the Trainer class
+/*! \file trainer.cpp
+    \brief C++ file for Pokemon trainer.
+    \details Contains the function definitions for the Pokemon trainer.
+    \date 10/08/2021
+    \version 1.0
+    \author Matthew Moore
 */
 
 #include "trainer.h"
+
+/* Constructors and Destructors */
 
 Trainer::Trainer()
 {
@@ -20,19 +22,6 @@ Trainer::Trainer()
     }
 }
 
-void Trainer::setPokemonAtIndex(Pokemon *pokemon, us index)
-{
-    if (this->trainerPokemon[index] != nullptr)
-        delete this->trainerPokemon[index];
-
-    this->trainerPokemon[index] = pokemon;
-}
-
-Pokemon *Trainer::getPokemonAtIndex(us index)
-{
-    return this->trainerPokemon[index];
-}
-
 Trainer::~Trainer()
 {
     for (us i = 0; i < 5; ++i)
@@ -42,7 +31,9 @@ Trainer::~Trainer()
     delete[] this->trainerPokemon;
 }
 
-void Trainer::engage(Trainer &trainer, BattleType type)
+/* Member Functions */
+
+void Trainer::engage(Trainer &trainer, const BattleType type)
 {
     //TODO this should all be in a loop until one sides Pokemon are all out
     for (us i = 0; i < static_cast<us>(type + 1); ++i)
@@ -50,7 +41,8 @@ void Trainer::engage(Trainer &trainer, BattleType type)
         this->trainerPokemon[i]->setBattleState(true);
         trainer.trainerPokemon[i]->setBattleState(true);
     }
-    this->trainerPokemon[2]->getMove(0)->effect(this->getPokemon(), trainer.getAllInBattle(type), 2, type);
+
+    this->trainerPokemon[2]->getMove(0)->effect(this->getAllPokemon(), trainer.getAllInBattle(type), 2, type);
 
     for (us i = 0; i < static_cast<us>(type + 1); ++i)
     {
@@ -59,17 +51,36 @@ void Trainer::engage(Trainer &trainer, BattleType type)
     }
 }
 
-Pokemon **Trainer::getPokemon()
+/* Getters */
+
+Pokemon *Trainer::getPokemonAtIndex(const us index) const
+{
+    return this->trainerPokemon[index];
+}
+
+Pokemon **Trainer::getAllPokemon() const
 {
     return this->trainerPokemon;
 }
 
-Pokemon **Trainer::getAllInBattle(BattleType type)
+Pokemon **Trainer::getAllInBattle(const BattleType type) const
 {
     us arrIndex = 0;
+
     for (us i = 0; i < static_cast<us>(type + 1); ++i)
+        // Determine if a Pokemon is engaged in battle
         if (this->trainerPokemon[i]->getBattleState())
             this->inBattle[arrIndex++] = this->trainerPokemon[i];
 
     return this->inBattle;
+}
+
+/* Setters */
+
+void Trainer::setPokemonAtIndex(Pokemon *pokemon, us index)
+{
+    if (this->trainerPokemon[index] != nullptr)
+        delete this->trainerPokemon[index];
+
+    this->trainerPokemon[index] = pokemon;
 }

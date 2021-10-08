@@ -20,7 +20,7 @@ class Pokemon;
 
 /*! \headerfile moves.h 
     \brief What moves can do
-    \details Creates the properties of a %Pokemon move and the functions that will affect the battle
+    \details Creates the properties of a Pokemon move and the functions that will affect the battle
     \date 10/07/2021
     \version 1.0
     \author Matthew Moore
@@ -80,8 +80,8 @@ public:
 
     /* Getters */
 
-    /*! \brief Get the %Pokemon's move type
-        \retval #Types Returns the %Pokemon's move type
+    /*! \brief Get the Pokemon's move type
+        \retval #Types Returns the Pokemon's move type
         \pre Requires the #typing to already by initialized
         \date 10/07/2021
         \version 1.0
@@ -89,8 +89,8 @@ public:
     */
     Types getType() const;
 
-    /*! \brief Get the %Pokemon's move power
-        \retval #us Returns the %Pokemon's move Power
+    /*! \brief Get the Pokemon's move power
+        \retval #us Returns the Pokemon's move Power
         \pre Requires the #power to already by initialized
         \date 10/07/2021
         \version 1.0
@@ -98,8 +98,8 @@ public:
     */
     us getPower() const;
 
-    /*! \brief Get the %Pokemon's move accuracy
-        \retval #us Returns the %Pokemon's move accuracy
+    /*! \brief Get the Pokemon's move accuracy
+        \retval #us Returns the Pokemon's move accuracy
         \pre Requires the #accuracy to already by initialized
         \date 10/07/2021
         \version 1.0
@@ -107,8 +107,8 @@ public:
     */
     us getAccuracy() const;
 
-    /*! \brief Get the %Pokemon's move name
-        \retval string Returns the %Pokemon's move name
+    /*! \brief Get the Pokemon's move name
+        \retval string Returns the Pokemon's move name
         \pre Requires the #name to already by initialized
         \date 10/07/2021
         \version 1.0
@@ -118,8 +118,8 @@ public:
 
     /* Setters */
 
-    /*! \brief Sets the %Pokemon's move power
-        \post The %Pokemon's move #power will be set to movePower
+    /*! \brief Sets the Pokemon's move power
+        \post The Pokemon's move #power will be set to movePower
         \param movePower The new power for the move
         \date 10/07/2021
         \version 1.0
@@ -136,7 +136,7 @@ protected:
 };
 
 /*! \headerfile moves.h 
-    \brief Declaration for each %Pokemon move
+    \brief Declaration for each Pokemon move
     \details Creates the move based on all of it's parameters
     \date 10/07/2021
     \version 1.0
