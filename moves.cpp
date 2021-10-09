@@ -9,8 +9,6 @@
 #include "moves.h"
 #include "trainer.h"
 
-/* Constructers and Desctructors */
-
 /* Overloaded Operators */
 
 MoveAbstract &MoveAbstract::operator=(MoveAbstract &moves)

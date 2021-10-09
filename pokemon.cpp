@@ -1,15 +1,17 @@
-/*
- * @file pokemon.cpp
- * @author Matthew Moore
- * @date 06/20/2021
- * @revision 06/22/2021
- * @brief The declaration for the Pokemon class
+/*! \file pokemon.cpp
+    \brief C++ file for Pokemon.
+    \details Contains the function definitions for the Pokemon.
+    \date 10/08/2021
+    \version 1.0
+    \author Matthew Moore
 */
 
 #include "pokemon.h"
 #include "moves.h"
 
-Pokemon::Pokemon(Stats &pokeStats, MoveAbstract *pokeMoves, Types *pokeTypes, bool pokeDualTyping, std::string pokeName)
+/* Constructors and Destructors */
+
+Pokemon::Pokemon(Stats &pokeStats, MoveAbstract *pokeMoves, Types *pokeTypes, const bool pokeDualTyping, const std::string &pokeName)
 {
     this->name = pokeName;
 
@@ -31,7 +33,43 @@ Pokemon::Pokemon(Stats &pokeStats, MoveAbstract *pokeMoves, Types *pokeTypes, bo
     setTypeMatchups(pokeDualTyping);
 }
 
-void Pokemon::setTypeMatchups(bool pokeDualTyping)
+Pokemon::~Pokemon()
+{
+    delete[] this->typing;
+
+    delete[] this->moves;
+}
+
+/* Getters */
+
+std::string Pokemon::getName() const
+{
+    return this->name;
+}
+
+float Pokemon::getTypeMatchUp(const us type)
+{
+    return this->typeMatchup[type];
+}
+
+Stats *Pokemon::getStats()
+{
+    return &this->stats;
+}
+
+MoveAbstract *Pokemon::getMove(const us index)
+{
+    return &this->moves[index];
+}
+
+bool Pokemon::getBattleState() const
+{
+    return this->inBattle;
+}
+
+/* Setters */
+
+void Pokemon::setTypeMatchups(const bool pokeDualTyping)
 {
     for (us i = 0; i < pokeDualTyping + 1; ++i)
     {
@@ -44,41 +82,9 @@ void Pokemon::setTypeMatchups(bool pokeDualTyping)
     }
 }
 
-std::string Pokemon::getName() const
-{
-    return this->name;
-}
-
-Pokemon::~Pokemon()
-{
-    delete[] this->typing;
-
-    delete[] this->moves;
-}
-
-float Pokemon::getTypeMatchUp(us type)
-{
-    return this->typeMatchup[type];
-}
-
-Stats *Pokemon::getStats()
-{
-    return &this->stats;
-}
-
-MoveAbstract *Pokemon::getMove(us index)
-{
-    return &this->moves[index];
-}
-
-void Pokemon::setBattleState(bool pokeInBattle)
+void Pokemon::setBattleState(const bool pokeInBattle)
 {
     this->inBattle = pokeInBattle;
     if (!this->inBattle)
         this->getStats()->resetMultipliers();
-}
-
-bool Pokemon::getBattleState() const
-{
-    return this->inBattle;
 }

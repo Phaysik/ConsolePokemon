@@ -97,7 +97,7 @@ public:
         \version 1.0
         \author Matthew Moore
     */
-    void setPokemonAtIndex(Pokemon *pokemon, us index);
+    void setPokemonAtIndex(Pokemon *pokemon, const us index);
 
 private:
     Pokemon **trainerPokemon; /*!< The team of Pokemon the trainer is using */

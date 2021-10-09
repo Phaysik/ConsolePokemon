@@ -77,7 +77,7 @@ Pokemon **Trainer::getAllInBattle(const BattleType type) const
 
 /* Setters */
 
-void Trainer::setPokemonAtIndex(Pokemon *pokemon, us index)
+void Trainer::setPokemonAtIndex(Pokemon *pokemon, const us index)
 {
     if (this->trainerPokemon[index] != nullptr)
         delete this->trainerPokemon[index];
