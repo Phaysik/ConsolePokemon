@@ -13,6 +13,7 @@
 Stats &Stats::operator=(const Stats &stats)
 {
     this->hp = stats.hp;
+    this->maxHp = stats.maxHp;
     this->attack = stats.attack;
     this->defense = stats.defense;
     this->spA = stats.spA;

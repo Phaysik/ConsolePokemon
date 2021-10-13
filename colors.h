@@ -1,7 +1,7 @@
 /*! \file colors.h
     \brief Header file for coloring text.
     \details Contains the function declarations for coloring text.
-    \date 10/12/2021
+    \date 10/13/2021
     \version 1.0
     \author Matthew Moore
 */
@@ -14,8 +14,6 @@
 #endif
 
 #include <string>
-#include <iostream>
-#include <iomanip>
 #include "pokemon.h"
 #include "typeEnums.h"
 

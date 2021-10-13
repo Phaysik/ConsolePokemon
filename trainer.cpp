@@ -67,7 +67,6 @@ void Trainer::printBattleState(Trainer *opponent, const BattleType type)
     us *botWidth = new us[loopCond];
     us *topNameWidth = new us[loopCond];
     us *botNameWidth = new us[loopCond];
-    std::string output;
 
     this->getWidths(trainerEngaged, opponentEngaged, topNames, topNameWidth, topWidth, maxWidth, loopCond);
 
@@ -77,57 +76,18 @@ void Trainer::printBattleState(Trainer *opponent, const BattleType type)
 
     std::cout << std::endl;
 
-    for (us i = 0; i < loopCond; ++i)
-    {
-        std::cout << std::setw(i == 0 ? static_cast<int>(trainerEngaged[i]->getName().length()) : 15);
+    this->outputHp(trainerEngaged, opponentEngaged, topNameWidth, botNameWidth, loopCond);
 
-        if (this->getMainCharacter())
-        {
-
-            output = std::to_string(static_cast<int>(opponentEngaged[i]->getStats()->getHp())) + "/" + std::to_string(static_cast<int>(opponentEngaged[i]->getStats()->getMaxHp()));
-
-            std::cout << output;
-        }
-        else
-        {
-            output = std::to_string(static_cast<int>(trainerEngaged[i]->getStats()->getHp())) + "/" + std::to_string(static_cast<int>(trainerEngaged[i]->getStats()->getMaxHp()));
-
-            std::cout << output;
-        }
-    }
-
-    std::cout << std::endl
-              << std::endl
-              << std::endl;
+    std::cout
+        << std::endl
+        << std::endl
+        << std::endl;
 
     this->outputNames(topNameWidth, botNameWidth, maxWidth, botWidth, botNames, loopCond);
 
     std::cout << std::endl;
 
-    for (us i = 0; i < loopCond; ++i)
-    {
-        std::cout << std::setw(i == 0 ? static_cast<int>(opponentEngaged[i]->getName().length()) : 15);
-
-        if (!this->getMainCharacter())
-        {
-
-            if (opponentEngaged[i])
-            {
-                output = std::to_string(static_cast<int>(opponentEngaged[i]->getStats()->getHp())) + "/" + std::to_string(static_cast<int>(opponentEngaged[i]->getStats()->getHp()));
-
-                std::cout << output;
-            }
-        }
-        else
-        {
-            if (trainerEngaged[i])
-            {
-                output = std::to_string(static_cast<int>(trainerEngaged[i]->getStats()->getHp())) + "/" + std::to_string(static_cast<int>(trainerEngaged[i]->getStats()->getHp()));
-
-                std::cout << output;
-            }
-        }
-    }
+    this->outputHp(trainerEngaged, opponentEngaged, topNameWidth, botNameWidth, loopCond);
 
     std::cout << std::endl;
 
@@ -199,6 +159,36 @@ void Trainer::outputNames(us *greaterNameWidths, us *lowerNameWidths, us *maxWid
     }
 }
 
+void Trainer::outputHp(Pokemon **trainerPoke, Pokemon **opponentPoke, us *topNameWidths, us *botNameWidths, us loopCond)
+{
+    int width = 0;
+    std::string output;
+
+    static bool mainChar = this->getMainCharacter();
+
+    for (us i = 0; i < loopCond; ++i)
+    {
+        width = topNameWidths[i] > botNameWidths[i] ? topNameWidths[i] : botNameWidths[i];
+
+        std::cout << std::setw(i == 0 ? width : width + 5);
+
+        if (mainChar)
+        {
+
+            output = std::to_string(static_cast<int>(opponentPoke[i]->getStats()->getHp())) + "/" + std::to_string(static_cast<int>(opponentPoke[i]->getStats()->getMaxHp()));
+
+            std::cout << output;
+        }
+        else
+        {
+            output = std::to_string(static_cast<int>(trainerPoke[i]->getStats()->getHp())) + "/" + std::to_string(static_cast<int>(trainerPoke[i]->getStats()->getMaxHp()));
+
+            std::cout << output;
+        }
+    }
+
+    mainChar = !mainChar;
+}
 /* Getters */
 
 Pokemon *Trainer::getPokemonAtIndex(const us index) const

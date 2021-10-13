@@ -104,6 +104,20 @@ public:
     */
     void outputNames(us *greaterNameWidths, us *lowerNameWidths, us *maxWidths, us *widths, std::string *names, us loopCond);
 
+    /*! \brief Outputs the Pokemon's hp
+        \details Outputs the Pokemon's hp where the last character of the hp and the name will line up
+        \pre All pointer params must be the same length
+        \param trainerPoke The engaging trainer's Pokemon
+        \param opponentPoke The engaged trainer's Pokemon
+        \param topNameWidth The widths of the Pokemon's name on the top of the battle
+        \param botNameWidth The widths of the Pokemon's name on the bottom of the battle
+        \param loopCond The loop terminating condition
+        \date 10/13/2021
+        \version 1.0
+        \author Matthew Moore
+    */
+    void outputHp(Pokemon **trainerPoke, Pokemon **opponentPoke, us *topNameWidths, us *botNameWidths, us loopCond);
+
     /* Getters */
 
     /*! \brief Get a Pokemon from indexing
