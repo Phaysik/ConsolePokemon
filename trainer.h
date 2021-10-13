@@ -1,7 +1,7 @@
 /*! \file trainer.h
     \brief Header file for the Pokemon trainer.
     \details Contains the function declarations for the Pokemon trainer.
-    \date 10/08/2021
+    \date 10/13/2021
     \version 1.0
     \author Matthew Moore
 */
@@ -13,13 +13,16 @@
 #define us unsigned short /*!< Shorthand for unsigned short */
 #endif
 
+#include <iostream>
+#include <iomanip>
 #include "pokemon.h"
 #include "typeEnums.h"
+#include "colors.h"
 
 /*! \headerfile trainer.h 
     \brief The Pokemon trainer
     \details Creates the properties of a Pokemon trainer and the functions that will affect the trainer
-    \date 10/08/2021
+    \date 10/12/2021
     \version 1.0
     \author Matthew Moore
 */
@@ -30,11 +33,12 @@ public:
 
     /*! \brief Non-paremeterized constructor
         \details Will allocate #trainerPokemon and #inBattle memory
-        \date 10/08/2021
+        \param isMainCharacter Whether the trainer is the main character
+        \date 10/12/2021
         \version 1.0
         \author Matthew Moore
     */
-    Trainer();
+    Trainer(const bool isMainCharacter = false);
 
     /*! \brief Delete #trainerPokemon and #inBattle allocated memory
         \date 10/08/2021
@@ -51,11 +55,54 @@ public:
         \post Some of the Pokemon's status may change
         \param trainer The trainer that was engaged
         \param type The #BattleType of the battle
-        \date 10/08/2021
+        \date 10/13/2021
         \version 1.0
         \author Matthew Moore
     */
-    void engage(Trainer &trainer, const BattleType type);
+    void engage(Trainer *opponent, const BattleType type);
+
+    /*! \brief The battle state
+        \details Displays the Pokemon engaged, and also what is happening currently
+        \pre The trainer param must already be initialized
+        \param trainer The opposing trainer
+        \param type The #BattleType of the battle
+        \date 10/13/2021
+        \version 1.0
+        \author Matthew Moore
+    */
+    void printBattleState(Trainer *opponent, const BattleType type);
+
+    /*! \brief Gets width information
+        \details Gets the width of the pokemon's name, it width including the colors, the max width for that iteration, and it's colored name
+        \pre All pointer params must be the same length
+        \post The names, nameWidths, widths, and maxWidths params will all be changed
+        \param trainerPoke The engaging trainer's Pokemon
+        \param opponentPoke The engaged trainer's Pokemon
+        \param names The colored name of the Pokemon
+        \param nameWidths The width of the Pokemon's name
+        \param widths The width of the colored Pokemon's name
+        \param maxWidths The maximum width of the top and bottom Pokemon's name at specific iteration of loopCond param
+        \param loopCond The loop terminating condition
+        \date 10/13/2021
+        \version 1.0
+        \author Matthew Moore
+    */
+    void getWidths(Pokemon **trainerPoke, Pokemon **opponentPoke, std::string *names, us *nameWidths, us *widths, us *maxWidths, us loopCond);
+
+    /*! \brief Outputs the Pokemon's colored names
+        \details Outputs the Pokemon's colored names where the last character of the top and bottom names will line up
+        \pre All pointer params must be the same length
+        \param greaterNameWidths Check to see if there is any padding that needs to be added
+        \param lowerNameWidths Check to see if there is any padding that needs to be added
+        \param maxWidths The maximum width of the top and bottom Pokemon's name at specific iteration of loopCond param
+        \param widths The width of the colored Pokemon's name
+        \param names The colored name of the Pokemon
+        \param loopCond The loop terminating condition
+        \date 10/13/2021
+        \version 1.0
+        \author Matthew Moore
+    */
+    void outputNames(us *greaterNameWidths, us *lowerNameWidths, us *maxWidths, us *widths, std::string *names, us loopCond);
 
     /* Getters */
 
@@ -86,6 +133,22 @@ public:
     */
     Pokemon **getAllPokemon() const;
 
+    /*! \brief Get whether the trainer is the main character
+        \retval bool If the trainer is the playable character
+        \date 10/12/2021
+        \version 1.0
+        \author Matthew Moore
+    */
+    bool getMainCharacter() const;
+
+    /*! \brief Get #colorText
+        \retval ColoredText The colored text class
+        \date 10/12/2021
+        \version 1.0
+        \author Matthew Moore
+    */
+    ColoredText &getColorText();
+
     /* Setters */
 
     /*! \brief Sets a Pokemon to be in a certain position
@@ -102,6 +165,8 @@ public:
 private:
     Pokemon **trainerPokemon; /*!< The team of Pokemon the trainer is using */
     Pokemon **inBattle;       /*!< Which Pokemon are in battle */
+    ColoredText colorText;    /*!< Colors text */
+    bool isPlayableCharacter; /*!< Is the main character */
 };
 
 #endif

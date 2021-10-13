@@ -19,6 +19,8 @@ Pokemon::Pokemon(Stats &pokeStats, MoveAbstract *pokeMoves, Types *pokeTypes, co
 
     this->moves = new MoveAbstract[4];
 
+    this->dualTyping = pokeDualTyping;
+
     for (us i = 0; i < 4; ++i)
         this->moves[i] = pokeMoves[i];
 
@@ -65,6 +67,16 @@ MoveAbstract *Pokemon::getMove(const us index)
 bool Pokemon::getBattleState() const
 {
     return this->inBattle;
+}
+
+Types *Pokemon::getTypes() const
+{
+    return this->typing;
+}
+
+bool Pokemon::getDualTyping() const
+{
+    return this->dualTyping;
 }
 
 /* Setters */

@@ -1,7 +1,7 @@
 /*! \file stats.cpp
     \brief C++ file for Pokemon stats.
     \details Contains the function definitions for the Pokemon stats.
-    \date 10/08/2021
+    \date 10/13/2021
     \version 1.0
     \author Matthew Moore
 */
@@ -43,6 +43,11 @@ void Stats::resetMultipliers()
 us Stats::getHp() const
 {
     return this->hp;
+}
+
+us Stats::getMaxHp() const
+{
+    return this->maxHp;
 }
 
 us Stats::getAttack() const
@@ -97,57 +102,62 @@ float Stats::getSpeedMultiplier() const
 
 /* Setters */
 
-void Stats::setHp(us hpStat)
+void Stats::setHp(const us hpStat)
 {
     this->hp = hpStat;
 }
 
-void Stats::setAttack(us attackStat)
+void Stats::setMaxHp(const us hpStat)
+{
+    this->maxHp = hpStat;
+}
+
+void Stats::setAttack(const us attackStat)
 {
     this->attack = attackStat;
 }
 
-void Stats::setDefense(us defenseStat)
+void Stats::setDefense(const us defenseStat)
 {
     this->defense = defenseStat;
 }
 
-void Stats::setSpA(us spAStat)
+void Stats::setSpA(const us spAStat)
 {
     this->spA = spAStat;
 }
 
-void Stats::setSpD(us spDStat)
+void Stats::setSpD(const us spDStat)
 {
     this->spD = spDStat;
 }
 
-void Stats::setSpeed(us speedStat)
+void Stats::setSpeed(const us speedStat)
 {
     this->speed = speedStat;
 }
 
-void Stats::setAttackMultiplier(float attackMultiplierStat)
+void Stats::setAttackMultiplier(const float attackMultiplierStat)
 {
     this->attackMultiplier = attackMultiplierStat;
 }
 
-void Stats::setDefenseMultiplier(float defenseMultiplierStat)
+void Stats::setDefenseMultiplier(const float defenseMultiplierStat)
 {
     this->defenseMultiplier = defenseMultiplierStat;
 }
 
-void Stats::setSpAMultiplier(float spAMultiplierStat)
+void Stats::setSpAMultiplier(const float spAMultiplierStat)
 {
     this->spAMultiplier = spAMultiplierStat;
 }
 
-void Stats::setSpDMultiplier(float spDMultiplierStat)
+void Stats::setSpDMultiplier(const float spDMultiplierStat)
 {
     this->spDMultiplier = spDMultiplierStat;
 }
 
-void Stats::setSpeedMultiplier(float speedMultiplierStat)
+void Stats::setSpeedMultiplier(const float speedMultiplierStat)
 {
     this->speedMultiplier = speedMultiplierStat;
 }

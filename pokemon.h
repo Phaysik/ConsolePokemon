@@ -1,7 +1,7 @@
 /*! \file pokemon.h
     \brief Header file for Pokemon.
     \details Contains the function declarations for the Pokemon information.
-    \date 10/08/2021
+    \date 10/12/2021
     \version 1.0
     \author Matthew Moore
 */
@@ -24,7 +24,7 @@
 /*! \headerfile pokemon.h 
     \brief What Pokemon can do
     \details Creates the properties of a Pokemon and the functions that will affect it
-    \date 10/08/2021
+    \date 10/12/2021
     \version 1.0
     \author Matthew Moore
 */
@@ -103,6 +103,22 @@ public:
         \author Matthew Moore
     */
     bool getBattleState() const;
+
+    /*! \brief Get the Pokemon's types
+        \retval #Types The Pokemon's types
+        \date 10/12/2021
+        \version 1.0
+        \author Matthew Moore
+    */
+    Types *getTypes() const;
+
+    /*! \brief Get if the Pokemon has dual types
+        \retval bool Whether the Pokemon has dual types
+        \date 10/12/2021
+        \version 1.0
+        \author Matthew Moore
+    */
+    bool getDualTyping() const;
 
     /* Setters */
 

@@ -21,7 +21,7 @@ int main()
     Move movelist;
     MoveAbstract *moves;
 
-    Trainer trainer;
+    Trainer trainer(true);
     Trainer opponent;
 
     for (us i = 0; i < 5; ++i)
@@ -32,7 +32,7 @@ int main()
         moves[2] = movelist.headbutt;
         moves[3] = movelist.vinewhip;
 
-        opponent.setPokemonAtIndex(new Pokemon(*stats, moves, typing, true, "bulbasaur" + std::to_string(static_cast<long>(i))), i);
+        opponent.setPokemonAtIndex(new Pokemon(*stats, moves, typing, true, "bulbassaaurs" + std::to_string(static_cast<long>(i))), i);
         trainer.setPokemonAtIndex(new Pokemon(*stats, moves, typing, true, "bulbasaur" + std::to_string(static_cast<long>(i))), i);
 
         delete[] moves;
@@ -40,28 +40,28 @@ int main()
 
     delete stats;
     stats = new Stats(39, 52, 43, 60, 50, 65);
-    typing[0] = Fire;
+    Types newTypes[1] = {Fire};
     moves = new MoveAbstract[4];
     moves[0] = movelist.ember;
     moves[1] = movelist.smokescreen;
     moves[2] = movelist.flamethrower;
     moves[3] = movelist.flareblitz;
-    trainer.setPokemonAtIndex(new Pokemon(*stats, moves, typing, false, "charmander"), 2);
+    trainer.setPokemonAtIndex(new Pokemon(*stats, moves, newTypes, false, "charmakjhegernder"), 2);
 
     delete[] moves;
     delete stats;
 
     //TODO set up a battle simulation
-    opponent.engage(trainer, Quintuple);
+    opponent.engage(&trainer, Quintuple);
 
     // See the effect of the move
-    for (us i = 0; i < 5; ++i)
-    {
-        Pokemon *poke = trainer.getPokemonAtIndex(i);
-        Stats *pokeStats = poke->getStats();
-        std::cout << poke->getName() << "\tDefense: ";
-        std::cout << pokeStats->getDefense() << "\tDefense Multiplier: " << pokeStats->getDefenseMultiplier() << std::endl;
-    }
+    // for (us i = 0; i < 5; ++i)
+    // {
+    // Pokemon *poke = trainer.getPokemonAtIndex(i);
+    // Stats *pokeStats = poke->getStats();
+    // std::cout << poke->getName() << "\tDefense: ";
+    // // std::cout << pokeStats->getDefense() << "\tDefense Multiplier: " << pokeStats->getDefenseMultiplier() << std::endl;
+    // }
 
     return 0;
 }
