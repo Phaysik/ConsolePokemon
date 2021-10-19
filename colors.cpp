@@ -1,7 +1,7 @@
 /*! \file colors.cpp
     \brief C++ file for coloring text.
     \details Contains the function definitions for coloring text.
-    \date 10/12/2021
+    \date 10/19/2021
     \version 1.0
     \author Matthew Moore
 */
@@ -40,7 +40,7 @@ ColoredText::~ColoredText()
 
 /* Member Functions */
 
-std::string ColoredText::colorPokemonNames(Pokemon *pokemon)
+std::string ColoredText::colorPokemonNames(const Pokemon *pokemon) const
 {
     Types *types = pokemon->getTypes();
     std::string text = pokemon->getName();
