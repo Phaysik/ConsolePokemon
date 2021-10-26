@@ -1,7 +1,7 @@
 /*! \file display.h
     \brief Header file for displaying text.
     \details Contains the function declarations for displaying text.
-    \date 10/21/2021
+    \date 10/26/2021
     \version 1.0
     \author Matthew Moore
 */
@@ -95,16 +95,16 @@ public:
     /*! \brief Outputs the four choice
         \details Outputs the four choices the trainer can make in a battle
         \pre All pointer params must be the same length
-        \param trainerEngaged The engaging trainer's Pokemon
-        \param opponentEngaged The engaged trainer's Pokemon
         \param topNameWidths The widths of the Pokemon's name on the top of the battle
         \param botNameWidths The widths of the Pokemon's name on the bottom of the battle
+        \param botNames The colored names of the Pokemon
         \param loopCond The loop terminating condition
-        \date 10/21/2021
+        \param pokeIndex The index of the Pokemon in action
+        \date 10/26/2021
         \version 1.0
         \author Matthew Moore
     */
-    void displayBattleMenu(Pokemon **trainerEngaged, Pokemon **opponentEngaged, const bool mainChar, const us *topNameWidths, const us *botNameWidths, const us loopCond) const;
+    void displayBattleMenu(const us *topNameWidths, const us *botNameWidths, const std::string *botNames, const us loopCond, const us pokeIndex) const;
 
 private:
     ColoredText colorText; /*!< Colors text */

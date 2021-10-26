@@ -1,7 +1,7 @@
 /*! \file display.cpp
     \brief C++ file for displaying text.
     \details Contains the function definitions for displaying text.
-    \date 10/21/2021
+    \date 10/26/2021
     \version 1.0
     \author Matthew Moore
 */
@@ -43,7 +43,7 @@ void Display::printBattleState(Pokemon **trainerEngaged, Pokemon **opponentEngag
     std::cout << std::endl
               << std::endl;
 
-    this->displayBattleMenu(trainerEngaged, opponentEngaged, mainChar, topNameWidth, botNameWidth, loopCond);
+    this->displayBattleMenu(topNameWidth, botNameWidth, botNames, loopCond, 4);
 
     delete[] maxWidth;
     delete[] topNames;
@@ -144,20 +144,22 @@ void Display::outputHp(Pokemon **trainerPoke, Pokemon **opponentPoke, const us *
     mainCharacter = !mainCharacter;
 }
 
-void Display::displayBattleMenu(Pokemon **trainerEngaged, Pokemon **opponentEngaged, const bool mainChar, const us *topNameWidths, const us *botNameWidths, const us loopCond) const
+void Display::displayBattleMenu(const us *topNameWidths, const us *botNameWidths, const std::string *botNames, const us loopCond, const us pokeIndex) const
 {
-    int width = 0;
+    int width = static_cast<int>(botNames[pokeIndex].length());
+    if (topNameWidths[pokeIndex] > botNameWidths[pokeIndex])
+        width += topNameWidths[pokeIndex] - botNameWidths[pokeIndex];
 
-    for (us i = 0; i < loopCond - 1; ++i)
+    for (us i = pokeIndex >= loopCond - 1 ? 1 : 0; i < loopCond - 1; ++i)
     {
-        width += topNameWidths[i] > botNameWidths[i] ? topNameWidths[i] : botNameWidths[i];
+        if (i != pokeIndex)
+            width += topNameWidths[i] > botNameWidths[i] ? topNameWidths[i] : botNameWidths[i];
         width += i == 0 ? 0 : 5;
     }
 
     std::cout << std::setw(width);
 
-    //TODO Use colored name, which means that the index of the trainer's pokemon in use must be passed in
-    std::string name = "What will " + (mainChar ? trainerEngaged[0]->getName() : opponentEngaged[0]->getName()) + " do?";
+    std::string name = "What will " + botNames[pokeIndex] + " do?";
 
     int newWidth = topNameWidths[loopCond - 1] > botNameWidths[loopCond - 1] ? topNameWidths[loopCond - 1] : botNameWidths[loopCond - 1];
 
@@ -165,6 +167,9 @@ void Display::displayBattleMenu(Pokemon **trainerEngaged, Pokemon **opponentEnga
 
     std::cout << "Fight" << std::setw(5) << "Bag" << std::endl
               << std::endl;
+
+    width -= static_cast<int>(botNames[pokeIndex].length());
+    width += botNameWidths[pokeIndex];
 
     std::cout << std::setw(width + newWidth);
 
