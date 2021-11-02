@@ -12,6 +12,9 @@
 
 ColoredText::ColoredText()
 {
+    //TODO Need to be able to brighten the color, so perhaps make an rgb struct to handle that
+    RGB test(0, 0, 0);
+    std::cout << test.colorString << std::endl;
     this->typeColors = new std::string[TYPES_MAX];
     this->typeColors[0] = "\033[38;5;7m";
     this->typeColors[1] = "\033[38;5;202m";

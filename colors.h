@@ -9,6 +9,10 @@
 #ifndef COLORS_H
 #define COLORS_H
 
+#ifndef us
+#define us unsigned short /*!< Shorthand for unsigned short */
+#endif
+
 #include <string>
 #include "pokemon.h"
 #include "typeEnums.h"
@@ -22,6 +26,19 @@
 */
 class ColoredText
 {
+    struct RGB
+    {
+        RGB(us red, us green, us blue) : r(red), g(green), b(blue)
+        {
+            this->colorString = "\033[38;2;" + std::to_string(static_cast<int>(this->r)) + ";" + std::to_string(static_cast<int>(this->g)) + ";" + std::to_string(static_cast<int>(this->b)) + "m";
+        }
+
+        us r;
+        us g;
+        us b;
+        std::string colorString;
+    };
+
 public:
     /* Constructors and Destructors */
 
