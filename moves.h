@@ -6,19 +6,16 @@
     \author Matthew Moore
 */
 
-#ifndef MOVES_H
-#define MOVES_H
+#pragma once
 
-#ifndef us
-#define us unsigned short /*!< Shorthand for unsigned short */
-#endif
+typedef unsigned short us; /*!< Shorthand for unsigned short */
 
 #include "typeEnums.h"
 #include <string>
 
 class Pokemon;
 
-/*! \headerfile moves.h 
+/*! \headerfile moves.h
     \brief What moves can do
     \details Creates the properties of a Pokemon move and the functions that will affect the battle
     \date 10/07/2021
@@ -135,7 +132,7 @@ protected:
     std::string name; /*!< The move's name */
 };
 
-/*! \headerfile moves.h 
+/*! \headerfile moves.h
     \brief Declaration for each Pokemon move
     \details Creates the move based on all of it's parameters
     \date 10/07/2021
@@ -169,5 +166,3 @@ struct Move
     MoveAbstract flamethrower = MoveAbstract(Fire, 90, 100, 15, "Flamethrower");
     MoveAbstract flareblitz = MoveAbstract(Fire, 120, 100, 15, "Flare Blitz");
 };
-
-#endif

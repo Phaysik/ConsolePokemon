@@ -1,9 +1,8 @@
-/*
- * @file main.cpp
- * @author Matthew Moore
- * @date 06/20/2021
- * @revision 06/22/2021
- * @brief Main 
+/*! \file main.cpp
+    \brief Main
+    \date 06/28/2021
+    \version 1.0
+    \author Matthew Moore
 */
 
 #include <iostream>
@@ -51,7 +50,7 @@ int main()
     delete[] moves;
     delete stats;
 
-    //TODO set up a battle simulation
+    // TODO set up a battle simulation
     opponent.engage(&trainer, Quintuple);
 
     // See the effect of the move

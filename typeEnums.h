@@ -6,8 +6,7 @@
     \author Matthew Moore
 */
 
-#ifndef TYPEENUMS_H
-#define TYPEENUMS_H
+#pragma once
 
 /*! \brief All the %Pokemon battle's possible states
     \date 10/07/2021
@@ -64,5 +63,3 @@ enum Effectiveness
     NE,  /*!< Normal effective */
     SE   /*!< Super effective */
 };
-
-#endif

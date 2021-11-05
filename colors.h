@@ -6,8 +6,7 @@
     \author Matthew Moore
 */
 
-#ifndef COLORS_H
-#define COLORS_H
+#pragma once
 
 #include <string>
 #include "pokemon.h"
@@ -44,5 +43,3 @@ private:
     std::string *typeColors;
     std::string reset = "\033[0m";
 };
-
-#endif

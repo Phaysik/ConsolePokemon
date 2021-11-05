@@ -6,12 +6,9 @@
     \author Matthew Moore
 */
 
-#ifndef DISPLAY_H
-#define DISPLAY_H
+#pragma once
 
-#ifndef us
-#define us unsigned short /*!< Shorthand for unsigned short */
-#endif
+typedef unsigned short us; /*!< Shorthand for unsigned short */
 
 #include <iostream>
 #include <iomanip>
@@ -109,5 +106,3 @@ public:
 private:
     ColoredText colorText; /*!< Colors text */
 };
-
-#endif
