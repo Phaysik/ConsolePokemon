@@ -1,7 +1,7 @@
 /*! \file colors.h
     \brief Header file for coloring text.
     \details Contains the function declarations for coloring text.
-    \date 10/13/2021
+    \date 12/18/2021
     \version 1.0
     \author Matthew Moore
 */
@@ -9,6 +9,7 @@
 #pragma once
 
 #include <string>
+#include <memory>
 #include "pokemon.h"
 #include "typeEnums.h"
 
@@ -26,20 +27,18 @@ public:
 
     ColoredText();
 
-    ~ColoredText();
-
     /* Member Functions */
 
     /*! \brief Print some colored text
         \details Print some colored text based on the type of Pokemon passed in
         \param types The type(s) of the Pokemon
-        \date 10/19/2021
+        \date 12/18/2021
         \version 1.0
         \author Matthew Moore
     */
-    std::string colorPokemonNames(const Pokemon *pokemon) const;
+    std::string colorPokemonNames(const std::unique_ptr<Pokemon> &pokemon) const;
 
 private:
-    std::string *typeColors;
+    std::unique_ptr<std::string[]> typeColors;
     std::string reset = "\033[0m";
 };

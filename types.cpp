@@ -1,7 +1,7 @@
 /*! \file types.cpp
     \brief C++ file for creating typecharts.
     \details Contains the function definitions for creating type charts on every type.
-    \date 10/08/2021
+    \date 12/18/2021
     \version 1.0
     \author Matthew Moore
 */
@@ -14,22 +14,13 @@ TypeEffective::TypeEffective(const Types typeToCheck)
 {
     this->typeAmount = TYPES_MAX;
     this->typing = typeToCheck;
-    this->typeChart = new Effectiveness *[this->typeAmount];
+    this->typeChart = std::make_unique<std::unique_ptr<Effectiveness[]>[]>(this->typeAmount);
+    // this->typeChart = new Effectiveness *[this->typeAmount];
     for (us i = 0; i < this->typeAmount; ++i)
-        this->typeChart[i] = new Effectiveness[this->typeAmount];
+        this->typeChart[i] = std::make_unique<Effectiveness[]>(this->typeAmount);
 
     readFile();
 }
-
-TypeEffective::~TypeEffective()
-{
-    for (us i = 0; i < typeAmount; ++i)
-        delete[] this->typeChart[i];
-
-    delete[] this->typeChart;
-}
-
-/* Member Functions */
 
 void TypeEffective::readFile()
 {

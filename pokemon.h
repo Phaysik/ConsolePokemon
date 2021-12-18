@@ -1,7 +1,7 @@
 /*! \file pokemon.h
     \brief Header file for Pokemon.
     \details Contains the function declarations for the Pokemon information.
-    \date 10/12/2021
+    \date 12/18/2021
     \version 1.0
     \author Matthew Moore
 */
@@ -13,6 +13,7 @@ typedef unsigned short us; /*!< Shorthand for unsigned short */
 #include <unordered_map>
 #include <string>
 #include <iostream>
+#include <memory>
 #include "stats.h"
 #include "moves.h"
 #include "typeEnums.h"
@@ -21,7 +22,7 @@ typedef unsigned short us; /*!< Shorthand for unsigned short */
 /*! \headerfile pokemon.h
     \brief What Pokemon can do
     \details Creates the properties of a Pokemon and the functions that will affect it
-    \date 10/12/2021
+    \date 12/18/2021
     \version 1.0
     \author Matthew Moore
 */
@@ -44,18 +45,15 @@ public:
         \param pokeTypes The Pokemon's type(s)
         \param pokeDualTyping Whether the Pokemon has two types
         \param pokeName The Pokemon's name
-        \date 10/08/2021
+        \date 12/18/2021
         \version 1.0
         \author Matthew Moore
     */
-    Pokemon(Stats &pokeStats, MoveAbstract *pokeMoves, Types *pokeTypes, const bool pokeDualTyping, const std::string &pokeName);
+    Pokemon(std::unique_ptr<Stats> &pokeStats, std::unique_ptr<MoveAbstract[]> &pokeMoves, Types *pokeTypes, const bool pokeDualTyping, const std::string &pokeName);
 
-    /*! \brief Delete #moves and #typing allocated memory
-        \date 10/08/2021
-        \version 1.0
-        \author Matthew Moore
-    */
-    ~Pokemon();
+    Pokemon &operator=(const std::unique_ptr<Pokemon> &poke);
+
+    Pokemon(const Pokemon &poke);
 
     /* Getters */
 
@@ -102,12 +100,12 @@ public:
     bool getBattleState() const;
 
     /*! \brief Get the Pokemon's types
-        \retval #Types The Pokemon's types
-        \date 10/12/2021
+        \retval std::unique_ptr<#Types[]> The Pokemon's types
+        \date 12/18/2021
         \version 1.0
         \author Matthew Moore
     */
-    Types *getTypes() const;
+    const std::unique_ptr<Types[]> &getTypes() const;
 
     /*! \brief Get if the Pokemon has dual types
         \retval bool Whether the Pokemon has dual types
@@ -139,10 +137,10 @@ public:
 
 private:
     Stats stats;                               /*!< The Pokemon's stats */
-    MoveAbstract *moves;                       /*!< The Pokemon's moves */
+    std::unique_ptr<MoveAbstract[]> moves;     /*!< The Pokemon's moves */
     bool dualTyping;                           /*!< Whether the Pokemon has two types */
     std::string name;                          /*!< The Pokemon's name */
     bool inBattle;                             /*!< Whether the Pokemon is in battle */
-    Types *typing;                             /*!< The Pokemon's type(s) */
+    std::unique_ptr<Types[]> typing;           /*!< The Pokemon's type(s) */
     std::unordered_map<us, float> typeMatchup; /*!< The Pokemon's type matchup */
 };

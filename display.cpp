@@ -1,7 +1,7 @@
 /*! \file display.cpp
     \brief C++ file for displaying text.
     \details Contains the function definitions for displaying text.
-    \date 10/26/2021
+    \date 12/18/2021
     \version 1.0
     \author Matthew Moore
 */
@@ -10,16 +10,16 @@
 
 /* Member Functions */
 
-void Display::printBattleState(Pokemon **trainerEngaged, Pokemon **opponentEngaged, const BattleType type, const bool mainChar) const
+void Display::printBattleState(const std::unique_ptr<std::unique_ptr<Pokemon>[]> &trainerEngaged, const std::unique_ptr<std::unique_ptr<Pokemon>[]> &opponentEngaged, const BattleType type, const bool mainChar) const
 {
     us loopCond = static_cast<us>(type + 1);
-    std::string *topNames = new std::string[loopCond];
-    std::string *botNames = new std::string[loopCond];
-    us *maxWidth = new us[loopCond];
-    us *topWidth = new us[loopCond];
-    us *botWidth = new us[loopCond];
-    us *topNameWidth = new us[loopCond];
-    us *botNameWidth = new us[loopCond];
+    std::unique_ptr<std::string[]> topNames = std::make_unique<std::string[]>(loopCond);
+    std::unique_ptr<std::string[]> botNames = std::make_unique<std::string[]>(loopCond);
+    std::unique_ptr<us[]> maxWidth = std::make_unique<us[]>(loopCond);
+    std::unique_ptr<us[]> topWidth = std::make_unique<us[]>(loopCond);
+    std::unique_ptr<us[]> botWidth = std::make_unique<us[]>(loopCond);
+    std::unique_ptr<us[]> topNameWidth = std::make_unique<us[]>(loopCond);
+    std::unique_ptr<us[]> botNameWidth = std::make_unique<us[]>(loopCond);
 
     this->getWidths(trainerEngaged, opponentEngaged, topNames, topNameWidth, topWidth, maxWidth, loopCond, mainChar);
 
@@ -44,17 +44,9 @@ void Display::printBattleState(Pokemon **trainerEngaged, Pokemon **opponentEngag
               << std::endl;
 
     this->displayBattleMenu(topNameWidth, botNameWidth, botNames, loopCond, 4);
-
-    delete[] maxWidth;
-    delete[] topNames;
-    delete[] botNames;
-    delete[] topWidth;
-    delete[] botWidth;
-    delete[] topNameWidth;
-    delete[] botNameWidth;
 }
 
-void Display::getWidths(Pokemon **trainerPoke, Pokemon **opponentPoke, std::string *names, us *nameWidths, us *widths, us *maxWidths, const us loopCond, const bool mainChar) const
+void Display::getWidths(const std::unique_ptr<std::unique_ptr<Pokemon>[]> &trainerPoke, const std::unique_ptr<std::unique_ptr<Pokemon>[]> &opponentPoke, std::unique_ptr<std::string[]> &names, std::unique_ptr<us[]> &nameWidths, std::unique_ptr<us[]> &widths, std::unique_ptr<us[]> &maxWidths, const us loopCond, const bool mainChar) const
 {
     static bool secondRun = false;
     static bool mainCharacter = mainChar;
@@ -85,7 +77,7 @@ void Display::getWidths(Pokemon **trainerPoke, Pokemon **opponentPoke, std::stri
     mainCharacter = !mainCharacter;
 }
 
-void Display::outputNames(const us *greaterNameWidths, const us *lowerNameWidths, const us *maxWidths, const us *widths, const std::string *names, const us loopCond) const
+void Display::outputNames(const std::unique_ptr<us[]> &greaterNameWidths, const std::unique_ptr<us[]> &lowerNameWidths, const std::unique_ptr<us[]> &maxWidths, const std::unique_ptr<us[]> &widths, const std::unique_ptr<std::string[]> &names, const us loopCond) const
 {
     int addVal = 0;
 
@@ -113,7 +105,7 @@ void Display::outputNames(const us *greaterNameWidths, const us *lowerNameWidths
     }
 }
 
-void Display::outputHp(Pokemon **trainerPoke, Pokemon **opponentPoke, const us *topNameWidths, const us *botNameWidths, const us loopCond, const bool mainChar) const
+void Display::outputHp(const std::unique_ptr<std::unique_ptr<Pokemon>[]> &trainerPoke, const std::unique_ptr<std::unique_ptr<Pokemon>[]> &opponentPoke, const std::unique_ptr<us[]> &topNameWidths, const std::unique_ptr<us[]> &botNameWidths, const us loopCond, const bool mainChar) const
 {
     int width = 0;
     std::string output;
@@ -144,7 +136,7 @@ void Display::outputHp(Pokemon **trainerPoke, Pokemon **opponentPoke, const us *
     mainCharacter = !mainCharacter;
 }
 
-void Display::displayBattleMenu(const us *topNameWidths, const us *botNameWidths, const std::string *botNames, const us loopCond, const us pokeIndex) const
+void Display::displayBattleMenu(const std::unique_ptr<us[]> &topNameWidths, const std::unique_ptr<us[]> &botNameWidths, const std::unique_ptr<std::string[]> &botNames, const us loopCond, const us pokeIndex) const
 {
     int width = static_cast<int>(botNames[pokeIndex].length());
     if (topNameWidths[pokeIndex] > botNameWidths[pokeIndex])
@@ -161,7 +153,7 @@ void Display::displayBattleMenu(const us *topNameWidths, const us *botNameWidths
 
     std::string name = "What will " + botNames[pokeIndex] + " do?";
 
-    int newWidth = topNameWidths[loopCond - 1] > botNameWidths[loopCond - 1] ? topNameWidths[loopCond - 1] : botNameWidths[loopCond - 1];
+    int newWidth = topNameWidths[static_cast<unsigned long>(loopCond - 1)] > botNameWidths[static_cast<unsigned long>(loopCond - 1)] ? topNameWidths[static_cast<unsigned long>(loopCond - 1)] : botNameWidths[static_cast<unsigned long>(loopCond - 1)];
 
     std::cout << name << std::setw(newWidth);
 

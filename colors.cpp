@@ -1,7 +1,7 @@
 /*! \file colors.cpp
     \brief C++ file for coloring text.
     \details Contains the function definitions for coloring text.
-    \date 10/19/2021
+    \date 12/18/2021
     \version 1.0
     \author Matthew Moore
 */
@@ -12,7 +12,7 @@
 
 ColoredText::ColoredText()
 {
-    this->typeColors = new std::string[TYPES_MAX];
+    this->typeColors = std::make_unique<std::string[]>(TYPES_MAX);
     this->typeColors[0] = "\033[38;5;7m";
     this->typeColors[1] = "\033[38;5;202m";
     this->typeColors[2] = "\033[38;5;12m";
@@ -33,16 +33,11 @@ ColoredText::ColoredText()
     this->typeColors[17] = "\033[38;5;219m";
 }
 
-ColoredText::~ColoredText()
-{
-    delete[] this->typeColors;
-}
-
 /* Member Functions */
 
-std::string ColoredText::colorPokemonNames(const Pokemon *pokemon) const
+std::string ColoredText::colorPokemonNames(const std::unique_ptr<Pokemon> &pokemon) const
 {
-    Types *types = pokemon->getTypes();
+    const std::unique_ptr<Types[]> &types = pokemon->getTypes();
     std::string text = pokemon->getName();
     std::string output = "";
 

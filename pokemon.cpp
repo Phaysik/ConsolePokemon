@@ -1,7 +1,7 @@
 /*! \file pokemon.cpp
     \brief C++ file for Pokemon.
     \details Contains the function definitions for the Pokemon.
-    \date 10/08/2021
+    \date 12/18/2021
     \version 1.0
     \author Matthew Moore
 */
@@ -11,20 +11,20 @@
 
 /* Constructors and Destructors */
 
-Pokemon::Pokemon(Stats &pokeStats, MoveAbstract *pokeMoves, Types *pokeTypes, const bool pokeDualTyping, const std::string &pokeName)
+Pokemon::Pokemon(std::unique_ptr<Stats> &pokeStats, std::unique_ptr<MoveAbstract[]> &pokeMoves, Types *pokeTypes, const bool pokeDualTyping, const std::string &pokeName)
 {
     this->name = pokeName;
 
     this->stats = pokeStats;
 
-    this->moves = new MoveAbstract[4];
+    this->moves = std::make_unique<MoveAbstract[]>(4);
 
     this->dualTyping = pokeDualTyping;
 
     for (us i = 0; i < 4; ++i)
         this->moves[i] = pokeMoves[i];
 
-    this->typing = new Types[pokeDualTyping + 1];
+    this->typing = std::make_unique<Types[]>(static_cast<unsigned long>(pokeDualTyping) + 1);
 
     for (us i = 0; i < pokeDualTyping + 1; ++i)
         this->typing[i] = pokeTypes[i];
@@ -35,11 +35,28 @@ Pokemon::Pokemon(Stats &pokeStats, MoveAbstract *pokeMoves, Types *pokeTypes, co
     setTypeMatchups(pokeDualTyping);
 }
 
-Pokemon::~Pokemon()
+Pokemon::Pokemon(const Pokemon &poke)
 {
-    delete[] this->typing;
+    this->name = poke.name;
 
-    delete[] this->moves;
+    this->stats = poke.stats;
+
+    this->moves = std::make_unique<MoveAbstract[]>(4);
+
+    this->dualTyping = poke.dualTyping;
+
+    for (us i = 0; i < 4; ++i)
+        this->moves[i] = poke.moves[i];
+
+    this->typing = std::make_unique<Types[]>(static_cast<unsigned long>(poke.dualTyping) + 1);
+
+    for (us i = 0; i < poke.dualTyping + 1; ++i)
+        this->typing[i] = poke.typing[i];
+
+    for (us i = 0; i < TYPES_MAX; ++i)
+        this->typeMatchup[i] = 1;
+
+    setTypeMatchups(poke.dualTyping);
 }
 
 /* Getters */
@@ -54,14 +71,14 @@ float Pokemon::getTypeMatchUp(const us type)
     return this->typeMatchup[type];
 }
 
-Stats *Pokemon::getStats()
-{
-    return &this->stats;
-}
-
 MoveAbstract *Pokemon::getMove(const us index)
 {
     return &this->moves[index];
+}
+
+Stats *Pokemon::getStats()
+{
+    return &this->stats;
 }
 
 bool Pokemon::getBattleState() const
@@ -69,7 +86,7 @@ bool Pokemon::getBattleState() const
     return this->inBattle;
 }
 
-Types *Pokemon::getTypes() const
+const std::unique_ptr<Types[]> &Pokemon::getTypes() const
 {
     return this->typing;
 }
@@ -86,6 +103,7 @@ void Pokemon::setTypeMatchups(const bool pokeDualTyping)
     for (us i = 0; i < pokeDualTyping + 1; ++i)
     {
         TypeEffective typeEffective(this->typing[i]);
+
         for (us j = 0; j < TYPES_MAX; ++j)
         {
             float effect = typeEffective.getMatchUp(static_cast<Types>(j));

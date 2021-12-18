@@ -1,7 +1,7 @@
 /*! \file types.h
     \brief Header file for getting type effectiveness.
     \details Contains the declarations for comparing types against one another.
-    \date 10/07/2021
+    \date 12/18/2021
     \version 1.0
     \author Matthew Moore
 */
@@ -11,12 +11,13 @@
 typedef unsigned short us; /*!< Shorthand for unsigned short */
 
 #include <fstream>
+#include <memory>
 #include "typeEnums.h"
 
 /*! \headerfile types.h
     \brief Type effectiveness
     \details How types stack up against one another.
-    \date 10/07/2021
+    \date 12/18/2021
     \version 1.0
     \author Matthew Moore
 */
@@ -30,18 +31,11 @@ public:
         \param typeToCheck Create a type chart for this specific type
         \pre The type must be part of #Types
         \post The type chart will be stored in a 2D array filled with #Effectiveness values
-        \date 10/07/2021
+        \date 12/18/2021
         \version 1.0
         \author Matthew Moore
     */
     TypeEffective(const Types typeToCheck);
-
-    /*! \brief Delete #typeChart allocated memory
-        \date 10/07/2021
-        \version 1.0
-        \author Matthew Moore
-    */
-    ~TypeEffective();
 
     /* Member Functions */
 
@@ -68,7 +62,7 @@ public:
     float getMatchUp(const Types type) const;
 
 private:
-    us typeAmount;             /*<! Amount of Pokemon types */
-    Types typing;              /*<! The typing of the Pokemon */
-    Effectiveness **typeChart; /*<! The 2D array of type matchups */
+    us typeAmount;                                                 /*<! Amount of Pokemon types */
+    Types typing;                                                  /*<! The typing of the Pokemon */
+    std::unique_ptr<std::unique_ptr<Effectiveness[]>[]> typeChart; /*<! The 2D array of type matchups */
 };

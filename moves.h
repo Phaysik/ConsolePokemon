@@ -1,7 +1,7 @@
 /*! \file moves.h
     \brief Header file for Pokemon moves.
     \details Contains the function declarations for the Pokemon moves.
-    \date 10/07/2021
+    \date 12/18/2021
     \version 1.0
     \author Matthew Moore
 */
@@ -10,15 +10,16 @@
 
 typedef unsigned short us; /*!< Shorthand for unsigned short */
 
-#include "typeEnums.h"
 #include <string>
+#include <memory>
+#include "typeEnums.h"
 
-class Pokemon;
+class Pokemon; // Forward Declare
 
 /*! \headerfile moves.h
     \brief What moves can do
     \details Creates the properties of a Pokemon move and the functions that will affect the battle
-    \date 10/07/2021
+    \date 12/18/2021
     \version 1.0
     \author Matthew Moore
 */
@@ -53,11 +54,11 @@ public:
         \details Will allow chaining for MoveAbstract class types
         \param moves The move and all of it's information
         \retval MoveAbstract A clone of the moves param
-        \date 10/07/2021
+        \date 12/18/2021
         \version 1.0
         \author Matthew Moore
     */
-    MoveAbstract &operator=(MoveAbstract &moves);
+    MoveAbstract &operator=(const std::unique_ptr<MoveAbstract> &moves);
 
     /* Member Functions */
 
@@ -69,11 +70,11 @@ public:
         \param opponent The Pokemon team of the trainer who is against the engager
         \param userIndex The index of trainer param
         \param type The #BattleType of the battle
-        \date 10/07/2021
+        \date 12/18/2021
         \version 1.0
         \author Matthew Moore
     */
-    void effect(Pokemon **trainer, Pokemon **opponent, const us userIndex, const BattleType type) const;
+    void effect(const std::unique_ptr<std::unique_ptr<Pokemon>[]> &trainer, const std::unique_ptr<std::unique_ptr<Pokemon>[]> &opponent, const us userIndex, const BattleType type) const;
 
     /* Getters */
 

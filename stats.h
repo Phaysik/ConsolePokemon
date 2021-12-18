@@ -1,19 +1,21 @@
 /*! \file stats.h
     \brief Header file for Pokemon stats.
     \details Contains the function declarations for the Pokemon stats.
-    \date 10/13/2021
+    \date 12/18/2021
     \version 1.0
     \author Matthew Moore
 */
 
 #pragma once
 
+#include <memory>
+
 typedef unsigned short us; /*!< Shorthand for unsigned short */
 
 /*! \headerfile stats.h
     \brief Pokemon stats
     \details Creates the properties of a Pokemon stats the functions that will affect those stats
-    \date 10/13/2021
+    \date 12/18/2021
     \version 1.0
     \author Matthew Moore
 */
@@ -49,11 +51,11 @@ public:
         \details Will allow chaining for Stats class types
         \param stats The stats and all of it's information
         \retval Stats A clone of the stats param
-        \date 10/08/2021
+        \date 12/18/2021
         \version 1.0
         \author Matthew Moore
     */
-    Stats &operator=(const Stats &stats);
+    Stats &operator=(const std::unique_ptr<Stats> &stats);
 
     /* Member Functions */
 
