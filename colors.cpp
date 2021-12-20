@@ -48,7 +48,7 @@ std::string ColoredText::colorPokemonNames(const Pokemon *pokemon) const
     std::string text = pokemon->getName();
     std::string output = "";
 
-    for (us i = 0; i < text.length(); i++)
+    for (us i = 0; i < static_cast<us>(text.length()); i++)
     {
         if (pokemon->getDualTyping())
             output += this->typeColors[static_cast<us>(types[i % 2])].colorString + text[i] + this->reset;

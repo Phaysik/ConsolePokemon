@@ -8,13 +8,14 @@
 
 #pragma once
 
-typedef unsigned short us; /*!< Shorthand for unsigned short */
-
+#include <cstdint>
 #include <iostream>
 #include <iomanip>
 #include "pokemon.h"
 #include "colors.h"
 #include "typeEnums.h"
+
+typedef uint16_t us; /*!< Shorthand for unsigned short */
 
 /*! \headerfile display.h
     \brief Displays text

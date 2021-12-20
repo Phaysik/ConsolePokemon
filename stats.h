@@ -8,7 +8,9 @@
 
 #pragma once
 
-typedef unsigned short us; /*!< Shorthand for unsigned short */
+#include <cstdint>
+
+typedef uint16_t us; /*!< Shorthand for unsigned short */
 
 /*! \headerfile stats.h
     \brief Pokemon stats

@@ -8,10 +8,11 @@
 
 #pragma once
 
-typedef unsigned short us; /*!< Shorthand for unsigned short */
-
-#include "typeEnums.h"
+#include <cstdint>
 #include <string>
+#include "typeEnums.h"
+
+typedef uint16_t us; /*!< Shorthand for unsigned short */
 
 class Pokemon;
 

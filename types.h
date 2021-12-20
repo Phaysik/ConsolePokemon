@@ -8,10 +8,11 @@
 
 #pragma once
 
-typedef unsigned short us; /*!< Shorthand for unsigned short */
-
 #include <fstream>
+#include <cstdint>
 #include "typeEnums.h"
+
+typedef uint16_t us; /*!< Shorthand for unsigned short */
 
 /*! \headerfile types.h
     \brief Type effectiveness

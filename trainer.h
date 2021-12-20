@@ -8,11 +8,12 @@
 
 #pragma once
 
-typedef unsigned short us; /*!< Shorthand for unsigned short */
-
+#include <cstdint>
 #include "pokemon.h"
 #include "display.h"
 #include "typeEnums.h"
+
+typedef uint16_t us; /*!< Shorthand for unsigned short */
 
 /*! \headerfile trainer.h
     \brief The Pokemon trainer
