@@ -6,12 +6,9 @@
     \author Matthew Moore
 */
 
-#ifndef COLORS_H
-#define COLORS_H
+#pragma once
 
-#ifndef us
-#define us unsigned short /*!< Shorthand for unsigned short */
-#endif
+typedef unsigned short us; /*!< Shorthand for unsigned short */
 
 #include <string>
 #include "pokemon.h"
@@ -87,5 +84,3 @@ private:
     RGB bold;                      /*!< RGB for white bolded text */
     std::string reset = "\033[0m"; /*!< Reset the console color back to default */
 };
-
-#endif

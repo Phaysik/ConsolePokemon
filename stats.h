@@ -6,14 +6,11 @@
     \author Matthew Moore
 */
 
-#ifndef STATS_H
-#define STATS_H
+#pragma once
 
-#ifndef us
-#define us unsigned short /*!< Shorthand for unsigned short */
-#endif
+typedef unsigned short us; /*!< Shorthand for unsigned short */
 
-/*! \headerfile stats.h 
+/*! \headerfile stats.h
     \brief Pokemon stats
     \details Creates the properties of a Pokemon stats the functions that will affect those stats
     \date 10/13/2021
@@ -302,5 +299,3 @@ private:
     float spDMultiplier;     /*!< Special defense multiplier of the Pokemon */
     float speedMultiplier;   /*!< Speed multiplier of the Pokemon */
 };
-
-#endif

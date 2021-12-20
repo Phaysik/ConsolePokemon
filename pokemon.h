@@ -6,12 +6,9 @@
     \author Matthew Moore
 */
 
-#ifndef POKEMON_H
-#define POKEMON_H
+#pragma once
 
-#ifndef us
-#define us unsigned short /*!< Shorthand for unsigned short */
-#endif
+typedef unsigned short us; /*!< Shorthand for unsigned short */
 
 #include <unordered_map>
 #include <string>
@@ -21,7 +18,7 @@
 #include "typeEnums.h"
 #include "types.h"
 
-/*! \headerfile pokemon.h 
+/*! \headerfile pokemon.h
     \brief What Pokemon can do
     \details Creates the properties of a Pokemon and the functions that will affect it
     \date 10/12/2021
@@ -36,7 +33,7 @@ public:
     /*! \brief Empty constructor
         \date 10/08/2021
         \version 1.0
-        \author Matthew Moore 
+        \author Matthew Moore
     */
     inline Pokemon(){};
 
@@ -149,5 +146,3 @@ private:
     Types *typing;                             /*!< The Pokemon's type(s) */
     std::unordered_map<us, float> typeMatchup; /*!< The Pokemon's type matchup */
 };
-
-#endif

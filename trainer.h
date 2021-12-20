@@ -6,12 +6,9 @@
     \author Matthew Moore
 */
 
-#ifndef TRAINER_H
-#define TRAINER_H
+#pragma once
 
-#ifndef us
-#define us unsigned short /*!< Shorthand for unsigned short */
-#endif
+typedef unsigned short us; /*!< Shorthand for unsigned short */
 
 #include "pokemon.h"
 #include "display.h"
@@ -115,5 +112,3 @@ private:
     bool isPlayableCharacter; /*!< Is the main character */
     Display display;          /*!< For displaying text */
 };
-
-#endif

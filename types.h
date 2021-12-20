@@ -6,17 +6,14 @@
     \author Matthew Moore
 */
 
-#ifndef TYPES_H
-#define TYPES_H
+#pragma once
 
-#ifndef us
-#define us unsigned short /*!< Shorthand for unsigned short */
-#endif
+typedef unsigned short us; /*!< Shorthand for unsigned short */
 
 #include <fstream>
 #include "typeEnums.h"
 
-/*! \headerfile types.h 
+/*! \headerfile types.h
     \brief Type effectiveness
     \details How types stack up against one another.
     \date 10/07/2021
@@ -66,7 +63,7 @@ public:
         \pre The type param must be a valid #Types
         \date 10/07/2021
         \version 1.0
-        \author Matthew Moore 
+        \author Matthew Moore
     */
     float getMatchUp(const Types type) const;
 
@@ -75,5 +72,3 @@ private:
     Types typing;              /*<! The typing of the Pokemon */
     Effectiveness **typeChart; /*<! The 2D array of type matchups */
 };
-
-#endif
