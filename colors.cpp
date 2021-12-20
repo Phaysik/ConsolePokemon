@@ -1,7 +1,7 @@
 /*! \file colors.cpp
     \brief C++ file for coloring text.
     \details Contains the function definitions for coloring text.
-    \date 10/19/2021
+    \date 12/19/2021
     \version 1.0
     \author Matthew Moore
 */
@@ -12,28 +12,27 @@
 
 ColoredText::ColoredText()
 {
-    //TODO Need to be able to brighten the color, so perhaps make an rgb struct to handle that
-    RGB test(0, 0, 0);
-    std::cout << test.colorString << std::endl;
-    this->typeColors = new std::string[TYPES_MAX];
-    this->typeColors[0] = "\033[38;5;7m";
-    this->typeColors[1] = "\033[38;5;202m";
-    this->typeColors[2] = "\033[38;5;12m";
-    this->typeColors[3] = "\033[38;5;11m";
-    this->typeColors[4] = "\033[38;5;10m";
-    this->typeColors[5] = "\033[38;5;117m";
-    this->typeColors[6] = "\033[38;5;124m";
-    this->typeColors[7] = "\033[38;5;5m";
-    this->typeColors[8] = "\033[38;5;223m";
-    this->typeColors[9] = "\033[38;5;111m";
-    this->typeColors[10] = "\033[38;5;199m";
-    this->typeColors[11] = "\033[38;5;70m";
-    this->typeColors[12] = "\033[38;5;138m";
-    this->typeColors[13] = "\033[38;5;55m";
-    this->typeColors[14] = "\033[38;5;57m";
-    this->typeColors[15] = "\033[38;5;239m";
-    this->typeColors[16] = "\033[38;5;195m";
-    this->typeColors[17] = "\033[38;5;219m";
+    this->typeColors = new RGB[Types::TYPES_MAX];
+    this->typeColors[0] = RGB(168, 168, 120);
+    this->typeColors[1] = RGB(240, 128, 48);
+    this->typeColors[2] = RGB(104, 144, 240);
+    this->typeColors[3] = RGB(248, 208, 48);
+    this->typeColors[4] = RGB(120, 200, 80);
+    this->typeColors[5] = RGB(152, 216, 216);
+    this->typeColors[6] = RGB(192, 48, 40);
+    this->typeColors[7] = RGB(160, 64, 160);
+    this->typeColors[8] = RGB(224, 192, 104);
+    this->typeColors[9] = RGB(168, 144, 240);
+    this->typeColors[10] = RGB(248, 88, 136);
+    this->typeColors[11] = RGB(168, 184, 32);
+    this->typeColors[12] = RGB(184, 160, 56);
+    this->typeColors[13] = RGB(112, 88, 152);
+    this->typeColors[14] = RGB(112, 56, 248);
+    this->typeColors[15] = RGB(112, 88, 72);
+    this->typeColors[16] = RGB(184, 184, 208);
+    this->typeColors[17] = RGB(238, 153, 172);
+
+    this->bold = RGB(255, 255, 255);
 }
 
 ColoredText::~ColoredText()
@@ -52,9 +51,9 @@ std::string ColoredText::colorPokemonNames(const Pokemon *pokemon) const
     for (us i = 0; i < text.length(); i++)
     {
         if (pokemon->getDualTyping())
-            output += this->typeColors[static_cast<us>(types[i % 2])] + text[i] + this->reset;
+            output += this->typeColors[static_cast<us>(types[i % 2])].colorString + text[i] + this->reset;
         else
-            output += this->typeColors[static_cast<us>(types[0])] + text[i] + this->reset;
+            output += this->typeColors[static_cast<us>(types[0])].colorString + text[i] + this->reset;
     }
 
     return output;

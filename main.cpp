@@ -16,7 +16,7 @@
 
 int main()
 {
-    Types typing[2] = {Grass, Poison};
+    Types typing[2] = {Types::Grass, Types::Poison};
     Stats *stats = new Stats(45, 49, 49, 65, 65, 45);
     Move movelist;
     MoveAbstract *moves;
@@ -40,7 +40,7 @@ int main()
 
     delete stats;
     stats = new Stats(39, 52, 43, 60, 50, 65);
-    Types newTypes[1] = {Fire};
+    Types newTypes[1] = {Types::Fire};
     moves = new MoveAbstract[4];
     moves[0] = movelist.ember;
     moves[1] = movelist.smokescreen;
@@ -52,7 +52,7 @@ int main()
     delete stats;
 
     //TODO set up a battle simulation
-    opponent.engage(&trainer, Quintuple);
+    opponent.engage(&trainer, BattleType::Quintuple);
 
     // See the effect of the move
     // for (us i = 0; i < 5; ++i)

@@ -64,5 +64,4 @@ enum Effectiveness
     NE,  /*!< Normal effective */
     SE   /*!< Super effective */
 };
-
 #endif

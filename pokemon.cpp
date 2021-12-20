@@ -1,7 +1,7 @@
 /*! \file pokemon.cpp
     \brief C++ file for Pokemon.
     \details Contains the function definitions for the Pokemon.
-    \date 10/08/2021
+    \date 12/19/2021
     \version 1.0
     \author Matthew Moore
 */
@@ -86,7 +86,8 @@ void Pokemon::setTypeMatchups(const bool pokeDualTyping)
     for (us i = 0; i < pokeDualTyping + 1; ++i)
     {
         TypeEffective typeEffective(this->typing[i]);
-        for (us j = 0; j < TYPES_MAX; ++j)
+
+        for (us j = 0; j < Types::TYPES_MAX; ++j)
         {
             float effect = typeEffective.getMatchUp(static_cast<Types>(j));
             this->typeMatchup[j] *= effect;

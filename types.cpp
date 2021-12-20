@@ -1,7 +1,7 @@
 /*! \file types.cpp
     \brief C++ file for creating typecharts.
     \details Contains the function definitions for creating type charts on every type.
-    \date 10/08/2021
+    \date 12/19/2021
     \version 1.0
     \author Matthew Moore
 */
@@ -12,9 +12,11 @@
 
 TypeEffective::TypeEffective(const Types typeToCheck)
 {
-    this->typeAmount = TYPES_MAX;
+    this->typeAmount = Types::TYPES_MAX;
     this->typing = typeToCheck;
+
     this->typeChart = new Effectiveness *[this->typeAmount];
+
     for (us i = 0; i < this->typeAmount; ++i)
         this->typeChart[i] = new Effectiveness[this->typeAmount];
 
@@ -44,13 +46,13 @@ void TypeEffective::readFile()
 
         // Update the type chart
         if (val == 0)
-            this->typeChart[inputAmount / this->typeAmount][inputAmount % this->typeAmount] = NOE;
+            this->typeChart[inputAmount / this->typeAmount][inputAmount % this->typeAmount] = Effectiveness::NOE;
         else if (val == 1)
-            this->typeChart[inputAmount / this->typeAmount][inputAmount % this->typeAmount] = NVE;
+            this->typeChart[inputAmount / this->typeAmount][inputAmount % this->typeAmount] = Effectiveness::NVE;
         else if (val == 2)
-            this->typeChart[inputAmount / this->typeAmount][inputAmount % this->typeAmount] = NE;
+            this->typeChart[inputAmount / this->typeAmount][inputAmount % this->typeAmount] = Effectiveness::NE;
         else if (val == 3)
-            this->typeChart[inputAmount / this->typeAmount][inputAmount % this->typeAmount] = SE;
+            this->typeChart[inputAmount / this->typeAmount][inputAmount % this->typeAmount] = Effectiveness::SE;
 
         ++inputAmount;
     }
@@ -65,11 +67,11 @@ float TypeEffective::getMatchUp(const Types type) const
     // Determine effect of typing against type
     us effect = this->typeChart[type][this->typing];
 
-    if (effect == NOE)
+    if (effect == Effectiveness::NOE)
         return 0;
-    else if (effect == NVE)
+    else if (effect == Effectiveness::NVE)
         return 0.5;
-    else if (effect == SE)
+    else if (effect == Effectiveness::SE)
         return 2;
 
     return 1;
