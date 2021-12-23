@@ -1,13 +1,12 @@
 /*! \file moves.cpp
     \brief C++ file for Pokemon moves.
     \details Contains the function definitions for the Pokemon moves.
-    \date 12/19/2021
+    \date 12/23/2021
     \version 1.0
     \author Matthew Moore
 */
 
-#include "moves.h"
-#include "trainer.h"
+#include <trainer/pokemon/moves/moves.h>
 
 /* Overloaded Operators */
 
@@ -33,7 +32,7 @@ void MoveAbstract::effect(Pokemon **trainer, Pokemon **opponent, const us userIn
             opponent[userIndex - 1]->getStats()->setDefenseMultiplier(0.5);
         if (userIndex < type)
             opponent[userIndex + 1]->getStats()->setDefenseMultiplier(0.5);
-            
+
         opponent[userIndex]->getStats()->setDefenseMultiplier(0.5);
     }
     else if (this->name == "Swords Dance")

@@ -1,7 +1,7 @@
 /*! \file pokemon.h
     \brief Header file for Pokemon.
     \details Contains the function declarations for the Pokemon information.
-    \date 10/12/2021
+    \date 12/23/2021
     \version 1.0
     \author Matthew Moore
 */
@@ -15,15 +15,18 @@ typedef uint16_t us; /*!< Shorthand for unsigned short */
 #include <unordered_map>
 #include <string>
 #include <iostream>
-#include "stats.h"
-#include "moves.h"
-#include "typeEnums.h"
-#include "types.h"
+#include <constants.h>
+#include <types/typeEnums.h>
+#include <types/types.h>
+#include <trainer/pokemon/stats/stats.h>
+#include <trainer/pokemon/moves/moves.h>
+
+class MoveAbstract;
 
 /*! \headerfile pokemon.h
     \brief What Pokemon can do
     \details Creates the properties of a Pokemon and the functions that will affect it
-    \date 10/12/2021
+    \date 12/23/2021
     \version 1.0
     \author Matthew Moore
 */
@@ -46,7 +49,7 @@ public:
         \param pokeTypes The Pokemon's type(s)
         \param pokeDualTyping Whether the Pokemon has two types
         \param pokeName The Pokemon's name
-        \date 10/08/2021
+        \date 12/23/2021
         \version 1.0
         \author Matthew Moore
     */
@@ -124,7 +127,7 @@ public:
     /*! \brief Sets the Pokemon's type matchups
         \post The Pokemon's #typeMatchup will be set initialized
         \param pokeDualTyping If the pokemon has two types
-        \date 10/08/2021
+        \date 12/19/2021
         \version 1.0
         \author Matthew Moore
     */

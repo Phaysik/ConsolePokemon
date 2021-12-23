@@ -1,7 +1,7 @@
 /*! \file display.h
     \brief Header file for displaying text.
     \details Contains the function declarations for displaying text.
-    \date 12/22/2021
+    \date 12/23/2021
     \version 1.0
     \author Matthew Moore
 */
@@ -10,17 +10,19 @@
 
 #include <ncurses.h>
 #include <cstdint>
-#include <iomanip>
-#include "pokemon.h"
-#include "colors.h"
-#include "typeEnums.h"
+#include <output/colors.h>
+#include <types/typeEnums.h>
+#include <trainer/pokemon/pokemon.h>
 
 typedef uint16_t us; /*!< Shorthand for unsigned short */
+
+class Pokemon;
+class ColoredText;
 
 /*! \headerfile display.h
     \brief Displays text
     \details Outputs based on the state of the game
-    \date 12/22/2021
+    \date 12/23/2021
     \version 1.0
     \author Matthew Moore
 */
@@ -94,6 +96,17 @@ public:
     */
     void displayBattleMenu(Pokemon **trainerPoke, Pokemon **opponentPoke, const us loopCond, const us pokeIndex) const;
 
+    /* Setters */
+
+    /*! \brief Sets the display color capabilities
+        \post #colorText memory will point to the params
+        \param color The ColoredText object to use
+        \date 12/23/2021
+        \version 1.0
+        \author Matthew Moore
+    */
+    void setColorText(ColoredText *color);
+
 private:
-    ColoredText colorText; /*!< Colors text */
+    ColoredText *colorText; /*!< Colors text */
 };

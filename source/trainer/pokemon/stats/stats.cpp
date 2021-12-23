@@ -1,12 +1,12 @@
 /*! \file stats.cpp
     \brief C++ file for Pokemon stats.
     \details Contains the function definitions for the Pokemon stats.
-    \date 10/13/2021
+    \date 12/23/2021
     \version 1.0
     \author Matthew Moore
 */
 
-#include "stats.h"
+#include <trainer/pokemon/stats/stats.h>
 
 /* Overloaded Operators */
 

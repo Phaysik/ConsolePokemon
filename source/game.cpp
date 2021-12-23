@@ -1,12 +1,12 @@
 /*! \file game.cpp
     \brief C++ file for the Game.
     \details Contains the function definitions for Game
-    \date 12/22/2021
+    \date 12/23/2021
     \version 1.0
     \author Matthew Moore
 */
 
-#include "game.h"
+#include <game.h>
 
 /* Constructors and Destructors */
 
@@ -33,11 +33,17 @@ Game::Game()
     raw();                /* Line buffering disabled */
     noecho();             /* Don't echo() while we do getch */
     keypad(stdscr, TRUE); /* We get F1, F2 etc.. */
+
+    this->colorText = new ColoredText();
+
+    this->display.setColorText(this->colorText);
 }
 
 Game::~Game()
 {
     endwin();
+
+    delete this->colorText;
 }
 
 /* Helper functions */
@@ -49,12 +55,12 @@ void Game::testing()
     Move movelist;
     MoveAbstract *moves;
 
-    Trainer trainer(true);
-    Trainer opponent;
+    Trainer trainer(&this->display, true);
+    Trainer opponent(&this->display);
 
-    for (us i = 0; i < 5; ++i)
+    for (us i = 0; i < MAX_POKEMON; ++i)
     {
-        moves = new MoveAbstract[4];
+        moves = new MoveAbstract[MAX_MOVES];
         moves[0] = movelist.growl;
         moves[1] = movelist.tackle;
         moves[2] = movelist.headbutt;
@@ -69,7 +75,7 @@ void Game::testing()
     delete stats;
     stats = new Stats(39, 52, 43, 60, 50, 65);
     Types newTypes[1] = {Types::Fire};
-    moves = new MoveAbstract[4];
+    moves = new MoveAbstract[MAX_MOVES];
     moves[0] = movelist.ember;
     moves[1] = movelist.smokescreen;
     moves[2] = movelist.flamethrower;
@@ -82,14 +88,14 @@ void Game::testing()
     //TODO set up a battle simulation
     opponent.engage(&trainer, BattleType::Quintuple);
 
-    getch();
-
     // See the effect of the move
     // for (us i = 0; i < 5; ++i)
     // {
-    // Pokemon *poke = trainer.getPokemonAtIndex(i);
-    // Stats *pokeStats = poke->getStats();
-    // std::cout << poke->getName() << "\tDefense: ";
-    // // std::cout << pokeStats->getDefense() << "\tDefense Multiplier: " << pokeStats->getDefenseMultiplier() << std::endl;
+    //     Pokemon *poke = trainer.getPokemonAtIndex(i);
+    //     Stats *pokeStats = poke->getStats();
+    //     printw("%s\tDefense: ", poke->getName().c_str());
+    //     printw("%d\tDefense Multiplier: %0.2f\n", pokeStats->getDefense(), pokeStats->getDefenseMultiplier());
     // }
+
+    getch();
 }

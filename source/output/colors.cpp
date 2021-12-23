@@ -1,12 +1,12 @@
 /*! \file colors.cpp
     \brief C++ file for coloring text.
     \details Contains the function definitions for coloring text.
-    \date 12/19/2021
+    \date 12/23/2021
     \version 1.0
     \author Matthew Moore
 */
 
-#include "colors.h"
+#include <output/colors.h>
 
 /* Constructors and Destructors */
 
@@ -31,8 +31,6 @@ ColoredText::ColoredText()
     this->typeColors[15] = this->initColors(DARK_COLOR, 112, 88, 72);
     this->typeColors[16] = this->initColors(STEEL_COLOR, 184, 184, 208);
     this->typeColors[17] = this->initColors(FAIRY_COLOR, 238, 153, 172);
-
-    // this->bold = RGB(255, 255, 255);
 }
 
 ColoredText::~ColoredText()

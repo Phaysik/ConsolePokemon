@@ -1,12 +1,12 @@
 /*! \file types.cpp
     \brief C++ file for creating typecharts.
     \details Contains the function definitions for creating type charts on every type.
-    \date 12/19/2021
+    \date 12/23/2021
     \version 1.0
     \author Matthew Moore
 */
 
-#include "types.h"
+#include <types/types.h>
 
 /* Constructers and Desctructors */
 

@@ -1,7 +1,7 @@
 /*! \file trainer.h
     \brief Header file for the Pokemon trainer.
     \details Contains the function declarations for the Pokemon trainer.
-    \date 10/19/2021
+    \date 12/23/2021
     \version 1.0
     \author Matthew Moore
 */
@@ -9,16 +9,20 @@
 #pragma once
 
 #include <cstdint>
-#include "pokemon.h"
-#include "display.h"
-#include "typeEnums.h"
+#include <trainer/pokemon/pokemon.h>
+#include <constants.h>
+#include <output/display.h>
+#include <types/typeEnums.h>
 
 typedef uint16_t us; /*!< Shorthand for unsigned short */
+
+class Pokemon;
+class Display;
 
 /*! \headerfile trainer.h
     \brief The Pokemon trainer
     \details Creates the properties of a Pokemon trainer and the functions that will affect the trainer
-    \date 10/19/2021
+    \date 12/23/2021
     \version 1.0
     \author Matthew Moore
 */
@@ -29,15 +33,16 @@ public:
 
     /*! \brief Non-paremeterized constructor
         \details Will allocate #trainerPokemon and #inBattle memory
+        \param disp The display object used for output
         \param isMainCharacter Whether the trainer is the main character
-        \date 10/12/2021
+        \date 12/23/2021
         \version 1.0
         \author Matthew Moore
     */
-    Trainer(const bool isMainCharacter = false);
+    Trainer(Display *disp, const bool isMainCharacter = false);
 
     /*! \brief Delete #trainerPokemon and #inBattle allocated memory
-        \date 10/08/2021
+        \date 12/22/2021
         \version 1.0
         \author Matthew Moore
     */
@@ -111,5 +116,5 @@ private:
     Pokemon **trainerPokemon; /*!< The team of Pokemon the trainer is using */
     Pokemon **inBattle;       /*!< Which Pokemon are in battle */
     bool isPlayableCharacter; /*!< Is the main character */
-    Display display;          /*!< For displaying text */
+    Display *display;         /*!< For displaying text */
 };

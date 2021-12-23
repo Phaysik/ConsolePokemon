@@ -1,12 +1,12 @@
 /*! \file display.cpp
     \brief C++ file for displaying text.
     \details Contains the function definitions for displaying text.
-    \date 10/26/2021
+    \date 12/23/2021
     \version 1.0
     \author Matthew Moore
 */
 
-#include "display.h"
+#include <output/display.h>
 
 /* Member Functions */
 
@@ -46,7 +46,7 @@ void Display::printBattleState(Pokemon **trainerEngaged, Pokemon **opponentEngag
     if (!mainChar)
         this->displayBattleMenu(opponentEngaged, trainerEngaged, loopCond, 0);
     else
-        this->displayBattleMenu(trainerEngaged, opponentEngaged, loopCond, 4);
+        this->displayBattleMenu(trainerEngaged, opponentEngaged, loopCond, 0);
 
     delete[] maxWidth;
 }
@@ -85,12 +85,12 @@ void Display::outputNames(Pokemon **trainerPoke, Pokemon **opponentPoke, const u
         if (i == 0)
         {
             if (tranLength == maxWidths[i])
-                this->colorText.colorPokemonNames(trainerPoke[i]);
+                this->colorText->colorPokemonNames(trainerPoke[i]);
             else
             {
                 printw("%*s", addVal, "");
                 refresh();
-                this->colorText.colorPokemonNames(trainerPoke[i]);
+                this->colorText->colorPokemonNames(trainerPoke[i]);
             }
         }
         else
@@ -99,13 +99,13 @@ void Display::outputNames(Pokemon **trainerPoke, Pokemon **opponentPoke, const u
             {
                 printw("%*s", 5 + addVal, "");
                 refresh();
-                this->colorText.colorPokemonNames(trainerPoke[i]);
+                this->colorText->colorPokemonNames(trainerPoke[i]);
             }
             else
             {
                 printw("%*s", 5 + addVal, "");
                 refresh();
-                this->colorText.colorPokemonNames(trainerPoke[i]);
+                this->colorText->colorPokemonNames(trainerPoke[i]);
             }
         }
     }
@@ -171,6 +171,8 @@ void Display::displayBattleMenu(Pokemon **trainerPoke, Pokemon **opponentPoke, c
 
     std::string name = "What will " + trainerPoke[pokeIndex]->getName() + " do?";
 
+    width += static_cast<int>(name.length());
+
     printw("%*s", width, name.c_str());
     refresh();
 
@@ -187,13 +189,20 @@ void Display::displayBattleMenu(Pokemon **trainerPoke, Pokemon **opponentPoke, c
 
     tranLength = static_cast<int>(name.length());
 
-    printw("%*s\n", 5 + static_cast<int>(name.length()), name.c_str());
+    printw("%*s\n", 5 + tranLength, name.c_str());
     refresh();
 
     name = "Pokemon     Run";
 
-    printw("%*s\n", width + 5 + static_cast<int>(name.length()) - (static_cast<int>(name.length()) - tranLength), name.c_str());
+    printw("%*s\n", width + 5 + oppLength - (oppLength - tranLength), name.c_str());
     refresh();
 
     return;
+}
+
+/* Setters */
+
+void Display::setColorText(ColoredText *color)
+{
+    this->colorText = color;
 }

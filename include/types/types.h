@@ -1,7 +1,7 @@
 /*! \file types.h
     \brief Header file for getting type effectiveness.
     \details Contains the declarations for comparing types against one another.
-    \date 10/07/2021
+    \date 12/23/2021
     \version 1.0
     \author Matthew Moore
 */
@@ -10,7 +10,7 @@
 
 #include <fstream>
 #include <cstdint>
-#include "typeEnums.h"
+#include <types/typeEnums.h>
 
 typedef uint16_t us; /*!< Shorthand for unsigned short */
 

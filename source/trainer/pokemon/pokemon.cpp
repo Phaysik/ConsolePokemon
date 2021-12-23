@@ -1,13 +1,12 @@
 /*! \file pokemon.cpp
     \brief C++ file for Pokemon.
     \details Contains the function definitions for the Pokemon.
-    \date 12/19/2021
+    \date 12/23/2021
     \version 1.0
     \author Matthew Moore
 */
 
-#include "pokemon.h"
-#include "moves.h"
+#include <trainer/pokemon/pokemon.h>
 
 /* Constructors and Destructors */
 
@@ -17,11 +16,11 @@ Pokemon::Pokemon(Stats &pokeStats, MoveAbstract *pokeMoves, Types *pokeTypes, co
 
     this->stats = pokeStats;
 
-    this->moves = new MoveAbstract[4];
+    this->moves = new MoveAbstract[MAX_MOVES];
 
     this->dualTyping = pokeDualTyping;
 
-    for (us i = 0; i < 4; ++i)
+    for (us i = 0; i < MAX_MOVES; ++i)
         this->moves[i] = pokeMoves[i];
 
     this->typing = new Types[pokeDualTyping + 1];
@@ -29,7 +28,7 @@ Pokemon::Pokemon(Stats &pokeStats, MoveAbstract *pokeMoves, Types *pokeTypes, co
     for (us i = 0; i < pokeDualTyping + 1; ++i)
         this->typing[i] = pokeTypes[i];
 
-    for (us i = 0; i < TYPES_MAX; ++i)
+    for (us i = 0; i < Types::TYPES_MAX; ++i)
         this->typeMatchup[i] = 1;
 
     setTypeMatchups(pokeDualTyping);

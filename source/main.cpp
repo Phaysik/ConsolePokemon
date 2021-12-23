@@ -1,11 +1,11 @@
 /*! \file main.cpp
     \brief Main
-    \date 12/22/2021
+    \date 12/23/2021
     \version 1.0
     \author Matthew Moore
 */
 
-#include "game.h"
+#include <game.h>
 
 int main()
 {

@@ -1,23 +1,25 @@
 /*! \file trainer.cpp
     \brief C++ file for Pokemon trainer.
     \details Contains the function definitions for the Pokemon trainer.
-    \date 10/19/2021
+    \date 12/23/2021
     \version 1.0
     \author Matthew Moore
 */
 
-#include "trainer.h"
+#include <trainer/trainer.h>
 
 /* Constructors and Destructors */
 
-Trainer::Trainer(const bool isMainCharacter)
+Trainer::Trainer(Display *disp, const bool isMainCharacter)
 {
-    this->trainerPokemon = new Pokemon *[5];
-    this->inBattle = new Pokemon *[5];
+    this->trainerPokemon = new Pokemon *[MAX_POKEMON];
+    this->inBattle = new Pokemon *[MAX_POKEMON];
 
     this->isPlayableCharacter = isMainCharacter;
 
-    for (us i = 0; i < 5; ++i)
+    this->display = disp;
+
+    for (us i = 0; i < MAX_POKEMON; ++i)
     {
         this->trainerPokemon[i] = nullptr;
         this->inBattle[i] = nullptr;
@@ -26,7 +28,7 @@ Trainer::Trainer(const bool isMainCharacter)
 
 Trainer::~Trainer()
 {
-    for (us i = 0; i < 5; ++i)
+    for (us i = 0; i < MAX_POKEMON; ++i)
         delete this->trainerPokemon[i];
 
     delete[] this->inBattle;
@@ -47,7 +49,7 @@ void Trainer::engage(Trainer *opponent, const BattleType type)
     Pokemon **trainerEngaged = this->getAllInBattle(type);
     Pokemon **opponentEngaged = opponent->getAllInBattle(type);
 
-    this->display.printBattleState(trainerEngaged, opponentEngaged, type, this->getMainCharacter());
+    this->display->printBattleState(trainerEngaged, opponentEngaged, type, this->getMainCharacter());
 
     this->trainerPokemon[2]->getMove(0)->effect(this->getAllPokemon(), opponent->getAllInBattle(type), 2, type);
 

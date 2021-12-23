@@ -1,7 +1,7 @@
 /*! \file colors.h
     \brief Header file for coloring text.
     \details Contains the function declarations for coloring text.
-    \date 12/22/2021
+    \date 12/23/2021
     \version 1.0
     \author Matthew Moore
 */
@@ -11,10 +11,12 @@
 #include <ncurses.h>
 #include <cstdint>
 #include <string>
-#include "pokemon.h"
-#include "typeEnums.h"
+#include <types/typeEnums.h>
+#include <trainer/pokemon/pokemon.h>
 
 typedef uint16_t us; /*!< Shorthand for unsigned short */
+
+class Pokemon;
 
 // For ncurses init_color function
 
