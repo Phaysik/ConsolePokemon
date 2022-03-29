@@ -9,14 +9,8 @@
 
 #include <cstdint>
 
-typedef uint16_t us;
+using us = uint16_t; /*!< Shorthand for unsigned short */
 
 // For Pokemon constants
 const us MAX_POKEMON = 5;
 const us MAX_MOVES = 4;
-
-// For input constants
-const us ARROW_UP = 259;
-const us ARROW_DOWN = 258;
-const us ARROW_LEFT = 260;
-const us ARROW_RIGHT = 261;

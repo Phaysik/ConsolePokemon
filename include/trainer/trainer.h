@@ -1,7 +1,7 @@
 /*! \file trainer.h
     \brief Header file for the Pokemon trainer.
     \details Contains the function declarations for the Pokemon trainer.
-    \date 12/23/2021
+    \date 03/29/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -14,7 +14,7 @@
 #include <output/display.h>
 #include <types/typeEnums.h>
 
-typedef uint16_t us; /*!< Shorthand for unsigned short */
+using us = uint16_t; /*!< Shorthand for unsigned short */
 
 class Pokemon;
 class Display;

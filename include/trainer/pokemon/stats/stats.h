@@ -1,7 +1,7 @@
 /*! \file stats.h
     \brief Header file for Pokemon stats.
     \details Contains the function declarations for the Pokemon stats.
-    \date 10/13/2021
+    \date 03/29/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -10,12 +10,12 @@
 
 #include <cstdint>
 
-typedef uint16_t us; /*!< Shorthand for unsigned short */
+using us = uint16_t; /*!< Shorthand for unsigned short */
 
 /*! \headerfile stats.h
     \brief Pokemon stats
     \details Creates the properties of a Pokemon stats the functions that will affect those stats
-    \date 10/13/2021
+    \date 03/29/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -24,12 +24,12 @@ class Stats
 public:
     /* Constructors and Destructors */
 
-    /*! \brief Empty constructor
-        \date 10/08/2021
+    /*! \brief Default constructor
+        \date 03/29/2022
         \version 1.0
         \author Matthew Moore
     */
-    inline Stats() {}
+    inline Stats() = default;
 
     /*! \brief Parameterized constructor
         \details Initializes every member variable to build up a Stat object

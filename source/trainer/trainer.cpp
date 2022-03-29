@@ -63,16 +63,16 @@ void Trainer::engage(Trainer *opponent, const BattleType type)
 
         switch (userInput)
         {
-        case ARROW_LEFT:
+        case KEY_LEFT:
             actionPos = static_cast<us>(abs(actionPos - 1) % 2 + (actionPos <= 1 ? 0 : 2));
             break;
-        case ARROW_RIGHT:
+        case KEY_RIGHT:
             actionPos = static_cast<us>((actionPos + 1) % 2 + (actionPos <= 1 ? 0 : 2));
             break;
-        case ARROW_UP:
+        case KEY_UP:
             actionPos = static_cast<us>((actionPos + 2) % 4);
             break;
-        case ARROW_DOWN:
+        case KEY_DOWN:
             actionPos = static_cast<us>(abs(actionPos - 2) % 4 + (actionPos != 1 ? 0 : 2));
             break;
         default:

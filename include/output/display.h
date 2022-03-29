@@ -14,7 +14,7 @@
 #include <types/typeEnums.h>
 #include <trainer/pokemon/pokemon.h>
 
-typedef uint16_t us; /*!< Shorthand for unsigned short */
+using us = uint16_t; /*!< Shorthand for unsigned short */
 
 class Pokemon;
 class ColoredText;

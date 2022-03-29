@@ -1,7 +1,7 @@
 /*! \file pokemon.h
     \brief Header file for Pokemon.
     \details Contains the function declarations for the Pokemon information.
-    \date 12/23/2021
+    \date 03/29/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -10,7 +10,7 @@
 
 #include <cstdint>
 
-typedef uint16_t us; /*!< Shorthand for unsigned short */
+using us = uint16_t; /*!< Shorthand for unsigned short */
 
 #include <unordered_map>
 #include <string>
@@ -26,7 +26,7 @@ class MoveAbstract;
 /*! \headerfile pokemon.h
     \brief What Pokemon can do
     \details Creates the properties of a Pokemon and the functions that will affect it
-    \date 12/23/2021
+    \date 03/29/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -35,12 +35,12 @@ class Pokemon
 public:
     /* Constructors and Destructors */
 
-    /*! \brief Empty constructor
-        \date 10/08/2021
+    /*! \brief Default constructor
+        \date 03/29/2022
         \version 1.0
         \author Matthew Moore
     */
-    inline Pokemon(){};
+    inline Pokemon() = default;
 
     /*! \brief Parameterized constructor
         \details Will initialize most member variables with the parameters

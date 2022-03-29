@@ -13,14 +13,14 @@
 #include <trainer/trainer.h>
 #include <types/typeEnums.h>
 
-typedef uint16_t us; /*!< Shorthand for unsigned short */
+using us = uint16_t; /*!< Shorthand for unsigned short */
 
 class Pokemon;
 
 /*! \headerfile moves.h
     \brief What moves can do
     \details Creates the properties of a Pokemon move and the functions that will affect the battle
-    \date 10/07/2021
+    \date 03/29/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -29,12 +29,12 @@ class MoveAbstract
 public:
     /* Constructors and Destructors */
 
-    /*! \brief Empty constructor
-        \date 10/07/2021
+    /*! \brief Default constructor
+        \date 03/29/2022
         \version 1.0
         \author Matthew Moore
     */
-    inline MoveAbstract(){};
+    inline MoveAbstract() = default;
 
     /*! \brief Parameterized constructor
         \details Will initialize all member variables with the parameters
@@ -137,7 +137,7 @@ protected:
 /*! \headerfile moves.h
     \brief Declaration for each Pokemon move
     \details Creates the move based on all of it's parameters
-    \date 10/07/2021
+    \date 03/29/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -146,18 +146,18 @@ struct Move
     /* Constructors and Destructors */
 
     /*! \brief Empty constructor
-        \date 10/07/2021
+        \date 03/29/2022
         \version 1.0
         \author Matthew Moore
     */
     Move(){};
 
-    /*! \brief Empty destructor
-        \date 10/07/2021
+    /*! \brief Default destructor
+        \date 03/29/2022
         \version 1.0
         \author Matthew Moore
     */
-    ~Move(){};
+    ~Move() = default;
 
     // TODO make this a dictionary?
     MoveAbstract growl = MoveAbstract(Normal, 0, 100, 40, "Growl");

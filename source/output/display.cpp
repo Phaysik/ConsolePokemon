@@ -155,10 +155,6 @@ void Display::displayBattleMenu(Pokemon **trainerPoke, Pokemon **opponentPoke, c
     oppLength = static_cast<int>(opponentPoke[pokeIndex]->getName().length());
     int width = tranLength;
 
-    if (action)
-    {
-    }
-
     if (oppLength > tranLength)
         width += oppLength - tranLength;
 
