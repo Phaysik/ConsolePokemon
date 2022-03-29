@@ -1,7 +1,7 @@
 /*! \file game.cpp
     \brief C++ file for the Game.
     \details Contains the function definitions for Game
-    \date 12/23/2021
+    \date 03/29/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -13,6 +13,8 @@
 Game::Game()
 {
     initscr();
+
+    curs_set(0); // No cursor
 
     if (has_colors() == FALSE)
     {
@@ -85,7 +87,7 @@ void Game::testing()
     delete[] moves;
     delete stats;
 
-    //TODO set up a battle simulation
+    // TODO set up a battle simulation
     opponent.engage(&trainer, BattleType::Quintuple);
 
     // See the effect of the move
@@ -96,6 +98,4 @@ void Game::testing()
     //     printw("%s\tDefense: ", poke->getName().c_str());
     //     printw("%d\tDefense Multiplier: %0.2f\n", pokeStats->getDefense(), pokeStats->getDefenseMultiplier());
     // }
-
-    getch();
 }

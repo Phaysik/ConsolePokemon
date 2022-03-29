@@ -1,7 +1,7 @@
 /*! \file display.cpp
     \brief C++ file for displaying text.
     \details Contains the function definitions for displaying text.
-    \date 12/23/2021
+    \date 03/29/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -10,7 +10,7 @@
 
 /* Member Functions */
 
-void Display::printBattleState(Pokemon **trainerEngaged, Pokemon **opponentEngaged, const BattleType type, const bool mainChar) const
+void Display::printBattleState(Pokemon **trainerEngaged, Pokemon **opponentEngaged, const BattleType type, const bool mainChar, const us action) const
 {
     us loopCond = static_cast<us>(type + 1);
     us *maxWidth = new us[loopCond];
@@ -44,9 +44,9 @@ void Display::printBattleState(Pokemon **trainerEngaged, Pokemon **opponentEngag
     refresh();
 
     if (!mainChar)
-        this->displayBattleMenu(opponentEngaged, trainerEngaged, loopCond, 0);
+        this->displayBattleMenu(opponentEngaged, trainerEngaged, loopCond, 0, action);
     else
-        this->displayBattleMenu(trainerEngaged, opponentEngaged, loopCond, 0);
+        this->displayBattleMenu(trainerEngaged, opponentEngaged, loopCond, 0, action);
 
     delete[] maxWidth;
 }
@@ -148,12 +148,16 @@ void Display::outputHp(Pokemon **trainerPoke, Pokemon **opponentPoke, const us l
     mainCharacter = !mainCharacter;
 }
 
-void Display::displayBattleMenu(Pokemon **trainerPoke, Pokemon **opponentPoke, const us loopCond, const us pokeIndex) const
+void Display::displayBattleMenu(Pokemon **trainerPoke, Pokemon **opponentPoke, const us loopCond, const us pokeIndex, const us action) const
 {
     int oppLength, tranLength;
     tranLength = static_cast<int>(trainerPoke[pokeIndex]->getName().length());
     oppLength = static_cast<int>(opponentPoke[pokeIndex]->getName().length());
     int width = tranLength;
+
+    if (action)
+    {
+    }
 
     if (oppLength > tranLength)
         width += oppLength - tranLength;
@@ -189,12 +193,48 @@ void Display::displayBattleMenu(Pokemon **trainerPoke, Pokemon **opponentPoke, c
 
     tranLength = static_cast<int>(name.length());
 
-    printw("%*s\n", 5 + tranLength, name.c_str());
+    if (action == 0)
+    {
+        attron(A_BOLD);
+        printw("%*s", 2 + tranLength, "Fight     ");
+        attroff(A_BOLD);
+    }
+    else
+        printw("%*s", 2 + tranLength, "Fight     ");
+
     refresh();
 
-    name = "Pokemon     Run";
+    if (action == 1)
+    {
+        attron(A_BOLD);
+        printw("%s\n", "Bag");
+        attroff(A_BOLD);
+    }
+    else
+        printw("%s\n", "Bag");
 
-    printw("%*s\n", width + 5 + oppLength - (oppLength - tranLength), name.c_str());
+    refresh();
+
+    if (action == 2)
+    {
+        attron(A_BOLD);
+        printw("%*s", width + 2 + oppLength - (oppLength - tranLength), "Pokemon     ");
+        attroff(A_BOLD);
+    }
+    else
+        printw("%*s", width + 2 + oppLength - (oppLength - tranLength), "Pokemon     ");
+
+    refresh();
+
+    if (action == 3)
+    {
+        attron(A_BOLD);
+        printw("%s\n", "Run");
+        attroff(A_BOLD);
+    }
+    else
+        printw("%s\n", "Run");
+
     refresh();
 
     return;

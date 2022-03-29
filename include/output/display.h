@@ -1,7 +1,7 @@
 /*! \file display.h
     \brief Header file for displaying text.
     \details Contains the function declarations for displaying text.
-    \date 12/23/2021
+    \date 03/29/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -22,7 +22,7 @@ class ColoredText;
 /*! \headerfile display.h
     \brief Displays text
     \details Outputs based on the state of the game
-    \date 12/23/2021
+    \date 03/29/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -38,11 +38,12 @@ public:
         \param opponentEngaged The engaged trainer's Pokemon
         \param type The #BattleType of the battle
         \param mainChar If the trainer is the main character
-        \date 12/22/2021
+        \param choice The action choice in the battle state
+        \date 03/29/2022
         \version 1.0
         \author Matthew Moore
     */
-    void printBattleState(Pokemon **trainerEngaged, Pokemon **opponentEngaged, const BattleType type, const bool mainChar) const;
+    void printBattleState(Pokemon **trainerEngaged, Pokemon **opponentEngaged, const BattleType type, const bool mainChar, const us choice) const;
 
     /*! \brief Gets max widths of all engaged Pokemon
         \pre All pointer params must be the same length
@@ -90,11 +91,12 @@ public:
         \param opponentPoke The engaged trainer's Pokemon
         \param loopCond The loop terminating condition
         \param pokeIndex The index of the Pokemon in action
-        \date 12/22/2021
+        \param choice The action choice in the battle state
+        \date 03/29/2022
         \version 1.0
         \author Matthew Moore
     */
-    void displayBattleMenu(Pokemon **trainerPoke, Pokemon **opponentPoke, const us loopCond, const us pokeIndex) const;
+    void displayBattleMenu(Pokemon **trainerPoke, Pokemon **opponentPoke, const us loopCond, const us pokeIndex, const us choice) const;
 
     /* Setters */
 

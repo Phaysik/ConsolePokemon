@@ -1,7 +1,7 @@
 /*! \file trainer.cpp
     \brief C++ file for Pokemon trainer.
     \details Contains the function definitions for the Pokemon trainer.
-    \date 12/23/2021
+    \date 03/29/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -49,7 +49,45 @@ void Trainer::engage(Trainer *opponent, const BattleType type)
     Pokemon **trainerEngaged = this->getAllInBattle(type);
     Pokemon **opponentEngaged = opponent->getAllInBattle(type);
 
-    this->display->printBattleState(trainerEngaged, opponentEngaged, type, this->getMainCharacter());
+    us actionPos = 0;
+
+    this->display->printBattleState(trainerEngaged, opponentEngaged, type, this->getMainCharacter(), actionPos);
+
+    int userInput;
+
+    do
+    {
+        userInput = getch();
+
+        bool noChange = false;
+
+        switch (userInput)
+        {
+        case ARROW_LEFT:
+            actionPos = static_cast<us>(abs(actionPos - 1) % 2 + (actionPos <= 1 ? 0 : 2));
+            break;
+        case ARROW_RIGHT:
+            actionPos = static_cast<us>((actionPos + 1) % 2 + (actionPos <= 1 ? 0 : 2));
+            break;
+        case ARROW_UP:
+            actionPos = static_cast<us>((actionPos + 2) % 4);
+            break;
+        case ARROW_DOWN:
+            actionPos = static_cast<us>(abs(actionPos - 2) % 4 + (actionPos != 1 ? 0 : 2));
+            break;
+        default:
+            noChange = true;
+            break;
+        }
+
+        if (!noChange) // Don't reprint if a different choice was not made
+        {
+            clear();
+
+            this->display->printBattleState(trainerEngaged, opponentEngaged, type, this->getMainCharacter(), actionPos);
+        }
+
+    } while (userInput != 103); // This is the 'g' key for testing purposes
 
     this->trainerPokemon[2]->getMove(0)->effect(this->getAllPokemon(), opponent->getAllInBattle(type), 2, type);
 

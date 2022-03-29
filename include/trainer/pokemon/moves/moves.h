@@ -1,7 +1,7 @@
 /*! \file moves.h
     \brief Header file for Pokemon moves.
     \details Contains the function declarations for the Pokemon moves.
-    \date 12/23/2021
+    \date 03/29/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -159,6 +159,7 @@ struct Move
     */
     ~Move(){};
 
+    // TODO make this a dictionary?
     MoveAbstract growl = MoveAbstract(Normal, 0, 100, 40, "Growl");
     MoveAbstract tackle = MoveAbstract(Normal, 40, 100, 35, "Tackle");
     MoveAbstract headbutt = MoveAbstract(Normal, 70, 100, 15, "Headbutt");
