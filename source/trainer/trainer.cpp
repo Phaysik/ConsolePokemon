@@ -1,7 +1,7 @@
 /*! \file trainer.cpp
     \brief C++ file for Pokemon trainer.
     \details Contains the function definitions for the Pokemon trainer.
-    \date 03/29/2022
+    \date 04/05/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -88,6 +88,8 @@ void Trainer::engage(Trainer *opponent, const BattleType type)
         }
 
     } while (userInput != 103); // This is the 'g' key for testing purposes
+
+    clear();
 
     this->trainerPokemon[2]->getMove(0)->effect(this->getAllPokemon(), opponent->getAllInBattle(type), 2, type);
 

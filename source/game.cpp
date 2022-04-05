@@ -1,7 +1,7 @@
 /*! \file game.cpp
     \brief C++ file for the Game.
     \details Contains the function definitions for Game
-    \date 03/29/2022
+    \date 04/05/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -39,10 +39,14 @@ Game::Game()
     this->colorText = new ColoredText();
 
     this->display.setColorText(this->colorText);
+
+    this->thread = std::thread(&Game::testing, this); // Thread the testing function
 }
 
 Game::~Game()
 {
+    this->thread.join();
+
     endwin();
 
     delete this->colorText;

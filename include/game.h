@@ -1,13 +1,14 @@
 /*! \file game.h
     \brief Header file for Game.
     \details Contains the function declarations for Game information
-    \date 12/23/2021
+    \date 04/05/2022
     \version 1.0
     \author Matthew Moore
 */
 
 #pragma once
 
+#include <thread>
 #include <ncurses.h>
 #include <string>
 #include <constants.h>
@@ -22,7 +23,7 @@
 /*! \headerfile game.h
     \brief The game
     \details Creates the properties of a Game and the functions that will affect it.
-    \date 12/22/2021
+    \date 04/05/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -57,4 +58,5 @@ public:
 private:
     Display display;        /*!< For displaying text */
     ColoredText *colorText; /*!< For displaying text in color */
+    std::thread thread;     /*!< For threading the console portion of the application */
 };
