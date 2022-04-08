@@ -103,3 +103,20 @@ void Game::testing()
     //     printw("%d\tDefense Multiplier: %0.2f\n", pokeStats->getDefense(), pokeStats->getDefenseMultiplier());
     // }
 }
+
+void Game::startWindow()
+{
+    GLFWwindow *window = this->openGL.getWindow();
+
+    while (!glfwWindowShouldClose(window))
+    {
+        // UPDATE INPUT
+        glfwPollEvents();
+
+        // END DRAW
+        glfwSwapBuffers(window);
+        glFlush();
+    }
+
+    this->openGL.destroyWindow();
+}

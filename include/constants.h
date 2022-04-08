@@ -14,3 +14,7 @@ using us = uint16_t; /*!< Shorthand for unsigned short */
 // For Pokemon constants
 const us MAX_POKEMON = 5;
 const us MAX_MOVES = 4;
+
+// For GLWindow constants
+const us WINDOW_WIDTH = 640;
+const us WINDOW_HEIGHT = 480;
