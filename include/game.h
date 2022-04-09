@@ -1,7 +1,7 @@
 /*! \file game.h
     \brief Header file for Game.
     \details Contains the function declarations for Game information
-    \date 04/08/2022
+    \date 04/09/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -11,10 +11,12 @@
 #include <thread>
 #include <ncurses.h>
 #include <string>
-#include <GL/glew.h>
+
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
+
 #include "constants.h"
-#include "window.h"
+#include "opengl/window.h"
 #include "output/display.h"
 #include "output/colors.h"
 #include "trainer/trainer.h"
@@ -26,7 +28,7 @@
 /*! \headerfile game.h
     \brief The game
     \details Creates the properties of a Game and the functions that will affect it.
-    \date 04/08/2022
+    \date 04/09/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -58,11 +60,17 @@ public:
     */
     void testing();
 
+    /*! \brief Start OpenGL window
+        \pre The OpenGL window must be initialized.
+        \date 04/09/2022
+        \version 1.0
+        \author Matthew Moore
+    */
     void startWindow();
 
 private:
     Display display;        /*!< For displaying text */
     ColoredText *colorText; /*!< For displaying text in color */
     std::thread thread;     /*!< For threading the console portion of the application */
-    GLInfo openGL;          /*!< For handling OpenGL info */
+    Window openGL;          /*!< For handling OpenGL info */
 };

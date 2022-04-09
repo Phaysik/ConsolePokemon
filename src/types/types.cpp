@@ -35,7 +35,7 @@ TypeEffective::~TypeEffective()
 
 void TypeEffective::readFile()
 {
-    std::ifstream file("typechart.txt");
+    std::ifstream file("resources/text/typechart.txt");
 
     us val, inputAmount = 0;
 

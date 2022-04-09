@@ -1,14 +1,14 @@
 /*! \file shader.h
     \brief Header file for creating shaders.
     \details Contains the function declarations for Shaders.
-    \date 04/08/2022
+    \date 04/09/2022
     \version 1.0
     \author Matthew Moore
 */
 
 #pragma once
 
-#include <GL/glew.h>
+#include <glad/glad.h>
 #include <glm/glm.hpp>
 
 #include <string>
@@ -16,6 +16,13 @@
 #include <sstream>
 #include <iostream>
 
+/*! \headerfile shader.h
+    \brief Shader class.
+    \details For creating shaders.
+    \date 04/08/2022
+    \version 1.0
+    \author Matthew Moore
+*/
 class Shader
 {
 public:
@@ -31,6 +38,17 @@ public:
         \author Matthew Moore
     */
     Shader(const char *vertexPath, const char *fragmentPath, const char *geometryPath = nullptr);
+
+    /* Getters */
+
+    /*! \brief Get shader id
+        \pre Shader must already be created.
+        \date 04/08/2022
+        \version 1.0
+        \author Matthew Moore
+        \return unsigned int
+    */
+    unsigned int getID() const;
 
     /* Setters */
 

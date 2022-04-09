@@ -1,7 +1,7 @@
 /*! \file types.h
     \brief Header file for getting type effectiveness.
     \details Contains the declarations for comparing types against one another.
-    \date 03/29/2022
+    \date 04/09/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -17,7 +17,7 @@ using us = uint16_t; /*!< Shorthand for unsigned short */
 /*! \headerfile types.h
     \brief Type effectiveness
     \details How types stack up against one another.
-    \date 10/07/2021
+    \date 04/09/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -49,7 +49,7 @@ public:
     /*! \brief Read the file 'typechart.txt'
         \details Using 'typechart.txt', create a type chart based on the contents of the file
         \pre Requires the type chart to already be allocated in memory
-        \date 10/07/2021
+        \date 04/09/2022
         \version 1.0
         \author Matthew Moore
     */

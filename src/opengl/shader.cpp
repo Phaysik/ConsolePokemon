@@ -6,7 +6,7 @@
     \author Matthew Moore
 */
 
-#include "shader.h"
+#include "opengl/shader.h"
 
 Shader::Shader(const char *vertexPath, const char *fragmentPath, const char *geometryPath)
 {
@@ -64,7 +64,7 @@ Shader::Shader(const char *vertexPath, const char *fragmentPath, const char *geo
     const char *fShaderCode = fragmentCode.c_str();
 
     // 2. compile shaders
-    unsigned int vertex = 0, fragment = 0;
+    unsigned int vertex, fragment;
 
     // vertex shader
     vertex = glCreateShader(GL_VERTEX_SHADER);
@@ -107,6 +107,12 @@ Shader::Shader(const char *vertexPath, const char *fragmentPath, const char *geo
 
     if (geometryPath != nullptr)
         glDeleteShader(geometry);
+}
+
+/* Getters */
+unsigned int Shader::getID() const
+{
+    return this->ID;
 }
 
 /* Setters */
