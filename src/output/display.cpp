@@ -1,12 +1,12 @@
 /*! \file display.cpp
     \brief C++ file for displaying text.
     \details Contains the function definitions for displaying text.
-    \date 03/29/2022
+    \date 04/11/2022
     \version 1.0
     \author Matthew Moore
 */
 
-#include <output/display.h>
+#include "output/display.h"
 
 /* Member Functions */
 

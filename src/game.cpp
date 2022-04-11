@@ -1,12 +1,12 @@
 /*! \file game.cpp
     \brief C++ file for the Game.
     \details Contains the function definitions for Game
-    \date 04/09/2022
+    \date 04/11/2022
     \version 1.0
     \author Matthew Moore
 */
 
-#include <game.h>
+#include "game.h"
 
 /* Constructors and Destructors */
 
@@ -108,14 +108,16 @@ void Game::startWindow()
 {
     GLFWwindow *window = this->openGL.getWindow();
 
-    Shader *textShader = this->openGL.getText()->getShader();
+    Text *textRenderer = this->openGL.getText();
+
+    Shader *textShader = textRenderer->getShader();
 
     while (!glfwWindowShouldClose(window))
     {
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        this->openGL.getText()->renderText(*textShader, "This is sample text", 25.0f, 25.0f, 1.0f, glm::vec3(0.5, 0.8f, 0.2f));
+        textRenderer->renderText(*textShader, "This is sample text", 25.0f, 25.0f, 1.0f, glm::vec3(0.5, 0.8f, 0.2f));
 
         // END DRAW
         glfwSwapBuffers(window);

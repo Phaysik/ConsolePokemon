@@ -1,20 +1,20 @@
 /*! \file shader.h
     \brief Header file for creating shaders.
     \details Contains the function declarations for Shaders.
-    \date 04/09/2022
+    \date 04/11/2022
     \version 1.0
     \author Matthew Moore
 */
 
 #pragma once
 
-#include <glad/glad.h>
-#include <glm/glm.hpp>
-
 #include <string>
 #include <fstream>
 #include <sstream>
 #include <iostream>
+
+#include <glad/glad.h>
+#include <glm/glm.hpp>
 
 /*! \headerfile shader.h
     \brief Shader class.

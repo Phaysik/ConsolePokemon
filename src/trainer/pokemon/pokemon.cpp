@@ -1,29 +1,21 @@
 /*! \file pokemon.cpp
     \brief C++ file for Pokemon.
     \details Contains the function definitions for the Pokemon.
-    \date 12/23/2021
+    \date 04/11/2021
     \version 1.0
     \author Matthew Moore
 */
 
-#include <trainer/pokemon/pokemon.h>
+#include "trainer/pokemon/pokemon.h"
 
 /* Constructors and Destructors */
 
-Pokemon::Pokemon(Stats &pokeStats, MoveAbstract *pokeMoves, Types *pokeTypes, const bool pokeDualTyping, const std::string &pokeName)
+Pokemon::Pokemon(Stats &pokeStats, MoveAbstract *pokeMoves, Types *pokeTypes, const bool pokeDualTyping, const std::string &pokeName) : moves(new MoveAbstract[MAX_MOVES]), dualTyping(pokeDualTyping), name(pokeName), typing(new Types[pokeDualTyping + 1])
 {
-    this->name = pokeName;
-
     this->stats = pokeStats;
-
-    this->moves = new MoveAbstract[MAX_MOVES];
-
-    this->dualTyping = pokeDualTyping;
 
     for (us i = 0; i < MAX_MOVES; ++i)
         this->moves[i] = pokeMoves[i];
-
-    this->typing = new Types[pokeDualTyping + 1];
 
     for (us i = 0; i < pokeDualTyping + 1; ++i)
         this->typing[i] = pokeTypes[i];

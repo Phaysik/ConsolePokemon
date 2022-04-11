@@ -1,7 +1,7 @@
 /*! \file moves.h
     \brief Header file for Pokemon moves.
     \details Contains the function declarations for the Pokemon moves.
-    \date 03/29/2022
+    \date 04/11/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -10,8 +10,9 @@
 
 #include <cstdint>
 #include <string>
-#include <trainer/trainer.h>
-#include <types/typeEnums.h>
+
+#include "trainer/trainer.h"
+#include "types/typeEnums.h"
 
 using us = uint16_t; /*!< Shorthand for unsigned short */
 

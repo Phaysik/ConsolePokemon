@@ -1,24 +1,17 @@
 /*! \file trainer.cpp
     \brief C++ file for Pokemon trainer.
     \details Contains the function definitions for the Pokemon trainer.
-    \date 04/05/2022
+    \date 04/11/2022
     \version 1.0
     \author Matthew Moore
 */
 
-#include <trainer/trainer.h>
+#include "trainer/trainer.h"
 
 /* Constructors and Destructors */
 
-Trainer::Trainer(Display *disp, const bool isMainCharacter)
+Trainer::Trainer(Display *disp, const bool isMainCharacter) : trainerPokemon(new Pokemon *[MAX_POKEMON]), inBattle(new Pokemon *[MAX_POKEMON]), isPlayableCharacter(isMainCharacter), display(disp)
 {
-    this->trainerPokemon = new Pokemon *[MAX_POKEMON];
-    this->inBattle = new Pokemon *[MAX_POKEMON];
-
-    this->isPlayableCharacter = isMainCharacter;
-
-    this->display = disp;
-
     for (us i = 0; i < MAX_POKEMON; ++i)
     {
         this->trainerPokemon[i] = nullptr;
