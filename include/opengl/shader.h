@@ -9,194 +9,166 @@
 #pragma once
 
 #include <string>
-#include <fstream>
-#include <sstream>
 #include <iostream>
 
 #include <glad/glad.h>
 #include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 /*! \headerfile shader.h
     \brief Shader class.
     \details For creating shaders.
-    \date 04/08/2022
+    \date 04/11/2022
     \version 1.0
     \author Matthew Moore
 */
 class Shader
 {
 public:
+    unsigned int ID; /*!< The shader's ID */
+
     /* Constructors and Destructors */
 
-    /*! \brief Generates a shader on the fly.
-        \post A shader using the filePaths are created.
-        \param vertexPath Path to the vertex shader.
-        \param fragmentPath Path to the fragment shader.
-        \param geometryPath Path to the geometry shader.
-        \date 04/08/2022
+    /*! \brief Creates a Shader object.
+        \date 04/11/2022
         \version 1.0
         \author Matthew Moore
     */
-    Shader(const char *vertexPath, const char *fragmentPath, const char *geometryPath = nullptr);
-
-    /* Getters */
-
-    /*! \brief Get shader id
-        \pre Shader must already be created.
-        \date 04/08/2022
-        \version 1.0
-        \author Matthew Moore
-        \return unsigned int
-    */
-    unsigned int getID() const;
+    Shader(){};
 
     /* Setters */
 
     /*! \brief Uniform setter
         \pre The shader must be created and in use.
         \post The uniform is changed.
-        \param name The name of the uniform
-        \param value The value of the uniform
-        \date 04/08/2022
+        \param name The name of the uniform.
+        \param value The value of the uniform.
+        \param useShader Whether or not to use the shader.
+        \date 04/11/2022
         \version 1.0
         \author Matthew Moore
     */
-    void setBool(const std::string &name, bool value) const;
+    void setInteger(const char *name, int value, bool useShader = false);
 
     /*! \brief Uniform setter
         \pre The shader must be created and in use.
         \post The uniform is changed.
-        \param name The name of the uniform
-        \param value The value of the uniform
-        \date 04/08/2022
+        \param name The name of the uniform.
+        \param value The value of the uniform.
+        \param useShader Whether or not to use the shader.
+        \date 04/11/2022
         \version 1.0
         \author Matthew Moore
     */
-    void setInt(const std::string &name, int value) const;
+    void setFloat(const char *name, float value, bool useShader = false);
 
     /*! \brief Uniform setter
         \pre The shader must be created and in use.
         \post The uniform is changed.
-        \param name The name of the uniform
-        \param value The value of the uniform
-        \date 04/08/2022
+        \param name The name of the uniform.
+        \param value The value of the uniform.
+        \param useShader Whether or not to use the shader.
+        \date 04/11/2022
         \version 1.0
         \author Matthew Moore
     */
-    void setFloat(const std::string &name, float value) const;
+    void setVec2f(const char *name, const glm::vec2 &value, bool useShader = false);
 
     /*! \brief Uniform setter
         \pre The shader must be created and in use.
         \post The uniform is changed.
-        \param name The name of the uniform
-        \param value The value of the uniform
-        \date 04/08/2022
+        \param name The name of the uniform.
+        \param value The value of the uniform.
+        \param useShader Whether or not to use the shader.
+        \date 04/11/2022
         \version 1.0
         \author Matthew Moore
     */
-    void setVec2(const std::string &name, const glm::vec2 &value) const;
+    void setVec2f(const char *name, float x, float y, bool useShader = false);
 
     /*! \brief Uniform setter
         \pre The shader must be created and in use.
         \post The uniform is changed.
-        \param name The name of the uniform
-        \param value The value of the uniform
-        \date 04/08/2022
+        \param name The name of the uniform.
+        \param value The value of the uniform.
+        \param useShader Whether or not to use the shader.
+        \date 04/11/2022
         \version 1.0
         \author Matthew Moore
     */
-    void setVec2(const std::string &name, float x, float y) const;
+    void setVec3f(const char *name, const glm::vec3 &value, bool useShader = false);
 
     /*! \brief Uniform setter
         \pre The shader must be created and in use.
         \post The uniform is changed.
-        \param name The name of the uniform
-        \param value The value of the uniform
-        \date 04/08/2022
+        \param name The name of the uniform.
+        \param value The value of the uniform.
+        \param useShader Whether or not to use the shader.
+        \date 04/11/2022
         \version 1.0
         \author Matthew Moore
     */
-    void setVec3(const std::string &name, const glm::vec3 &value) const;
+    void setVec3f(const char *name, float x, float y, float z, bool useShader = false);
 
     /*! \brief Uniform setter
         \pre The shader must be created and in use.
         \post The uniform is changed.
-        \param name The name of the uniform
-        \param value The value of the uniform
-        \date 04/08/2022
+        \param name The name of the uniform.
+        \param value The value of the uniform.
+        \param useShader Whether or not to use the shader.
+        \date 04/11/2022
         \version 1.0
         \author Matthew Moore
     */
-    void setVec3(const std::string &name, float x, float y, float z) const;
+    void setVec4f(const char *name, const glm::vec4 &value, bool useShader = false);
 
     /*! \brief Uniform setter
         \pre The shader must be created and in use.
         \post The uniform is changed.
-        \param name The name of the uniform
-        \param value The value of the uniform
-        \date 04/08/2022
+        \param name The name of the uniform.
+        \param value The value of the uniform.
+        \param useShader Whether or not to use the shader.
+        \date 04/11/2022
         \version 1.0
         \author Matthew Moore
     */
-    void setVec4(const std::string &name, const glm::vec4 &value) const;
+    void setVec4f(const char *name, float x, float y, float z, float w, bool useShader = false);
 
     /*! \brief Uniform setter
         \pre The shader must be created and in use.
         \post The uniform is changed.
-        \param name The name of the uniform
-        \param value The value of the uniform
-        \date 04/08/2022
+        \param name The name of the uniform.
+        \param value The value of the uniform.
+        \param useShader Whether or not to use the shader.
+        \date 04/11/2022
         \version 1.0
         \author Matthew Moore
     */
-    void setVec4(const std::string &name, float x, float y, float z, float w);
-
-    /*! \brief Uniform setter
-        \pre The shader must be created and in use.
-        \post The uniform is changed.
-        \param name The name of the uniform
-        \param value The value of the uniform
-        \date 04/08/2022
-        \version 1.0
-        \author Matthew Moore
-    */
-    void setMat2(const std::string &name, const glm::mat2 &mat) const;
-
-    /*! \brief Uniform setter
-        \pre The shader must be created and in use.
-        \post The uniform is changed.
-        \param name The name of the uniform
-        \param value The value of the uniform
-        \date 04/08/2022
-        \version 1.0
-        \author Matthew Moore
-    */
-    void setMat3(const std::string &name, const glm::mat3 &mat) const;
-
-    /*! \brief Uniform setter
-        \pre The shader must be created and in use.
-        \post The uniform is changed.
-        \param name The name of the uniform
-        \param value The value of the uniform
-        \date 04/08/2022
-        \version 1.0
-        \author Matthew Moore
-    */
-    void setMat4(const std::string &name, const glm::mat4 &mat) const;
+    void setMat4(const char *name, const glm::mat4 &mat, bool useShader = false);
 
     /* Helper Functions */
 
-    /*! \brief Use the shader
-        \pre The shader must be created
-        \date 04/08/2022
+    /*! \brief Use the shader and return it.
+        \pre Shader must be intialized.
+        \post Shader will be used.
+        \date 04/11/2022
+        \version 1.0
+        \author Matthew Moore
+        \return Shader
+    */
+    Shader &Use();
+
+    /*! \brief Compile the shader.
+        \param vertexSource C-string of vertex shader source.
+        \param fragmentSource C-string of fragment shader source.
+        \param geometrySource C-string of geometry shader source.
+        \date 04/11/2022
         \version 1.0
         \author Matthew Moore
     */
-    void use();
+    void Compile(const char *vertexSource, const char *fragmentSource, const char *geometrySource = nullptr);
 
 private:
-    unsigned int ID;
-
     /*! \brief Check errors
         \details Check shader compilation/linking errors
         \param shader The shader to check

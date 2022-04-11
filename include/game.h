@@ -1,7 +1,7 @@
 /*! \file game.h
     \brief Header file for Game.
     \details Contains the function declarations for Game information
-    \date 04/09/2022
+    \date 04/11/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -16,7 +16,8 @@
 #include <GLFW/glfw3.h>
 
 #include "constants.h"
-#include "opengl/window.h"
+#include "opengl/resourceManager.h"
+#include "opengl/text.h"
 #include "output/display.h"
 #include "output/colors.h"
 #include "trainer/trainer.h"
@@ -25,10 +26,20 @@
 #include "trainer/pokemon/moves/moves.h"
 #include "types/typeEnums.h"
 
+/*! \brief Make sure the viewport matches the new window dimensions
+    \param window The GLFW window to resize
+    \param width The width of the GLFW window
+    \param height The height of the window
+    \date 04/11/2022
+    \version 1.0
+    \author Matthew Moore
+*/
+void framebuffer_size_callback(GLFWwindow *window, int width, int height);
+
 /*! \headerfile game.h
     \brief The game
     \details Creates the properties of a Game and the functions that will affect it.
-    \date 04/09/2022
+    \date 04/11/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -38,14 +49,14 @@ public:
     /* Constructors and Destructors */
 
     /*! \brief Construct ncurses window and keyboard functionality
-        \date 12/22/2021
+        \date 04/11/2022
         \version 1.0
         \author Matthew Moore
     */
     Game();
 
     /*! \brief Deallocate ncurses window
-        \date 12/21/2021
+        \date 04/11/2022
         \version 1.0
         \author Matthew Moore
     */
@@ -62,7 +73,7 @@ public:
 
     /*! \brief Start OpenGL window
         \pre The OpenGL window must be initialized.
-        \date 04/09/2022
+        \date 04/11/2022
         \version 1.0
         \author Matthew Moore
     */
@@ -72,5 +83,24 @@ private:
     Display display;        /*!< For displaying text */
     ColoredText *colorText; /*!< For displaying text in color */
     std::thread thread;     /*!< For threading the console portion of the application */
-    Window openGL;          /*!< For handling OpenGL info */
+    GLFWwindow *window;     /*!< For creating a OpenGL window */
+    Text *text;
+
+    /* Helper Functions */
+
+    /*! \brief Initialize Ncurses information
+        \post Ncurses will be initialized.
+        \date 04/11/2022
+        \version 1.0
+        \author Matthew Moore
+    */
+    void initNcurses();
+
+    /*! \brief Initalize OpenGL information
+        \post #window, #text will be initialized.
+        \date 04/11/2022
+        \version 1.0
+        \author Matthew Moore
+    */
+    void initOpenGL();
 };

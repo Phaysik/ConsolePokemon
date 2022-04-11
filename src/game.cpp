@@ -12,29 +12,9 @@
 
 Game::Game()
 {
-    initscr();
+    this->initNcurses();
 
-    curs_set(0); // No cursor
-
-    if (has_colors() == FALSE)
-    {
-        endwin();
-        printf("Your terminal does not support color.");
-        exit(1);
-    }
-
-    start_color(); /* Start color 			*/
-
-    if (can_change_color() == FALSE)
-    {
-        endwin();
-        printf("Your terminal does not support color changing.");
-        exit(1);
-    }
-
-    raw();                /* Line buffering disabled */
-    noecho();             /* Don't echo() while we do getch */
-    keypad(stdscr, TRUE); /* We get F1, F2 etc.. */
+    this->initOpenGL();
 
     this->colorText = new ColoredText();
 
@@ -50,6 +30,8 @@ Game::~Game()
     endwin();
 
     delete this->colorText;
+
+    delete this->text;
 }
 
 /* Helper functions */
@@ -92,7 +74,7 @@ void Game::testing()
     delete stats;
 
     // TODO set up a battle simulation
-    opponent.engage(&trainer, BattleType::Quintuple);
+    opponent.engage(&trainer, BATTLETYPE);
 
     // See the effect of the move
     // for (us i = 0; i < 5; ++i)
@@ -106,26 +88,89 @@ void Game::testing()
 
 void Game::startWindow()
 {
-    GLFWwindow *window = this->openGL.getWindow();
-
-    Text *textRenderer = this->openGL.getText();
-
-    Shader *textShader = textRenderer->getShader();
-
     while (!glfwWindowShouldClose(window))
     {
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        glfwPollEvents();
+
+        // render
+        // ------
+        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        textRenderer->renderText(*textShader, "This is sample text", 25.0f, 25.0f, 1.0f, glm::vec3(0.5, 0.8f, 0.2f));
+        this->text->renderText("This is sample text", 25.0f, 25.0f, 1.0f, glm::vec3(0.5, 0.8f, 0.2f));
 
-        // END DRAW
         glfwSwapBuffers(window);
-
-        // UPDATE INPUT
-        glfwPollEvents();
-        glFlush();
     }
 
-    this->openGL.destroyWindow();
+    ResourceManager::Clear();
+
+    glfwTerminate();
+}
+
+void Game::initNcurses()
+{
+    initscr();
+
+    curs_set(0); // No cursor
+
+    if (has_colors() == FALSE)
+    {
+        endwin();
+        printf("Your terminal does not support color.");
+        exit(1);
+    }
+
+    start_color(); /* Start color 			*/
+
+    if (can_change_color() == FALSE)
+    {
+        endwin();
+        printf("Your terminal does not support color changing.");
+        exit(1);
+    }
+
+    raw();                /* Line buffering disabled */
+    noecho();             /* Don't echo() while we do getch */
+    keypad(stdscr, TRUE); /* We get F1, F2 etc.. */
+}
+
+void Game::initOpenGL()
+{
+    glfwInit();
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_RESIZABLE, false);
+
+    this->window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Pokemon Info", nullptr, nullptr);
+
+    if (window == NULL)
+    {
+        glfwTerminate();
+    }
+
+    glfwMakeContextCurrent(window); // IMPORTANT!!
+    // glfwSetFramebufferSizeCallback(window, frameBufferResize);
+
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+    {
+        glfwTerminate();
+    }
+
+    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+
+    // OpenGL state
+    glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+    this->text = new Text(WINDOW_WIDTH, WINDOW_HEIGHT);
+    this->text->load(TEXTFILE, FONTSIZE);
+}
+
+void framebuffer_size_callback(GLFWwindow *window, int width, int height)
+{
+    // make sure the viewport matches the new window dimensions; note that width and
+    // height will be significantly larger than specified on retina displays.
+    glViewport(0, 0, width, height);
 }

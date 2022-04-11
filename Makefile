@@ -16,7 +16,7 @@ compile: ${SOURCES} glad.c
 run: compile
 	./build/main
 
-debug: ${SOURCES}
+debug: ${SOURCES} glad.c
 	${COMPILER} ${CFLAGS} ${WARNINGS} ${INC} -g $^ ${LIBRARIES} -o ./build/main
 
 valgrind: debug
