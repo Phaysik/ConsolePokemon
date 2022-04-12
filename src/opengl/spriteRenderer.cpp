@@ -13,7 +13,6 @@
 SpriteRenderer::SpriteRenderer(Shader &shader)
 {
     this->spriteShader = shader;
-    this->initRenderData();
 }
 
 SpriteRenderer::~SpriteRenderer()
@@ -24,6 +23,20 @@ SpriteRenderer::~SpriteRenderer()
 /* Helper Functions */
 
 void SpriteRenderer::DrawSprite(Texture2D &texture, glm::vec2 position, glm::vec2 size, float rotate, glm::vec3 color)
+{
+    this->initRenderData(texture.vertices);
+
+    this->render(texture, position, size, rotate, color);
+}
+
+void SpriteRenderer::DrawSprite(SubTexture2D &subTexture, glm::vec2 position, glm::vec2 size, float rotate, glm::vec3 color)
+{
+    this->initRenderData(subTexture.getTexCoords());
+
+    this->render(subTexture.getTexture(), position, size, rotate, color);
+}
+
+void SpriteRenderer::render(const Texture2D &texture, glm::vec2 position, glm::vec2 size, float rotate, glm::vec3 color)
 {
     // prepare transformations
     this->spriteShader.Use();
@@ -51,25 +64,16 @@ void SpriteRenderer::DrawSprite(Texture2D &texture, glm::vec2 position, glm::vec
     glBindVertexArray(0);
 }
 
-void SpriteRenderer::initRenderData()
+void SpriteRenderer::initRenderData(const glm::vec4 *texCoords)
 {
     // configure VAO/VBO
     unsigned int VBO;
-    float vertices[] = {
-        // pos      // tex
-        0.0f, 1.0f, 0.0f, 1.0f,
-        1.0f, 0.0f, 1.0f, 0.0f,
-        0.0f, 0.0f, 0.0f, 0.0f,
-
-        0.0f, 1.0f, 0.0f, 1.0f,
-        1.0f, 1.0f, 1.0f, 1.0f,
-        1.0f, 0.0f, 1.0f, 0.0f};
 
     glGenVertexArrays(1, &this->quadVAO);
     glGenBuffers(1, &VBO);
 
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, 96, texCoords, GL_STATIC_DRAW);
 
     glBindVertexArray(this->quadVAO);
     glEnableVertexAttribArray(0);

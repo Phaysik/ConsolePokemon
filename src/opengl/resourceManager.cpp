@@ -58,13 +58,17 @@ Texture2D ResourceManager::loadTextureFromFile(const char *file, bool alpha)
         texture.Internal_Format = GL_RGBA;
         texture.Image_Format = GL_RGBA;
     }
+
     // load image
     int width, height, nrChannels;
     unsigned char *data = stbi_load(file, &width, &height, &nrChannels, 0);
+
     // now generate texture
     texture.Generate(static_cast<unsigned int>(width), static_cast<unsigned int>(height), data);
+
     // and finally free image data
     stbi_image_free(data);
+
     return texture;
 }
 

@@ -19,6 +19,7 @@
 #include "opengl/resourceManager.h"
 #include "opengl/shader.h"
 #include "opengl/texture.h"
+#include "opengl/subTexture.h"
 #include "opengl/spriteRenderer.h"
 #include "opengl/text.h"
 #include "output/display.h"

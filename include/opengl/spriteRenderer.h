@@ -12,6 +12,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
+#include "subTexture.h"
 #include "texture.h"
 #include "shader.h"
 
@@ -55,16 +56,20 @@ public:
     */
     void DrawSprite(Texture2D &texture, glm::vec2 position, glm::vec2 size = glm::vec2(10.0f, 10.0f), float rotate = 0.0f, glm::vec3 color = glm::vec3(1.0f));
 
+    void DrawSprite(SubTexture2D &subTexture, glm::vec2 position, glm::vec2 size = glm::vec2(10.0f, 10.0f), float rotate = 0.0f, glm::vec3 color = glm::vec3(1.0f));
+
 private:
     Shader spriteShader;  /*!< The shader to use for rendering */
     unsigned int quadVAO; /*!< The vertex array to use for rendering */
 
     /* Helper Functions */
 
+    void render(const Texture2D &texture, glm::vec2 position, glm::vec2 size, float rotate, glm::vec3 color);
+
     /*! \brief Initializes and configures the quad's buffer and vertex attributes
         \date 04/11/2022
         \version 1.0
         \author Matthew Moore
     */
-    void initRenderData();
+    void initRenderData(const glm::vec4 *texCoords);
 };

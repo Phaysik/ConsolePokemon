@@ -86,7 +86,9 @@ void Game::testing()
 
 void Game::startWindow()
 {
-    Texture2D texture = ResourceManager::GetTexture("background");
+    Texture2D texture = ResourceManager::GetTexture("spritesheet");
+
+    SubTexture2D subTexture = SubTexture2D::createFromCoords(texture, {7, 6}, {128, 128});
 
     while (!glfwWindowShouldClose(window))
     {
@@ -97,7 +99,7 @@ void Game::startWindow()
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        this->spriteRenderer->DrawSprite(texture, glm::vec2(0.0f, 0.0f), glm::vec2(WINDOW_WIDTH, WINDOW_HEIGHT), 0.0f);
+        this->spriteRenderer->DrawSprite(subTexture, glm::vec2(0.0f, 0.0f), glm::vec2(WINDOW_WIDTH, WINDOW_HEIGHT), 0.0f);
 
         this->textRenderer->renderText("This is sample text", 25.0f, 25.0f, 1.0f, glm::vec3(0.5, 0.8f, 0.2f));
 
@@ -181,6 +183,7 @@ void Game::initOpenGL()
 
     // load textures
     ResourceManager::LoadTexture("resources/textures/background.jpg", false, "background");
+    ResourceManager::LoadTexture("resources/textures/RPGpack_sheet_2X.png", true, "spritesheet");
 
     // Set renderer specific controls
     Shader spriteShader = ResourceManager::GetShader("sprite");

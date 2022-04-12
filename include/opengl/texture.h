@@ -11,6 +11,7 @@
 #include <iostream>
 
 #include <glad/glad.h>
+#include <glm/glm.hpp>
 
 /*! \headerfile texture.h
     \brief Creates 2D textures.
@@ -34,6 +35,8 @@ public:
     unsigned int Filter_Min; /*!< filtering mode if texture pixels < screen pixels */
 
     unsigned int Filter_Max; /*!< filtering mode if texture pixels > screen pixels */
+
+    glm::vec4 vertices[6];
 
     /* Constructors and Destructors */
 
