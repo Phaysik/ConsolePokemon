@@ -21,7 +21,7 @@ public:
 
     const glm::vec4 *getTexCoords() const;
 
-    static SubTexture2D createFromCoords(const Texture2D &texture, const glm::vec2 &coords, const glm::vec2 &spriteSheet);
+    static SubTexture2D createFromCoords(const Texture2D &texture, const glm::vec2 &coords, const glm::vec2 &cellSize, const glm::vec2 &spriteSize = {1, 1});
 
 private:
     Texture2D subTexture;

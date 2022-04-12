@@ -29,11 +29,11 @@ const glm::vec4 *SubTexture2D::getTexCoords() const
     return this->texCoords;
 }
 
-SubTexture2D SubTexture2D::createFromCoords(const Texture2D &texture, const glm::vec2 &coords, const glm::vec2 &spriteSheet)
+SubTexture2D SubTexture2D::createFromCoords(const Texture2D &texture, const glm::vec2 &coords, const glm::vec2 &cellSize, const glm::vec2 &spriteSize)
 {
-    glm::vec2 min = {(coords.x * spriteSheet.x) / 2560.0f, (coords.y * spriteSheet.y) / 1664.0f};
+    glm::vec2 min = {(coords.x * cellSize.x) / 2560.0f, (coords.y * cellSize.y) / 1664.0f};
 
-    glm::vec2 max = {((coords.x + 1) * spriteSheet.x) / 2560.0f, ((coords.y + 1) * spriteSheet.y) / 1664.0f};
+    glm::vec2 max = {((coords.x + spriteSize.x) * cellSize.x) / 2560.0f, ((coords.y + spriteSize.y) * cellSize.y) / 1664.0f};
 
     return SubTexture2D(texture, min, max);
 }
