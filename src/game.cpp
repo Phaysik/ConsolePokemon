@@ -100,10 +100,12 @@ void Game::startWindow()
         this->text->renderText("This is sample text", 25.0f, 25.0f, 1.0f, glm::vec3(0.5, 0.8f, 0.2f));
 
         glfwSwapBuffers(window);
+        glFlush();
     }
 
     ResourceManager::Clear();
 
+    glfwDestroyWindow(this->window);
     glfwTerminate();
 }
 
