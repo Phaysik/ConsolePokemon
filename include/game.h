@@ -17,6 +17,9 @@
 
 #include "constants.h"
 #include "opengl/resourceManager.h"
+#include "opengl/shader.h"
+#include "opengl/texture.h"
+#include "opengl/spriteRenderer.h"
 #include "opengl/text.h"
 #include "output/display.h"
 #include "output/colors.h"
@@ -80,11 +83,12 @@ public:
     void startWindow();
 
 private:
-    Display display;        /*!< For displaying text */
-    ColoredText *colorText; /*!< For displaying text in color */
-    std::thread thread;     /*!< For threading the console portion of the application */
-    GLFWwindow *window;     /*!< For creating a OpenGL window */
-    Text *text;
+    Display display;                /*!< For displaying text */
+    ColoredText *colorText;         /*!< For displaying text in color */
+    std::thread thread;             /*!< For threading the console portion of the application */
+    GLFWwindow *window;             /*!< For creating a OpenGL window */
+    SpriteRenderer *spriteRenderer; /*!< For rendering sprites */
+    Text *textRenderer;             /*!< For displaying text */
 
     /* Helper Functions */
 
