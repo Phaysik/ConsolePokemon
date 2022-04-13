@@ -1,7 +1,7 @@
 /*! \file spriteRenderer.cpp
     \brief C++ file for spriteRenderer.
     \details Contains the function definition for spriteRenderer
-    \date 04/11/2022
+    \date 04/12/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -10,7 +10,7 @@
 
 /* Constructors and Destructors */
 
-SpriteRenderer::SpriteRenderer(Shader &shader)
+SpriteRenderer::SpriteRenderer(const Shader &shader)
 {
     this->spriteShader = shader;
 }
@@ -22,21 +22,21 @@ SpriteRenderer::~SpriteRenderer()
 
 /* Helper Functions */
 
-void SpriteRenderer::DrawSprite(Texture2D &texture, glm::vec2 position, glm::vec2 size, float rotate, glm::vec3 color)
+void SpriteRenderer::DrawSprite(const Texture2D &texture, const glm::vec2 &position, const glm::vec2 &size, const float rotate, const glm::vec3 &color)
 {
-    this->initRenderData(texture.vertices);
+    this->initRenderData(texture.getVertices());
 
     this->render(texture, position, size, rotate, color);
 }
 
-void SpriteRenderer::DrawSprite(SubTexture2D &subTexture, glm::vec2 position, glm::vec2 size, float rotate, glm::vec3 color)
+void SpriteRenderer::DrawSprite(const SubTexture2D &subTexture, const glm::vec2 &position, const glm::vec2 &size, const float rotate, const glm::vec3 &color)
 {
     this->initRenderData(subTexture.getTexCoords());
 
     this->render(subTexture.getTexture(), position, size, rotate, color);
 }
 
-void SpriteRenderer::render(const Texture2D &texture, glm::vec2 position, glm::vec2 size, float rotate, glm::vec3 color)
+void SpriteRenderer::render(const Texture2D &texture, const glm::vec2 &position, const glm::vec2 &size, const float rotate, const glm::vec3 &color)
 {
     // prepare transformations
     this->spriteShader.Use();
@@ -57,7 +57,7 @@ void SpriteRenderer::render(const Texture2D &texture, glm::vec2 position, glm::v
     this->spriteShader.setVec3f("spriteColor", color);
 
     glActiveTexture(GL_TEXTURE0);
-    texture.Bind();
+    texture.bind();
 
     glBindVertexArray(this->quadVAO);
     glDrawArrays(GL_TRIANGLES, 0, 6);
@@ -67,7 +67,7 @@ void SpriteRenderer::render(const Texture2D &texture, glm::vec2 position, glm::v
 void SpriteRenderer::initRenderData(const glm::vec4 *texCoords)
 {
     // configure VAO/VBO
-    unsigned int VBO;
+    GLuint VBO;
 
     glGenVertexArrays(1, &this->quadVAO);
     glGenBuffers(1, &VBO);

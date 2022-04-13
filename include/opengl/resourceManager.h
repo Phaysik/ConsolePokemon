@@ -1,7 +1,7 @@
 /*! \file resourceManager.h
     \brief Header file for managing all OpenGL resources.
     \details Contains the function declarations for a resource manager.
-    \date 04/11/2022
+    \date 04/12/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -13,13 +13,16 @@
 #include <iostream>
 #include <sstream>
 #include <fstream>
+#include <cstdint>
 
 #include <glad/glad.h>
 
 #include "stb_image.h"
 
-#include "texture.h"
-#include "shader.h"
+#include "opengl/texture/texture.h"
+#include "opengl/shader.h"
+
+using us = u_int16_t; /*!< Shorthand for unsigned short */
 
 class ResourceManager
 {
@@ -30,58 +33,58 @@ public:
     /* Getters */
 
     /*! \brief Retrieves a stored texture.
-        \param name Name of the stored texture
-        \date 04/11/2022
+        \param name[in] Name of the stored texture
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
-        \return Texture2D
+        \return Texture2D A texture stored in the dictionary
     */
-    static Texture2D GetTexture(std::string name);
+    static Texture2D getTexture(const std::string &name);
 
     /*! \brief Get a shader.
         \pre Name must be a shader name already loaded.
         \post A shader is returned
-        \param name The name of the shader
-        \date 04/11/2022
+        \param name[in] The name of the shader
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
-        \return Shader
+        \return Shader A shader stored in the dictionary
     */
-    static Shader GetShader(std::string name);
+    static Shader getShader(const std::string &name);
 
     /* Helper Functions */
 
     /*! \brief Loads a texture into memory.
         \post A texture is loaded into memory.
-        \param file Location of the texture file.
-        \param alpha Whether the texture uses alpha values.
-        \param name Name of the texture.
-        \date 04/11/2022
+        \param file[in] Location of the texture file.
+        \param alpha[in] Whether the texture uses alpha values.
+        \param name[in] Name of the texture.
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
-        \return Texture2D
+        \return Texture2D A texture from the file param.
     */
-    static Texture2D LoadTexture(const char *file, bool alpha, std::string name);
+    static Texture2D loadTexture(const char *file, const bool alpha, const std::string &name);
 
     /*! \brief Loads a shader into memory.
         \post A shader is loaded into memory.
-        \param vShaderFile Vertex shader file location
-        \param fShaderFile Fragment shader file location
-        \param gShaderFile Geometry shader file location
-        \param name Name of the shader
-        \date 04/11/2022
+        \param vShaderFile[in] Vertex shader file location
+        \param fShaderFile[in] Fragment shader file location
+        \param gShaderFile[in] Geometry shader file location
+        \param name[in] Name of the shader
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
-        \return Shader
+        \return Shader A shader from the vShaderFile, fShaderFile, and gShaderFile param.
     */
-    static Shader LoadShader(const char *vShaderFile, const char *fShaderFile, const char *gShaderFile, std::string name);
+    static Shader loadShader(const char *vShaderFile, const char *fShaderFile, const char *gShaderFile, const std::string &name);
 
     /*! \brief Deallocates all loaded resources
-        \date 04/11/2022
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
     */
-    static void Clear();
+    static void clear();
 
 private:
     /*! \brief Private constructor.
@@ -95,22 +98,23 @@ private:
     /* Helper Functions */
 
     /*! \brief Loads a single texture from file.
-        \param file Location of the texture file.
-        \param alpha Whether the texture uses alpha values.
-        \date 04/11/2022
+        \param file[in] Location of the texture file.
+        \param alpha[in] Whether the texture uses alpha values.
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
-        \return Texture2D
+        \return Texture2D A texture from the file param.
     */
-    static Texture2D loadTextureFromFile(const char *file, bool alpha);
+    static Texture2D loadTextureFromFile(const char *file, const bool alpha);
 
     /*! \brief Loads and generates a shader from file
-        \param vShaderFile Vertex shader file location
-        \param fShaderFile Fragment shader file location
-        \param gShaderFile Geometry shader file location
-        \date 04/11/2022
+        \param vShaderFile[in] Vertex shader file location
+        \param fShaderFile[in] Fragment shader file location
+        \param gShaderFile[in] Geometry shader file location
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
+        \return Shader A shader from the vShaderFile, fShaderFile, and gShaderFile param.
     */
     static Shader loadShaderFromFile(const char *vShaderFile, const char *fShaderFile, const char *gShaderFile = nullptr);
 };

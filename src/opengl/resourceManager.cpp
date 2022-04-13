@@ -1,7 +1,7 @@
 /*! \file resourceManager.cpp
     \brief C++ file for resourceManager.
     \details Contains the function definition for resourceManager
-    \date 04/11/2022
+    \date 04/12/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -14,49 +14,52 @@ std::map<std::string, Texture2D> ResourceManager::Textures;
 
 /* Getters */
 
-Texture2D ResourceManager::GetTexture(std::string name)
+Texture2D ResourceManager::getTexture(const std::string &name)
 {
     return Textures[name];
 }
 
-Shader ResourceManager::GetShader(std::string name)
+Shader ResourceManager::getShader(const std::string &name)
 {
     return Shaders[name];
 }
 
 /* Helper Functions */
 
-Texture2D ResourceManager::LoadTexture(const char *file, bool alpha, std::string name)
+Texture2D ResourceManager::loadTexture(const char *file, const bool alpha, const std::string &name)
 {
     Textures[name] = loadTextureFromFile(file, alpha);
     return Textures[name];
 }
 
-Shader ResourceManager::LoadShader(const char *vShaderFile, const char *fShaderFile, const char *gShaderFile, std::string name)
+Shader ResourceManager::loadShader(const char *vShaderFile, const char *fShaderFile, const char *gShaderFile, const std::string &name)
 {
     Shaders[name] = loadShaderFromFile(vShaderFile, fShaderFile, gShaderFile);
     return Shaders[name];
 }
 
-void ResourceManager::Clear()
+void ResourceManager::clear()
 {
     // (properly) delete all shaders
     for (auto iter : Shaders)
-        glDeleteProgram(iter.second.ID);
+        glDeleteProgram(iter.second.getShaderID());
 
     // (properly) delete all textures
     for (auto iter : Textures)
-        glDeleteTextures(1, &iter.second.ID);
+    {
+        GLuint id = iter.second.getTextureID();
+        glDeleteTextures(1, &id);
+    }
 }
 
-Texture2D ResourceManager::loadTextureFromFile(const char *file, bool alpha)
+Texture2D ResourceManager::loadTextureFromFile(const char *file, const bool alpha)
 {
     // create texture object
     Texture2D texture;
     if (alpha)
     {
-        texture.Internal_Format = GL_RGBA;
-        texture.Image_Format = GL_RGBA;
+        texture.setInternalFormat(GL_RGBA);
+        texture.setImageFormat(GL_RGBA);
     }
 
     // load image
@@ -64,7 +67,7 @@ Texture2D ResourceManager::loadTextureFromFile(const char *file, bool alpha)
     unsigned char *data = stbi_load(file, &width, &height, &nrChannels, 0);
 
     // now generate texture
-    texture.Generate(static_cast<unsigned int>(width), static_cast<unsigned int>(height), data);
+    texture.generate(static_cast<us>(width), static_cast<us>(height), data);
 
     // and finally free image data
     stbi_image_free(data);

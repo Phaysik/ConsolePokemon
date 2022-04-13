@@ -1,7 +1,7 @@
 /*! \file text.cpp
     \brief C++ file for rendering text.
     \details Contains the function definition for rendering text
-    \date 04/11/2022
+    \date 04/12/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -10,10 +10,10 @@
 
 /* Constructors and Destructors */
 
-Text::Text(unsigned int width, unsigned int height)
+Text::Text(const us width, const us height)
 {
     // load and configure shader
-    this->textShader = ResourceManager::LoadShader(TEXTVERTEXSOURCE.c_str(), TEXTFRAGMENTSOURCE.c_str(), nullptr, "text");
+    this->textShader = ResourceManager::loadShader(TEXTVERTEXSOURCE.c_str(), TEXTFRAGMENTSOURCE.c_str(), nullptr, "text");
     this->textShader.setMat4("projection", glm::ortho(0.0f, static_cast<float>(width), static_cast<float>(height), 0.0f), true);
     this->textShader.setInteger("text", 0);
 
@@ -31,7 +31,7 @@ Text::Text(unsigned int width, unsigned int height)
 
 /* Helper Functions */
 
-void Text::load(std::string font, unsigned int fontSize)
+void Text::load(const std::string &font, const us fontSize)
 {
     // first clear the previously loaded Characters
     this->characters.clear();
@@ -100,7 +100,7 @@ void Text::load(std::string font, unsigned int fontSize)
     FT_Done_FreeType(ft);
 }
 
-void Text::renderText(std::string text, float x, float y, float scale, glm::vec3 color)
+void Text::renderText(const std::string &text, float x, const float y, const float scale, const glm::vec3 &color)
 {
     // activate corresponding render state
     this->textShader.Use();

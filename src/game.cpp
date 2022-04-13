@@ -1,7 +1,7 @@
 /*! \file game.cpp
     \brief C++ file for the Game.
     \details Contains the function definitions for Game
-    \date 04/11/2022
+    \date 04/12/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -86,7 +86,7 @@ void Game::testing()
 
 void Game::startWindow()
 {
-    Texture2D texture = ResourceManager::GetTexture("spritesheet");
+    Texture2D texture = ResourceManager::getTexture("spritesheet");
 
     SubTexture2D subTexture = SubTexture2D::createFromCoords(texture, {0, 0}, {128, 128}, {3, 3});
 
@@ -107,7 +107,7 @@ void Game::startWindow()
         glFlush();
     }
 
-    ResourceManager::Clear();
+    ResourceManager::clear();
 
     delete this->spriteRenderer;
     delete this->textRenderer;
@@ -166,7 +166,7 @@ void Game::initOpenGL()
         glfwTerminate();
     }
 
-    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+    glfwSetFramebufferSizeCallback(window, frameBufferResize);
 
     // OpenGL state
     glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -174,26 +174,26 @@ void Game::initOpenGL()
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     // Load Shaders
-    ResourceManager::LoadShader("resources/shaders/sprite.vert", "resources/shaders/sprite.frag", nullptr, "sprite");
+    ResourceManager::loadShader("resources/shaders/sprite.vert", "resources/shaders/sprite.frag", nullptr, "sprite");
 
     // configure shaders
     glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(WINDOW_WIDTH), static_cast<float>(WINDOW_HEIGHT), 0.0f, -1.0f, 1.0f);
-    ResourceManager::GetShader("sprite").Use().setInteger("sprite", 0);
-    ResourceManager::GetShader("sprite").setMat4("projection", projection);
+    ResourceManager::getShader("sprite").Use().setInteger("sprite", 0);
+    ResourceManager::getShader("sprite").setMat4("projection", projection);
 
     // load textures
-    ResourceManager::LoadTexture("resources/textures/background.jpg", false, "background");
-    ResourceManager::LoadTexture("resources/textures/RPGpack_sheet_2X.png", true, "spritesheet");
+    ResourceManager::loadTexture("resources/textures/background.jpg", false, "background");
+    ResourceManager::loadTexture("resources/textures/RPGpack_sheet_2X.png", true, "spritesheet");
 
     // Set renderer specific controls
-    Shader spriteShader = ResourceManager::GetShader("sprite");
+    Shader spriteShader = ResourceManager::getShader("sprite");
     this->spriteRenderer = new SpriteRenderer(spriteShader);
 
     this->textRenderer = new Text(WINDOW_WIDTH, WINDOW_HEIGHT);
     this->textRenderer->load(TEXTFILE, FONTSIZE);
 }
 
-void framebuffer_size_callback(GLFWwindow *window, int width, int height)
+void frameBufferResize(GLFWwindow *window, int width, int height)
 {
     // make sure the viewport matches the new window dimensions; note that width and
     // height will be significantly larger than specified on retina displays.

@@ -1,7 +1,7 @@
 /*! \file game.h
     \brief Header file for Game.
     \details Contains the function declarations for Game information
-    \date 04/11/2022
+    \date 04/12/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -17,9 +17,9 @@
 
 #include "constants.h"
 #include "opengl/resourceManager.h"
+#include "opengl/texture/texture.h"
+#include "opengl/texture/subTexture.h"
 #include "opengl/shader.h"
-#include "opengl/texture.h"
-#include "opengl/subTexture.h"
 #include "opengl/spriteRenderer.h"
 #include "opengl/text.h"
 #include "output/display.h"
@@ -31,14 +31,14 @@
 #include "types/typeEnums.h"
 
 /*! \brief Make sure the viewport matches the new window dimensions
-    \param window The GLFW window to resize
-    \param width The width of the GLFW window
-    \param height The height of the window
-    \date 04/11/2022
+    \param window[in, out] The GLFW window to resize
+    \param width[in] The width of the GLFW window
+    \param height[in] The height of the window
+    \date 04/12/2022
     \version 1.0
     \author Matthew Moore
 */
-void framebuffer_size_callback(GLFWwindow *window, int width, int height);
+void frameBufferResize(GLFWwindow *window, int width, int height);
 
 /*! \headerfile game.h
     \brief The game

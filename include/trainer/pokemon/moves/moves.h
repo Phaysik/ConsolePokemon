@@ -1,7 +1,7 @@
 /*! \file moves.h
     \brief Header file for Pokemon moves.
     \details Contains the function declarations for the Pokemon moves.
-    \date 04/11/2022
+    \date 04/12/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -21,7 +21,7 @@ class Pokemon;
 /*! \headerfile moves.h
     \brief What moves can do
     \details Creates the properties of a Pokemon move and the functions that will affect the battle
-    \date 03/29/2022
+    \date 04/12/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -39,12 +39,12 @@ public:
 
     /*! \brief Parameterized constructor
         \details Will initialize all member variables with the parameters
-        \param moveType The move's type
-        \param movePower The move's power
-        \param moveAccuracy The move's accuracy
-        \param movePowerPoints The move's power points
-        \param moveName The move's name
-        \date 10/07/2021
+        \param moveType[in] The move's type
+        \param movePower[in] The move's power
+        \param moveAccuracy[in] The move's accuracy
+        \param movePowerPoints[in] The move's power points
+        \param moveName[in] The move's name
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
     */
@@ -54,11 +54,11 @@ public:
 
     /*! \brief Overload operator=
         \details Will allow chaining for MoveAbstract class types
-        \param moves The move and all of it's information
-        \retval MoveAbstract A clone of the moves param
-        \date 10/07/2021
+        \param moves[in] The move and all of it's information
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
+        \return MoveAbstract A clone of the moves param
     */
     MoveAbstract &operator=(MoveAbstract &moves);
 
@@ -68,11 +68,11 @@ public:
         \details If the move has an effect, it will need to apply to the Pokemon in battle
         \pre The Pokemon of the trainer and opponent both have to be initizlied
         \post Some of the pokemon will have some status applied to them
-        \param trainer The Pokemon team of the the trainer who initialited combat
-        \param opponent The Pokemon team of the trainer who is against the engager
-        \param userIndex The index of trainer param
-        \param type The #BattleType of the battle
-        \date 10/07/2021
+        \param trainer[in, out] The Pokemon team of the the trainer who initialited combat
+        \param opponent[in, out] The Pokemon team of the trainer who is against the engager
+        \param userIndex[in] The index of trainer param
+        \param type[in] The #BattleType of the battle
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
     */
@@ -81,38 +81,38 @@ public:
     /* Getters */
 
     /*! \brief Get the Pokemon's move type
-        \retval #Types Returns the Pokemon's move type
         \pre Requires the #typing to already by initialized
-        \date 10/07/2021
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
+        \return #Types Returns the Pokemon's move type
     */
     Types getType() const;
 
     /*! \brief Get the Pokemon's move power
-        \retval #us Returns the Pokemon's move Power
         \pre Requires the #power to already by initialized
-        \date 10/07/2021
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
+        \return #us Returns the Pokemon's move Power
     */
     us getPower() const;
 
     /*! \brief Get the Pokemon's move accuracy
-        \retval #us Returns the Pokemon's move accuracy
         \pre Requires the #accuracy to already by initialized
-        \date 10/07/2021
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
+        \return #us Returns the Pokemon's move accuracy
     */
     us getAccuracy() const;
 
     /*! \brief Get the Pokemon's move name
-        \retval string Returns the Pokemon's move name
         \pre Requires the #name to already by initialized
-        \date 10/07/2021
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
+        \return string Returns the Pokemon's move name
     */
     std::string getMoveName() const;
 
@@ -120,8 +120,8 @@ public:
 
     /*! \brief Sets the Pokemon's move power
         \post The Pokemon's move #power will be set to movePower
-        \param movePower The new power for the move
-        \date 10/07/2021
+        \param movePower[in] The new power for the move
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
     */

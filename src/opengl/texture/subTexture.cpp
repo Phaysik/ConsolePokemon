@@ -6,7 +6,9 @@
     \author Matthew Moore
 */
 
-#include "opengl/subTexture.h"
+#include "opengl/texture/subTexture.h"
+
+/* Constructors and Destructors */
 
 SubTexture2D::SubTexture2D(const Texture2D &texture, const glm::vec2 &min, const glm::vec2 &max)
     : subTexture(texture)
@@ -19,6 +21,8 @@ SubTexture2D::SubTexture2D(const Texture2D &texture, const glm::vec2 &min, const
     texCoords[5] = {max.x, min.y, max.x, min.y};
 }
 
+/* Getters */
+
 const Texture2D SubTexture2D::getTexture() const
 {
     return this->subTexture;
@@ -28,6 +32,8 @@ const glm::vec4 *SubTexture2D::getTexCoords() const
 {
     return this->texCoords;
 }
+
+/* Helper Functions */
 
 SubTexture2D SubTexture2D::createFromCoords(const Texture2D &texture, const glm::vec2 &coords, const glm::vec2 &cellSize, const glm::vec2 &spriteSize)
 {

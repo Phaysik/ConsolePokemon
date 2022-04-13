@@ -1,7 +1,7 @@
 /*! \file stats.h
     \brief Header file for Pokemon stats.
     \details Contains the function declarations for the Pokemon stats.
-    \date 03/29/2022
+    \date 04/12/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -15,7 +15,7 @@ using us = uint16_t; /*!< Shorthand for unsigned short */
 /*! \headerfile stats.h
     \brief Pokemon stats
     \details Creates the properties of a Pokemon stats the functions that will affect those stats
-    \date 03/29/2022
+    \date 04/12/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -33,13 +33,13 @@ public:
 
     /*! \brief Parameterized constructor
         \details Initializes every member variable to build up a Stat object
-        \param hpStat The health points of the Pokemon
-        \param attackStat The attack of the Pokemon
-        \param defenseStat The defense of the Pokemon
-        \param spAStat The special attack of the Pokemon
-        \param spDStat The special defense of the Pokemon
-        \param speedStat The speed of the Pokemon
-        \date 10/13/2021
+        \param hpStat[in] The health points of the Pokemon
+        \param attackStat[in] The attack of the Pokemon
+        \param defenseStat[in] The defense of the Pokemon
+        \param spAStat[in] The special attack of the Pokemon
+        \param spDStat[in] The special defense of the Pokemon
+        \param speedStat[in] The speed of the Pokemon
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
     */
@@ -49,11 +49,11 @@ public:
 
     /*! \brief Overload operator=
         \details Will allow chaining for Stats class types
-        \param stats The stats and all of it's information
-        \retval Stats A clone of the stats param
-        \date 10/08/2021
+        \param stats[in] The stats and all of it's information
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
+        \return Stats A clone of the stats param
     */
     Stats &operator=(const Stats &stats);
 
@@ -69,110 +69,110 @@ public:
     /* Getters */
 
     /*! \brief Get the Pokemon's hp
-        \retval #us Returns the Pokemon's hp
         \pre Requires the #hp to already by initialized
-        \date 10/08/2021
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
+        \return #us Returns the Pokemon's hp
     */
     us getHp() const;
 
     /*! \brief Get the Pokemon's maxHp
-        \retval #us Returns the Pokemon's maxHp
         \pre Requires the #maxHp to already by initialized
-        \date 10/13/2021
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
+        \return #us Returns the Pokemon's maxHp
     */
     us getMaxHp() const;
 
     /*! \brief Get the Pokemon's attack
-        \retval #us Returns the Pokemon's attack
         \pre Requires the #attack to already by initialized
-        \date 10/08/2021
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
+        \return #us Returns the Pokemon's attack
     */
     us getAttack() const;
 
     /*! \brief Get the Pokemon's defense
-        \retval #us Returns the Pokemon's defense
         \pre Requires the #defense to already by initialized
-        \date 10/08/2021
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
+        \return #us Returns the Pokemon's defense
     */
     us getDefense() const;
 
     /*! \brief Get the Pokemon's special attack
-        \retval #us Returns the Pokemon's special attack
         \pre Requires the #spA to already by initialized
-        \date 10/08/2021
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
+        \return #us Returns the Pokemon's special attack
     */
     us getSpA() const;
 
     /*! \brief Get the Pokemon's special defense
-        \retval #us Returns the Pokemon's special defense
         \pre Requires the #spD to already by initialized
-        \date 10/08/2021
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
+        \return #us Returns the Pokemon's special defense
     */
     us getSpD() const;
 
     /*! \brief Get the Pokemon's speed
-        \retval #us Returns the Pokemon's speed
         \pre Requires the #speed to already by initialized
-        \date 10/08/2021
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
+        \return #us Returns the Pokemon's speed
     */
     us getSpeed() const;
 
     /*! \brief Get the Pokemon's attack multiplier
-        \retval float Returns the Pokemon's attack multiplier
         \pre Requires the #attackMultiplier to already by initialized
-        \date 10/08/2021
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
+        \return float Returns the Pokemon's attack multiplier
     */
     float getAttackMultiplier() const;
 
     /*! \brief Get the Pokemon's defense multiplier
-        \retval float Returns the Pokemon's defense multiplier
         \pre Requires the #defenseMultiplier to already by initialized
-        \date 10/08/2021
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
+        \return float Returns the Pokemon's defense multiplier
     */
     float getDefenseMultiplier() const;
 
     /*! \brief Get the Pokemon's special attack multiplier
-        \retval float Returns the Pokemon's special attack multiplier
         \pre Requires the #spAMultiplier to already by initialized
-        \date 10/08/2021
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
+        \return float Returns the Pokemon's special attack multiplier
     */
     float getSpAMultiplier() const;
 
     /*! \brief Get the Pokemon's special defense multiplier
-        \retval float Returns the Pokemon's special defense multiplier
         \pre Requires the #spDMultiplier to already by initialized
-        \date 10/08/2021
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
+        \return float Returns the Pokemon's special defense multiplier
     */
     float getSpDMultiplier() const;
 
     /*! \brief Get the Pokemon's speed multiplier
-        \retval float Returns the Pokemon's speed multiplier
         \pre Requires the #speedMultiplier to already by initialized
-        \date 10/08/2021
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
+        \return float Returns the Pokemon's speed multiplier
     */
     float getSpeedMultiplier() const;
 
@@ -180,8 +180,8 @@ public:
 
     /*! \brief Sets the Pokemon's hp
         \post The Pokemon's stat #hp will be set to hpStat
-        \param hpStat The new hp for the Pokemon
-        \date 10/13/2021
+        \param hpStat[in] The new hp for the Pokemon
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
     */
@@ -189,8 +189,8 @@ public:
 
     /*! \brief Sets the Pokemon's maxHp
         \post The Pokemon's stat #maxHp will be set to hpStat
-        \param hpStat The new maxHp for the Pokemon
-        \date 10/13/2021
+        \param hpStat[in] The new maxHp for the Pokemon
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
     */
@@ -198,8 +198,8 @@ public:
 
     /*! \brief Sets the Pokemon's attack
         \post The Pokemon's stat #attack will be set to attackStat
-        \param attackStat The new attack for the Pokemon
-        \date 10/13/2021
+        \param attackStat[in] The new attack for the Pokemon
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
     */
@@ -207,8 +207,8 @@ public:
 
     /*! \brief Sets the Pokemon's defense
         \post The Pokemon's stat #defense will be set to defenseStat
-        \param defenseStat The new defense for the Pokemon
-        \date 10/13/2021
+        \param defenseStat[in] The new defense for the Pokemon
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
     */
@@ -216,8 +216,8 @@ public:
 
     /*! \brief Sets the Pokemon's special attack
         \post The Pokemon's stat #spA will be set to spAStat
-        \param spAStat The new special attack for the Pokemon
-        \date 10/13/2021
+        \param spAStat[in] The new special attack for the Pokemon
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
     */
@@ -225,8 +225,8 @@ public:
 
     /*! \brief Sets the Pokemon's special defense
         \post The Pokemon's stat #spD will be set to spDStat
-        \param spDStat The new special defense for the Pokemon
-        \date 10/13/2021
+        \param spDStat[in] The new special defense for the Pokemon
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
     */
@@ -234,8 +234,8 @@ public:
 
     /*! \brief Sets the Pokemon's speed
         \post The Pokemon's stat #speed will be set to speedStat
-        \param speedStat The new speed for the Pokemon
-        \date 10/13/2021
+        \param speedStat[in] The new speed for the Pokemon
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
     */
@@ -243,8 +243,8 @@ public:
 
     /*! \brief Sets the Pokemon's attack multiplier
         \post The Pokemon's stat #attackMultiplier will be set to attackMultiplierStat
-        \param attackMultiplierStat The new attack multiplier for the Pokemon
-        \date 10/13/2021
+        \param attackMultiplierStat[in] The new attack multiplier for the Pokemon
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
     */
@@ -252,8 +252,8 @@ public:
 
     /*! \brief Sets the Pokemon's defense multiplier
         \post The Pokemon's stat #defenseMultiplier will be set to defenseMultiplierStat
-        \param defenseMultiplierStat The new defense multiplier for the Pokemon
-        \date 10/13/2021
+        \param defenseMultiplierStat[in] The new defense multiplier for the Pokemon
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
     */
@@ -261,8 +261,8 @@ public:
 
     /*! \brief Sets the Pokemon's special attack multiplier
         \post The Pokemon's stat #spAMultiplier will be set to spAMultiplierStat
-        \param spAMultiplierStat The new special attack multiplier for the Pokemon
-        \date 10/13/2021
+        \param spAMultiplierStat[in] The new special attack multiplier for the Pokemon
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
     */
@@ -270,8 +270,8 @@ public:
 
     /*! \brief Sets the Pokemon's special defense multiplier
         \post The Pokemon's stat #spDMultiplier will be set to spDMultiplierStat
-        \param spDMultiplierStat The new special defense multiplier for the Pokemon
-        \date 10/13/2021
+        \param spDMultiplierStat[in] The new special defense multiplier for the Pokemon
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
     */
@@ -279,8 +279,8 @@ public:
 
     /*! \brief Sets the Pokemon's speed multiplier
         \post The Pokemon's stat #speedMultiplier will be set to speedMultiplierStat
-        \param speedMultiplierStat The new speed multiplier for the Pokemon
-        \date 10/13/2021
+        \param speedMultiplierStat[in] The new speed multiplier for the Pokemon
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
     */

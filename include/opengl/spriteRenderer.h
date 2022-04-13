@@ -1,7 +1,7 @@
 /*! \file spriteRenderer.h
     \brief Header file for sprite rendering.
     \details Contains the function declarations for sprite rendering
-    \date 04/11/2022
+    \date 04/12/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -12,9 +12,9 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-#include "subTexture.h"
-#include "texture.h"
-#include "shader.h"
+#include "opengl/texture/subTexture.h"
+#include "opengl/texture/texture.h"
+#include "opengl/shader.h"
 
 class SpriteRenderer
 {
@@ -23,12 +23,12 @@ public:
 
     /*! \brief Inits shaders/shapes.
         \post #shader is initialized
-        \param shader The shader to use for rendering
-        \date 04/11/2022
+        \param shader[in] The shader to use for rendering
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
     */
-    SpriteRenderer(Shader &shader);
+    SpriteRenderer(const Shader &shader);
 
     /*! \brief Delete vertex array.
         \post VertexArray bounded by #quadVAO is deleted
@@ -40,33 +40,56 @@ public:
 
     /* Helper Functions */
 
-    // Renders a defined quad textured with given sprite
-
-    /*! \brief Renders a defined quad textuerd with given sprite.
+    /*! \brief Renders a defined quad texture with given sprite.
         \pre texture must be initialized.
         \post A sprite is drawn
-        \param texture The texture to draw
-        \param position The position to draw the texture to
-        \param size The size of the texture
-        \param rotate The rotation of the texture
-        \param color The color of the texture
-        \date 04/11/2022
+        \param texture[in] The texture to draw
+        \param position[in] The position to draw the texture to
+        \param size[in] The size of the texture
+        \param rotate[in] The rotation of the texture
+        \param color[in] The color of the texture
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
     */
-    void DrawSprite(Texture2D &texture, glm::vec2 position, glm::vec2 size = glm::vec2(10.0f, 10.0f), float rotate = 0.0f, glm::vec3 color = glm::vec3(1.0f));
+    void DrawSprite(const Texture2D &texture, const glm::vec2 &position, const glm::vec2 &size = glm::vec2(10.0f, 10.0f), const float rotate = 0.0f, const glm::vec3 &color = glm::vec3(1.0f));
 
-    void DrawSprite(SubTexture2D &subTexture, glm::vec2 position, glm::vec2 size = glm::vec2(10.0f, 10.0f), float rotate = 0.0f, glm::vec3 color = glm::vec3(1.0f));
+    /*! \brief Renders a subtexture of a defined quad texture with given sprite.
+        \pre texture must be initialized.
+        \post A sprite is drawn
+        \param subTexture[in] The texture to draw
+        \param position[in] The position to draw the texture to
+        \param size[in] The size of the texture
+        \param rotate[in] The rotation of the texture
+        \param color[in] The color of the texture
+        \date 04/12/2022
+        \version 1.0
+        \author Matthew Moore
+    */
+    void DrawSprite(const SubTexture2D &subTexture, const glm::vec2 &position, const glm::vec2 &size = glm::vec2(10.0f, 10.0f), const float rotate = 0.0f, const glm::vec3 &color = glm::vec3(1.0f));
 
 private:
-    Shader spriteShader;  /*!< The shader to use for rendering */
-    unsigned int quadVAO; /*!< The vertex array to use for rendering */
+    Shader spriteShader; /*!< The shader to use for rendering */
+    GLuint quadVAO;      /*!< The vertex array to use for rendering */
 
     /* Helper Functions */
 
-    void render(const Texture2D &texture, glm::vec2 position, glm::vec2 size, float rotate, glm::vec3 color);
+    /*! \brief For rendering a texture.
+        \pre textxure must be initialized.
+        \post A texture is rendered.
+        \param texture[in] The texture to draw
+        \param position[in] The position to draw the texture to
+        \param size[in] The size of the texture
+        \param rotate[in] The rotation of the texture
+        \param color[in] The color of the texture
+        \date 04/12/2022
+        \version 1.0
+        \author Matthew Moore
+    */
+    void render(const Texture2D &texture, const glm::vec2 &position, const glm::vec2 &size, const float rotate, const glm::vec3 &color);
 
     /*! \brief Initializes and configures the quad's buffer and vertex attributes
+        \param texCoords[in] The texture coordinates to use
         \date 04/11/2022
         \version 1.0
         \author Matthew Moore

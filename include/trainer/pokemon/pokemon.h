@@ -1,7 +1,7 @@
 /*! \file pokemon.h
     \brief Header file for Pokemon.
     \details Contains the function declarations for the Pokemon information.
-    \date 04/11/2022
+    \date 04/12/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -26,7 +26,7 @@ class MoveAbstract;
 /*! \headerfile pokemon.h
     \brief What Pokemon can do
     \details Creates the properties of a Pokemon and the functions that will affect it
-    \date 03/29/2022
+    \date 04/12/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -44,12 +44,12 @@ public:
 
     /*! \brief Parameterized constructor
         \details Will initialize most member variables with the parameters
-        \param pokeStats The Pokemon's stats
-        \param pokeMoves The Pokemon's moves
-        \param pokeTypes The Pokemon's type(s)
-        \param pokeDualTyping Whether the Pokemon has two types
-        \param pokeName The Pokemon's name
-        \date 12/23/2021
+        \param pokeStats[in] The Pokemon's stats
+        \param pokeMoves[in] The Pokemon's moves
+        \param pokeTypes[in] The Pokemon's type(s)
+        \param pokeDualTyping[in] Whether the Pokemon has two types
+        \param pokeName[in] The Pokemon's name
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
     */
@@ -65,60 +65,62 @@ public:
     /* Getters */
 
     /*! \brief Get the Pokemon's type matchup
-        \retval float Returns the Pokemon's effectiveness against the type param
         \pre Requires the type param to be valid
-        \date 10/08/2021
+        \param type[in] The type to get the matchup for
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
+        \return float Returns the Pokemon's effectiveness against the type param
     */
     float getTypeMatchUp(const us type);
 
     /*! \brief Get the Pokemon's name
-        \retval string Returns the Pokemon's name
-        \date 10/08/2021
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
+        \return string Returns the Pokemon's name
     */
     std::string getName() const;
 
     /*! \brief Get the Pokemon's specific move
-        \retval MoveAbstract Returns the Pokemon's move at the index param
         \pre Requires the index param to be valid
-        \date 10/08/2021
+        \param index[in] The index of the move to get
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
+        \return MoveAbstract Returns the Pokemon's move at the index param
     */
     MoveAbstract *getMove(const us index);
 
     /*! \brief Get the Pokemon's stats
-        \retval Stats Returns the Pokemon's stats
-        \date 10/08/2021
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
+        \return Stats Returns the Pokemon's stats
     */
     Stats *getStats();
 
     /*! \brief Get whether the Pokemon is in battle or not
-        \retval bool Whether or not the Pokemon is in battle
-        \date 10/08/2021
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
+        \return bool Whether or not the Pokemon is in battle
     */
     bool getBattleState() const;
 
     /*! \brief Get the Pokemon's types
-        \retval #Types The Pokemon's types
-        \date 10/12/2021
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
+        \return Types The Pokemon's types
     */
     Types *getTypes() const;
 
     /*! \brief Get if the Pokemon has dual types
-        \retval bool Whether the Pokemon has dual types
-        \date 10/12/2021
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
+        \return bool Whether the Pokemon has dual types
     */
     bool getDualTyping() const;
 
@@ -126,8 +128,8 @@ public:
 
     /*! \brief Sets the Pokemon's type matchups
         \post The Pokemon's #typeMatchup will be set initialized
-        \param pokeDualTyping If the pokemon has two types
-        \date 12/19/2021
+        \param pokeDualTyping[in] If the pokemon has two types
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
     */
@@ -135,8 +137,8 @@ public:
 
     /*! \brief Sets whether the Pokemon is in battle or not
         \post The Pokemon's #inBattle may be changed
-        \param pokeInBattle If the pokemon is engaged in battle
-        \date 10/08/2021
+        \param pokeInBattle[in] If the pokemon is engaged in battle
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
     */

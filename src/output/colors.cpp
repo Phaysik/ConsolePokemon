@@ -1,7 +1,7 @@
 /*! \file colors.cpp
     \brief C++ file for coloring text.
     \details Contains the function definitions for coloring text.
-    \date 04/11/2021
+    \date 04/12/2021
     \version 1.0
     \author Matthew Moore
 */
@@ -10,7 +10,7 @@
 
 /* Constructors and Destructors */
 
-ColoredText::ColoredText() : typeColors(new short[Types::TYPES_MAX])
+ColoredText::ColoredText() : typeColors(new us[Types::TYPES_MAX])
 {
     this->typeColors[0] = this->initColors(NORMAL_COLOR, 168, 168, 120);
     this->typeColors[1] = this->initColors(FIRE_COLOR, 240, 128, 48);
@@ -39,7 +39,7 @@ ColoredText::~ColoredText()
 
 /* Member Functions */
 
-short ColoredText::initColors(short typeColor, short red, short green, short blue)
+us ColoredText::initColors(const us typeColor, const us red, const us green, const us blue)
 {
     short nRed, nGreen, nBlue;
 
@@ -47,8 +47,8 @@ short ColoredText::initColors(short typeColor, short red, short green, short blu
     nGreen = static_cast<short>((green / 255.0) * 1000);
     nBlue = static_cast<short>((blue / 255.0) * 1000);
 
-    init_color(typeColor, nRed, nGreen, nBlue);
-    init_pair(typeColor, typeColor, COLOR_BLACK);
+    init_color(static_cast<short>(typeColor), nRed, nGreen, nBlue);
+    init_pair(static_cast<short>(typeColor), static_cast<short>(typeColor), COLOR_BLACK);
 
     return typeColor;
 }
@@ -62,7 +62,7 @@ void ColoredText::colorPokemonNames(const Pokemon *pokemon) const
     {
         if (pokemon->getDualTyping())
         {
-            short pairNum = this->typeColors[types[i % 2]];
+            us pairNum = this->typeColors[types[i % 2]];
 
             attron(COLOR_PAIR(pairNum));
 
@@ -74,7 +74,7 @@ void ColoredText::colorPokemonNames(const Pokemon *pokemon) const
         }
         else
         {
-            short pairNum = this->typeColors[types[0]];
+            us pairNum = this->typeColors[types[0]];
 
             attron(COLOR_PAIR(pairNum));
 

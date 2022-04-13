@@ -1,7 +1,7 @@
 /*! \file types.h
     \brief Header file for getting type effectiveness.
     \details Contains the declarations for comparing types against one another.
-    \date 04/11/2022
+    \date 04/12/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -18,7 +18,7 @@ using us = uint16_t; /*!< Shorthand for unsigned short */
 /*! \headerfile types.h
     \brief Type effectiveness
     \details How types stack up against one another.
-    \date 04/09/2022
+    \date 04/12/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -29,7 +29,7 @@ public:
 
     /*! \brief Creates a type chart
         \details Creates a type chart based on the specifications of 'typechart.txt'
-        \param typeToCheck Create a type chart for this specific type
+        \param typeToCheck[in] Create a type chart for this specific type
         \pre The type must be part of #Types
         \post The type chart will be stored in a 2D array filled with #Effectiveness values
         \date 10/07/2021
@@ -60,12 +60,12 @@ public:
 
     /*! \brief Get type match up
         \details Get the type matchup of #typing against the type param
-        \param type The type to get the matchup against
-        \retval float How effect #typing is against the type param
+        \param type[in] The type to get the matchup against
         \pre The type param must be a valid #Types
         \date 10/07/2021
         \version 1.0
         \author Matthew Moore
+        \return float How effect #typing is against the type param
     */
     float getMatchUp(const Types type) const;
 

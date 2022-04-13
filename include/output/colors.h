@@ -1,7 +1,7 @@
 /*! \file colors.h
     \brief Header file for coloring text.
     \details Contains the function declarations for coloring text.
-    \date 04/11/2022
+    \date 04/12/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -43,7 +43,7 @@ class Pokemon;
 /*! \headerfile colors.h
     \brief Colors text
     \details Outputs colored text to the console based on the type that was passed in
-    \date 12/22/2021
+    \date 04/12/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -71,26 +71,26 @@ public:
     /*! \brief Initializes the ncurses color pairs
         \pre The param #typeColor must match one of the predefined XXX_COLOR values
         \post Color pairs will be initalized
-        \param typeColor The color of the type to initialize
-        \param red The red of the color
-        \param green The green of the color
-        \param blue The bluegreen of the color
-        \date 12/22/2021
+        \param typeColor[in] The color of the type to initialize
+        \param red[in] The red of the color
+        \param green[in] The green of the color
+        \param blue[in] The bluegreen of the color
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
-        \return short
+        \return us The type color requested
     */
-    short initColors(short typeColor, short red, short green, short blue);
+    us initColors(const us typeColor, const us red, const us green, const us blue);
 
     /*! \brief Print some colored text
         \details Print some colored text based on the type of Pokemon passed in
-        \param types The type(s) of the Pokemon
-        \date 12/22/2021
+        \param pokemon[in] The Pokemon's name to color
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
     */
     void colorPokemonNames(const Pokemon *pokemon) const;
 
 private:
-    short *typeColors; /*!< The colors for each Pokemon type */
+    us *typeColors; /*!< The colors for each Pokemon type */
 };

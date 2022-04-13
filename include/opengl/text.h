@@ -1,7 +1,7 @@
 /*! \file text.h
     \brief Header file for redering text.
     \details Contains the function declarations for rendering text.
-    \date 04/11/2022
+    \date 04/12/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -11,6 +11,7 @@
 #include <iostream>
 #include <map>
 #include <stdexcept>
+#include <cstdint>
 
 #include <glad/glad.h>
 
@@ -23,6 +24,8 @@
 #include "constants.h"
 #include "opengl/shader.h"
 #include "opengl/resourceManager.h"
+
+using us = u_int16_t; /*!< Shorthand for unsigned short */
 
 /*! \headerfile text.h
     \brief Character information
@@ -42,7 +45,7 @@ struct Character
 /*! \headerfile text.h
     \brief Text class
     \details For rendering text to the OpenGL window
-    \date 04/11/2022
+    \date 04/12/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -53,35 +56,37 @@ public:
 
     /*! \brief Construct the text renderer object
         \post #textShader will be initialized.
-        \date 04/11/2022
+        \param width[in] The width of the window.
+        \param height[in] The height of the window.
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
     */
-    Text(unsigned int width, unsigned int height);
+    Text(const us width, const us height);
 
     /* Helper Functions */
 
     /*! \brief Pre compile a list of characters from the given font.
-        \param font The font to render.
-        \param fontSize The size of the font.
-        \date 04/11/2022
+        \param font[in] The font to render.
+        \param fontSize[in] The size of the font.
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
     */
-    void load(std::string font, unsigned int fontSize);
+    void load(const std::string &font, const us fontSize);
 
     /*! \brief Render a string of text
         \post Text will be rendered on the window
-        \param text The text to render
-        \param x The x position to render the text
-        \param y The y position to render the text
-        \param scale The scale of the the text
-        \param color The color of the text
-        \date 04/11/2022
+        \param text[in] The text to render
+        \param x[in] The x position to render the text
+        \param y[in] The y position to render the text
+        \param scale[in] The scale of the the text
+        \param color[in] The color of the text
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
     */
-    void renderText(std::string text, float x, float y, float scale, glm::vec3 color = glm::vec3(1.0f));
+    void renderText(const std::string &text, float x, const float y, const float scale, const glm::vec3 &color = glm::vec3(1.0f));
 
 private:
     Shader textShader;                      /*!< Shader for rendering text */

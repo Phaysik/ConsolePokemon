@@ -1,7 +1,7 @@
 /*! \file trainer.h
     \brief Header file for the Pokemon trainer.
     \details Contains the function declarations for the Pokemon trainer.
-    \date 04/11/2022
+    \date 04/12/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -23,7 +23,7 @@ class Display;
 /*! \headerfile trainer.h
     \brief The Pokemon trainer
     \details Creates the properties of a Pokemon trainer and the functions that will affect the trainer
-    \date 12/23/2021
+    \date 04/12/2022
     \version 1.0
     \author Matthew Moore
 */
@@ -34,9 +34,9 @@ public:
 
     /*! \brief Non-paremeterized constructor
         \details Will allocate #trainerPokemon and #inBattle memory
-        \param disp The display object used for output
-        \param isMainCharacter Whether the trainer is the main character
-        \date 12/23/2021
+        \param disp[in] The display object used for output
+        \param isMainCharacter[in] Whether the trainer is the main character
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
     */
@@ -55,9 +55,9 @@ public:
         \details Start a Pokemon battle between trainers
         \pre The trainer param must already be initialized
         \post Some of the Pokemon's status may change
-        \param trainer The trainer that was engaged
-        \param type The #BattleType of the battle
-        \date 10/19/2021
+        \param trainer[in] The trainer that was engaged
+        \param type[in] The #BattleType of the battle
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
     */
@@ -66,37 +66,37 @@ public:
     /* Getters */
 
     /*! \brief Get a Pokemon from indexing
-        \retval Pokemon Returns the indexed Pokemon
         \pre Requires the index param to be valid
-        \param index The index of the requested Pokemon
-        \date 10/08/2021
+        \param index[in] The index of the requested Pokemon
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
+        \return Pokemon Returns the indexed Pokemon
     */
     Pokemon *getPokemonAtIndex(const us index) const;
 
     /*! \brief Get all this trainer's Pokemon currently in battle
-        \retval Pokemon Returns the trainer's engaged Pokemon
-        \param type The #BattleType of the engagement
-        \date 10/08/2021
+        \param type[in] The #BattleType of the engagement
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
+        \return Pokemon Returns the trainer's engaged Pokemon
     */
     Pokemon **getAllInBattle(const BattleType type) const;
 
     /*! \brief Get all this trainer's Pokemon
-        \retval Pokemon Returns the trainer's Pokemon
-        \date 10/08/2021
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
+        \return Pokemon Returns the trainer's Pokemon
     */
     Pokemon **getAllPokemon() const;
 
     /*! \brief Get whether the trainer is the main character
-        \retval bool If the trainer is the playable character
-        \date 10/12/2021
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
+        \return bool If the trainer is the playable character
     */
     bool getMainCharacter() const;
 
@@ -105,9 +105,9 @@ public:
     /*! \brief Sets a Pokemon to be in a certain position
         \pre The index param must be valid
         \post The #trainerPokemon roster will have changed
-        \param pokemon The new Pokemon to add to the roster
-        \param index The index to add the Pokemon at
-        \date 10/08/2021
+        \param pokemon[in] The new Pokemon to add to the roster
+        \param index[in] The index to add the Pokemon at
+        \date 04/12/2022
         \version 1.0
         \author Matthew Moore
     */
