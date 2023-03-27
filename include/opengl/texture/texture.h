@@ -1,7 +1,7 @@
 /*! \file texture.h
     \brief Header file for creating 2D textures.
     \details Contains the function declarations for creating 2D textures
-    \date 04/12/2022
+    \date 03/27/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -19,7 +19,7 @@ using uc = u_char;    /*!< Shorthand for unsigned char */
 
 /*! \headerfile texture.h
     \brief Creates 2D textures.
-    \date 04/12/2022
+    \date 03/27/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -29,7 +29,7 @@ public:
     /* Constructors and Destructors */
 
     /*! \brief Sets default texture modes.
-        \date 04/11/2022
+        \date 03/27/2023
         \version 1.0
         \author Matthew Moore
     */
@@ -54,20 +54,36 @@ public:
     GLuint getTextureID() const;
 
     /*! \brief Returns the internal format of the texture.
-        \date 04/12/2022
+        \date 03/27/2023
         \version 1.0
         \author Matthew Moore
-        \return GLuint the internal format of the texture.
+        \return GLuint The internal format of the texture.
     */
     GLuint getInternalFormat() const;
 
     /*! \brief Returns the image format of the texture.
-        \date 04/12/2022
+        \date 03/27/2023
         \version 1.0
         \author Matthew Moore
-        \return GLuint the image format of the texture.
+        \return GLuint The image format of the texture.
     */
     GLuint getImageFormat() const;
+
+    /*! \brief Returns the width of the image.
+        \date 03/27/2023
+        \version 1.0
+        \author Matthew Moore
+        \return float The width of the image
+    */
+    float getImageWidth() const;
+
+    /*! \brief Returns the height of the image.
+        \date 03/27/2023
+        \version 1.0
+        \author Matthew Moore
+        \return float The height of the image
+    */
+    float getImageHeight() const;
 
     /* Setters */
 
@@ -91,14 +107,14 @@ public:
 
     /*! \brief Generates texture from image data.
         \post Creates and loads a texture.
-        \param width[in] Width of the image
-        \param height[in] Height of the image
+        \param imageWidth[in] Width of the image
+        \param imageHeight[in] Height of the image
         \param data[in] Image data
-        \date 04/12/2022
+        \date 03/27/2023
         \version 1.0
         \author Matthew Moore
     */
-    void generate(const us width, const us height, uc *data);
+    void generate(const us imageWidth, const us imageHeight, uc *data);
 
     /*! \brief Binds the texture as the current active GL_TEXTURE_2D texture object.
         \post The texture is bounded
@@ -111,8 +127,8 @@ public:
 private:
     GLuint ID; /*!< The textures's ID */
 
-    us Width;  /*!< The texture's width */
-    us Height; /*!< The texture's height */
+    us width;  /*!< The texture's width */
+    us height; /*!< The texture's height */
 
     GLuint internalFormat; /*!< format of texture object */
     GLuint imageFormat;    /*!< format of loaded image */

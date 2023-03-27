@@ -1,7 +1,7 @@
 /*! \file texture.cpp
     \brief C++ file for texture.
     \details Contains the function definition for texture
-    \date 04/12/2022
+    \date 03/27/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -11,7 +11,7 @@
 /* Constructors and Destructors */
 
 Texture2D::Texture2D()
-    : Width(0), Height(0), internalFormat(GL_RGB), imageFormat(GL_RGB), wrapS(GL_REPEAT), wrapT(GL_REPEAT), filterMin(GL_LINEAR), filterMax(GL_LINEAR)
+    : width(0), height(0), internalFormat(GL_RGB), imageFormat(GL_RGB), wrapS(GL_REPEAT), wrapT(GL_REPEAT), filterMin(GL_LINEAR), filterMax(GL_LINEAR)
 {
     this->vertices[0] = {0.0f, 1.0f, 0.0f, 1.0f};
     this->vertices[1] = {1.0f, 0.0f, 1.0f, 0.0f};
@@ -45,6 +45,16 @@ GLuint Texture2D::getImageFormat() const
     return this->imageFormat;
 }
 
+float Texture2D::getImageWidth() const
+{
+    return static_cast<float>(this->width);
+}
+
+float Texture2D::getImageHeight() const
+{
+    return static_cast<float>(this->height);
+}
+
 /* Setters */
 
 void Texture2D::setInternalFormat(const GLuint format)
@@ -59,14 +69,14 @@ void Texture2D::setImageFormat(const GLuint format)
 
 /* Helper Functions */
 
-void Texture2D::generate(const us width, const us height, uc *data)
+void Texture2D::generate(const us imageWidth, const us imageHeight, uc *data)
 {
-    this->Width = width;
-    this->Height = height;
+    this->width = imageWidth;
+    this->height = imageHeight;
 
     // create Texture
     glBindTexture(GL_TEXTURE_2D, this->ID);
-    glTexImage2D(GL_TEXTURE_2D, 0, static_cast<GLsizei>(this->internalFormat), static_cast<GLsizei>(width), static_cast<GLsizei>(height), 0, this->imageFormat, GL_UNSIGNED_BYTE, data);
+    glTexImage2D(GL_TEXTURE_2D, 0, static_cast<GLsizei>(this->internalFormat), static_cast<GLsizei>(imageWidth), static_cast<GLsizei>(imageHeight), 0, this->imageFormat, GL_UNSIGNED_BYTE, data);
 
     // set Texture wrap and filter modes
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, static_cast<GLint>(this->wrapS));

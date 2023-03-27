@@ -1,24 +1,23 @@
 /*! \file subTexture.cpp
     \brief C++ file for subTexture.
     \details Contains the function definition for subTexture
-    \date 04/12/2022
+    \date 03/27/2023
     \version 1.0
     \author Matthew Moore
 */
 
 #include "opengl/texture/subTexture.h"
-
 /* Constructors and Destructors */
 
-SubTexture2D::SubTexture2D(const Texture2D &texture, const glm::vec2 &min, const glm::vec2 &max)
+SubTexture2D::SubTexture2D(const Texture2D &texture, const glm::vec2 &min, const glm::vec2 &max, const glm::vec2 &zeroPosCoords)
     : subTexture(texture)
 {
-    texCoords[0] = {min.x, max.y, min.x, max.y};
-    texCoords[1] = {max.x, min.y, max.x, min.y};
-    texCoords[2] = {min.x, min.y, min.x, min.y};
-    texCoords[3] = {min.x, max.y, min.x, max.y};
-    texCoords[4] = {max.x, max.y, max.x, max.y};
-    texCoords[5] = {max.x, min.y, max.x, min.y};
+    texCoords[0] = {0.0f, zeroPosCoords.y, min.x, max.y};
+    texCoords[1] = {zeroPosCoords.x, 0.0f, max.x, min.y};
+    texCoords[2] = {0.0f, 0.0f, min.x, min.y};
+    texCoords[3] = {0.0f, zeroPosCoords.y, min.x, max.y};
+    texCoords[4] = {zeroPosCoords.x, zeroPosCoords.y, max.x, max.y};
+    texCoords[5] = {zeroPosCoords.x, 0.0f, max.x, min.y};
 }
 
 /* Getters */
@@ -37,9 +36,11 @@ const glm::vec4 *SubTexture2D::getTexCoords() const
 
 SubTexture2D SubTexture2D::createFromCoords(const Texture2D &texture, const glm::vec2 &coords, const glm::vec2 &cellSize, const glm::vec2 &spriteSize)
 {
-    glm::vec2 min = {(coords.x * cellSize.x) / 2560.0f, (coords.y * cellSize.y) / 1664.0f};
+    glm::vec2 min = {(coords.x * cellSize.x) / texture.getImageWidth(), (coords.y * cellSize.y) / texture.getImageHeight()};
 
-    glm::vec2 max = {((coords.x + spriteSize.x) * cellSize.x) / 2560.0f, ((coords.y + spriteSize.y) * cellSize.y) / 1664.0f};
+    glm::vec2 max = {((coords.x + spriteSize.x) * cellSize.x) / texture.getImageWidth(), ((coords.y + spriteSize.y) * cellSize.y) / texture.getImageHeight()};
 
-    return SubTexture2D(texture, min, max);
+    glm::vec2 zeroPosCoords = {(spriteSize.x * cellSize.x) / texture.getImageWidth(), (spriteSize.y * cellSize.y) / texture.getImageHeight()};
+
+    return SubTexture2D(texture, min, max, zeroPosCoords);
 }

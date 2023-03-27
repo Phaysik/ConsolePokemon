@@ -1,7 +1,7 @@
 /*! \file game.cpp
     \brief C++ file for the Game.
     \details Contains the function definitions for Game
-    \date 04/12/2022
+    \date 03/27/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -88,7 +88,7 @@ void Game::startWindow()
 {
     Texture2D texture = ResourceManager::getTexture("spritesheet");
 
-    SubTexture2D subTexture = SubTexture2D::createFromCoords(texture, {0, 0}, {128, 128}, {3, 3});
+    SubTexture2D subTexture = SubTexture2D::createFromCoords(texture, {10, 2}, {128, 128}, {1, 2});
 
     while (!glfwWindowShouldClose(window))
     {

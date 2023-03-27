@@ -1,7 +1,7 @@
 /*! \file subTexture.h
     \brief Header file for creating sub textures.
     \details Contains the function declarations for creating sub textures.
-    \date 04/12/2022
+    \date 03/27/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -14,7 +14,7 @@
 
 /*! \headerfile subTexture.h
     \brief Create a sub texture from a sprite sheet.
-    \date 04/12/2022
+    \date 03/27/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -26,11 +26,12 @@ public:
         \param texture[in] The sprite sheet to get sub textures from.
         \param min[in] The x, y location of the lower bound of the sub texture.
         \param max[in] The x, y location of the upper bound of the sub texture.
-        \date 04/12/2022
+        \param zeroPosCoords[in] The location to (0, 0) a sub texture.
+        \date 03/27/2023
         \version 1.0
         \author Matthew Moore
     */
-    SubTexture2D(const Texture2D &texture, const glm::vec2 &min, const glm::vec2 &max);
+    SubTexture2D(const Texture2D &texture, const glm::vec2 &min, const glm::vec2 &max, const glm::vec2 &zeroPosCoords);
 
     /* Getters */
 
@@ -57,7 +58,7 @@ public:
         \param coords[in] The x, y location of the sub texture to get.
         \param cellSize[in] The width, height of the size of each individual sprite in the sprite sheet.
         \param spriteSize[in] The width, height of the desired amount of cells to display from the sprite sheet.
-        \date 04/12/2022
+        \date 03/27/2023
         \version 1.0
         \author Matthew Moore
         \return SubTexture2D The sub texture information.
