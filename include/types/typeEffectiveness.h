@@ -70,6 +70,6 @@ public:
     float getMatchUp(const Types attackType, const PokemonTypes &opponentTypes) const;
 
 private:
-    us typeAmount;             /*<! Amount of Pokemon types */
-    Effectiveness **typeChart; /*<! The 2D array of type matchups */
+    us typeAmount;             /*!< Amount of Pokemon types */
+    Effectiveness **typeChart; /*!< The 2D array of type matchups */
 };

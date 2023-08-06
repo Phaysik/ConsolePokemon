@@ -25,6 +25,31 @@
 class TypeEffectivenessTest : public ::testing::Test
 {
 protected:
+    /*! \brief Runs before the first test in a test suite
+        \details Initialize #typeEffective before any tests in the test suite are run
+        \post #typeEffective will be allocated on the heap
+        \date 08/06/2023
+        \version 1.0
+        \author Matthew Moore
+    */
+    static void SetUpTestSuite()
+    {
+        typeEffective = new TypeEffective();
+    }
+
+    /*! \brief Runs after the last test in a test suite
+        \details De-allocate the #typeEffective memory
+        \post #typeEffective will be de-allocated and set to a nullptr
+        \date 08/06/2023
+        \version 1.0
+        \author Matthew Moore
+    */
+    static void TearDownTestSuite()
+    {
+        delete typeEffective;
+        typeEffective = nullptr;
+    }
+
     /* Overrides */
 
     /*! \brief Runs on every test fixture test
@@ -73,7 +98,7 @@ protected:
     */
     Effectiveness valueToEffectiveness(const float effectivenessValue);
 
-    TypeEffective typeEffective; /*!< The class that initializes the type chart */
+    static TypeEffective *typeEffective; /*!< The class that initializes the type chart */
 
     /* Single Types */
 
