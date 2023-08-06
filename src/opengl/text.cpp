@@ -1,7 +1,7 @@
 /*! \file text.cpp
     \brief C++ file for rendering text.
     \details Contains the function definition for rendering text
-    \date 04/12/2022
+    \date 08/05/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -29,7 +29,7 @@ Text::Text(const us width, const us height)
     glBindVertexArray(0);
 }
 
-/* Helper Functions */
+/* Member Functions */
 
 void Text::load(const std::string &font, const us fontSize)
 {

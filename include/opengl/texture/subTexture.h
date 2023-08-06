@@ -1,7 +1,7 @@
 /*! \file subTexture.h
     \brief Header file for creating sub textures.
     \details Contains the function declarations for creating sub textures.
-    \date 03/27/2023
+    \date 08/05/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -14,7 +14,7 @@
 
 /*! \headerfile subTexture.h
     \brief Create a sub texture from a sprite sheet.
-    \date 03/27/2023
+    \date 08/05/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -51,7 +51,7 @@ public:
     */
     const glm::vec4 *getTexCoords() const;
 
-    /* Helper Functions */
+    /* Member Functions */
 
     /*! \brief Create the sub texture coordinates from a sprite sheet.
         \param texture[in] The sprite sheet.

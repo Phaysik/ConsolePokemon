@@ -1,7 +1,7 @@
 /*! \file shader.cpp
     \brief C++ file for shader.
     \details Contains the function definition for shader
-    \date 04/11/2022
+    \date 08/05/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -89,7 +89,7 @@ GLuint Shader::getShaderID() const
     return this->ID;
 }
 
-/* Helper Functions */
+/* Member Functions */
 
 Shader &Shader::Use()
 {

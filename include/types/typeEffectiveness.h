@@ -1,7 +1,7 @@
 /*! \file types.h
     \brief Header file for getting type effectiveness.
     \details Contains the declarations for comparing types against one another.
-    \date 04/12/2022
+    \date 08/06/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -12,13 +12,14 @@
 #include <cstdint>
 
 #include "types/typeEnums.h"
+#include "types/pokemonTypes.h"
 
 using us = uint16_t; /*!< Shorthand for unsigned short */
 
 /*! \headerfile types.h
     \brief Type effectiveness
     \details How types stack up against one another.
-    \date 04/12/2022
+    \date 08/06/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -29,14 +30,12 @@ public:
 
     /*! \brief Creates a type chart
         \details Creates a type chart based on the specifications of 'typechart.txt'
-        \param typeToCheck[in] Create a type chart for this specific type
-        \pre The type must be part of #Types
         \post The type chart will be stored in a 2D array filled with #Effectiveness values
-        \date 10/07/2021
+        \date 08/03/2023
         \version 1.0
         \author Matthew Moore
     */
-    TypeEffective(const Types typeToCheck);
+    TypeEffective();
 
     /*! \brief Delete #typeChart allocated memory
         \date 10/07/2021
@@ -59,18 +58,18 @@ public:
     /* Getters */
 
     /*! \brief Get type match up
-        \details Get the type matchup of #typing against the type param
-        \param type[in] The type to get the matchup against
-        \pre The type param must be a valid #Types
-        \date 10/07/2021
+        \details Get the type matchup of a move against the enemy #Pokemon types
+        \param attackType[in] The type to get the matchup against
+        \param opponentTypes[in] The type(s) of the enemy #Pokemon
+        \pre The attackType param must be a valid #Types.
+        \date 08/06/2023
         \version 1.0
         \author Matthew Moore
-        \return float How effect #typing is against the type param
+        \return float How effective the move is against the enemy #Pokemon
     */
-    float getMatchUp(const Types type) const;
+    float getMatchUp(const Types attackType, const PokemonTypes &opponentTypes) const;
 
 private:
     us typeAmount;             /*<! Amount of Pokemon types */
-    Types typing;              /*<! The typing of the Pokemon */
     Effectiveness **typeChart; /*<! The 2D array of type matchups */
 };

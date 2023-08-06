@@ -1,7 +1,7 @@
 /*! \file resourceManager.cpp
     \brief C++ file for resourceManager.
     \details Contains the function definition for resourceManager
-    \date 04/12/2022
+    \date 08/05/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -24,7 +24,7 @@ Shader ResourceManager::getShader(const std::string &name)
     return Shaders[name];
 }
 
-/* Helper Functions */
+/* Member Functions */
 
 Texture2D ResourceManager::loadTexture(const char *file, const bool alpha, const std::string &name)
 {

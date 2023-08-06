@@ -53,16 +53,16 @@ us ColoredText::initColors(const us typeColor, const us red, const us green, con
     return typeColor;
 }
 
-void ColoredText::colorPokemonNames(const Pokemon *pokemon) const
+void ColoredText::colorPokemonNames(Pokemon *pokemon) const
 {
-    Types *types = pokemon->getTypes();
+    PokemonTypes types(pokemon->getTypes());
     std::string text = pokemon->getName();
 
     for (us i = 0; i < static_cast<us>(text.length()); i++)
     {
-        if (pokemon->getDualTyping())
+        if (types.getDualTyping())
         {
-            us pairNum = this->typeColors[types[i % 2]];
+            us pairNum = this->typeColors[i % 2 ? types.getSecondType() : types.getFirstType()];
 
             attron(COLOR_PAIR(pairNum));
 
@@ -74,7 +74,7 @@ void ColoredText::colorPokemonNames(const Pokemon *pokemon) const
         }
         else
         {
-            us pairNum = this->typeColors[types[0]];
+            us pairNum = this->typeColors[types.getFirstType()];
 
             attron(COLOR_PAIR(pairNum));
 

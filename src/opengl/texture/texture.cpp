@@ -1,7 +1,7 @@
 /*! \file texture.cpp
     \brief C++ file for texture.
     \details Contains the function definition for texture
-    \date 03/27/2023
+    \date 08/05/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -67,7 +67,7 @@ void Texture2D::setImageFormat(const GLuint format)
     this->imageFormat = format;
 }
 
-/* Helper Functions */
+/* Member Functions */
 
 void Texture2D::generate(const us imageWidth, const us imageHeight, uc *data)
 {

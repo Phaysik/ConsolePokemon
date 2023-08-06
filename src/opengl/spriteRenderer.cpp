@@ -1,7 +1,7 @@
 /*! \file spriteRenderer.cpp
     \brief C++ file for spriteRenderer.
     \details Contains the function definition for spriteRenderer
-    \date 04/12/2022
+    \date 08/05/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -20,7 +20,7 @@ SpriteRenderer::~SpriteRenderer()
     glDeleteVertexArrays(1, &this->quadVAO);
 }
 
-/* Helper Functions */
+/* Member Functions */
 
 void SpriteRenderer::DrawSprite(const Texture2D &texture, const glm::vec2 &position, const glm::vec2 &size, const float rotate, const glm::vec3 &color)
 {

@@ -1,7 +1,7 @@
 /*! \file subTexture.cpp
     \brief C++ file for subTexture.
     \details Contains the function definition for subTexture
-    \date 03/27/2023
+    \date 08/05/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -32,13 +32,13 @@ const glm::vec4 *SubTexture2D::getTexCoords() const
     return this->texCoords;
 }
 
-/* Helper Functions */
+/* Member Functions */
 
 SubTexture2D SubTexture2D::createFromCoords(const Texture2D &texture, const glm::vec2 &coords, const glm::vec2 &cellSize, const glm::vec2 &spriteSize)
 {
-    glm::vec2 min = {(coords.x * cellSize.x) / texture.getImageWidth(), (coords.y * cellSize.y) / texture.getImageHeight()};
+    glm::vec2 min = {(coords.y * cellSize.x) / texture.getImageWidth(), (coords.x * cellSize.y) / texture.getImageHeight()};
 
-    glm::vec2 max = {((coords.x + spriteSize.x) * cellSize.x) / texture.getImageWidth(), ((coords.y + spriteSize.y) * cellSize.y) / texture.getImageHeight()};
+    glm::vec2 max = {((coords.y + spriteSize.y) * cellSize.x) / texture.getImageWidth(), ((coords.x + spriteSize.x) * cellSize.y) / texture.getImageHeight()};
 
     glm::vec2 zeroPosCoords = {(spriteSize.x * cellSize.x) / texture.getImageWidth(), (spriteSize.y * cellSize.y) / texture.getImageHeight()};
 

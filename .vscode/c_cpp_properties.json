@@ -1,12 +1,9 @@
 {
-    "configurations": [
-        {
-            "name": "Linux",
-            "includePath": [
-                "/usr/include/freetype2",
-                "include/"
-            ]
-        }
-    ],
-    "version": 4
+	"configurations": [
+		{
+			"name": "Linux",
+			"includePath": ["/usr/include/freetype2", "include/", "includeTests/"]
+		}
+	],
+	"version": 4
 }

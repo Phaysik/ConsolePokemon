@@ -1,7 +1,7 @@
 /*! \file colors.h
     \brief Header file for coloring text.
     \details Contains the function declarations for coloring text.
-    \date 04/12/2022
+    \date 08/05/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -43,7 +43,7 @@ class Pokemon;
 /*! \headerfile colors.h
     \brief Colors text
     \details Outputs colored text to the console based on the type that was passed in
-    \date 04/12/2022
+    \date 08/05/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -85,11 +85,11 @@ public:
     /*! \brief Print some colored text
         \details Print some colored text based on the type of Pokemon passed in
         \param pokemon[in] The Pokemon's name to color
-        \date 04/12/2022
+        \date 08/05/2023
         \version 1.0
         \author Matthew Moore
     */
-    void colorPokemonNames(const Pokemon *pokemon) const;
+    void colorPokemonNames(Pokemon *pokemon) const;
 
 private:
     us *typeColors; /*!< The colors for each Pokemon type */

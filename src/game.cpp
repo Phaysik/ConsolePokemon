@@ -1,7 +1,7 @@
 /*! \file game.cpp
     \brief C++ file for the Game.
     \details Contains the function definitions for Game
-    \date 03/27/2023
+    \date 08/05/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -32,11 +32,11 @@ Game::~Game()
     delete this->colorText;
 }
 
-/* Helper functions */
+/* Member functions */
 
 void Game::testing()
 {
-    Types typing[2] = {Types::Grass, Types::Poison};
+    PokemonTypes typing = PokemonTypes(Types::Grass, Types::Poison);
     Stats *stats = new Stats(45, 49, 49, 65, 65, 45);
     Move movelist;
     MoveAbstract *moves;
@@ -60,7 +60,7 @@ void Game::testing()
 
     delete stats;
     stats = new Stats(39, 52, 43, 60, 50, 65);
-    Types newTypes[1] = {Types::Fire};
+    PokemonTypes newTypes = PokemonTypes(Types::Fire);
     moves = new MoveAbstract[MAX_MOVES];
     moves[0] = movelist.ember;
     moves[1] = movelist.smokescreen;

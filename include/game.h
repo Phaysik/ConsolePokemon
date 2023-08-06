@@ -1,7 +1,7 @@
 /*! \file game.h
     \brief Header file for Game.
     \details Contains the function declarations for Game information
-    \date 04/12/2022
+    \date 08/05/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -29,12 +29,13 @@
 #include "trainer/pokemon/stats/stats.h"
 #include "trainer/pokemon/moves/moves.h"
 #include "types/typeEnums.h"
+#include "types/pokemonTypes.h"
 
 /*! \brief Make sure the viewport matches the new window dimensions
     \param window[in, out] The GLFW window to resize
     \param width[in] The width of the GLFW window
     \param height[in] The height of the window
-    \date 04/12/2022
+    \date 08/05/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -66,7 +67,7 @@ public:
     */
     ~Game();
 
-    /* Helper functions */
+    /* Member functions */
 
     /*! \brief For testing functionality
         \date 12/22/2021
@@ -91,7 +92,7 @@ private:
     SpriteRenderer *spriteRenderer; /*!< For rendering sprites */
     Text *textRenderer;             /*!< For displaying text */
 
-    /* Helper Functions */
+    /* Member Functions */
 
     /*! \brief Initialize Ncurses information
         \post Ncurses will be initialized.

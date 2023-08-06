@@ -1,7 +1,7 @@
 /*! \file spriteRenderer.h
     \brief Header file for sprite rendering.
     \details Contains the function declarations for sprite rendering
-    \date 04/12/2022
+    \date 08/05/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -16,6 +16,13 @@
 #include "opengl/texture/texture.h"
 #include "opengl/shader.h"
 
+/*! \headerfile spriteRenderer.h
+    \brief The sprite renderer
+    \details Contains function declarations for drawing and rendering sprites
+    \date 08/05/2023
+    \version 1.0
+    \author Matthew Moore
+*/
 class SpriteRenderer
 {
 public:
@@ -38,7 +45,7 @@ public:
     */
     ~SpriteRenderer();
 
-    /* Helper Functions */
+    /* Member Functions */
 
     /*! \brief Renders a defined quad texture with given sprite.
         \pre texture must be initialized.
@@ -72,7 +79,7 @@ private:
     Shader spriteShader; /*!< The shader to use for rendering */
     GLuint quadVAO;      /*!< The vertex array to use for rendering */
 
-    /* Helper Functions */
+    /* Member Functions */
 
     /*! \brief For rendering a texture.
         \pre textxure must be initialized.

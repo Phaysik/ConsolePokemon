@@ -1,7 +1,7 @@
 /*! \file pokemon.h
     \brief Header file for Pokemon.
     \details Contains the function declarations for the Pokemon information.
-    \date 04/12/2022
+    \date 08/05/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -9,7 +9,6 @@
 #pragma once
 
 #include <cstdint>
-#include <unordered_map>
 #include <string>
 #include <iostream>
 
@@ -17,7 +16,8 @@
 #include "trainer/pokemon/stats/stats.h"
 #include "trainer/pokemon/moves/moves.h"
 #include "types/typeEnums.h"
-#include "types/types.h"
+#include "types/typeEffectiveness.h"
+#include "types/pokemonTypes.h"
 
 using us = uint16_t; /*!< Shorthand for unsigned short */
 
@@ -26,7 +26,7 @@ class MoveAbstract;
 /*! \headerfile pokemon.h
     \brief What Pokemon can do
     \details Creates the properties of a Pokemon and the functions that will affect it
-    \date 04/12/2022
+    \date 08/05/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -49,11 +49,11 @@ public:
         \param pokeTypes[in] The Pokemon's type(s)
         \param pokeDualTyping[in] Whether the Pokemon has two types
         \param pokeName[in] The Pokemon's name
-        \date 04/12/2022
+        \date 08/05/2023
         \version 1.0
         \author Matthew Moore
     */
-    Pokemon(Stats &pokeStats, MoveAbstract *pokeMoves, Types *pokeTypes, const bool pokeDualTyping, const std::string &pokeName);
+    Pokemon(Stats &pokeStats, MoveAbstract *pokeMoves, PokemonTypes &pokeTypes, const bool pokeDualTyping, const std::string &pokeName);
 
     /*! \brief Delete #moves and #typing allocated memory
         \date 10/08/2021
@@ -63,16 +63,6 @@ public:
     ~Pokemon();
 
     /* Getters */
-
-    /*! \brief Get the Pokemon's type matchup
-        \pre Requires the type param to be valid
-        \param type[in] The type to get the matchup for
-        \date 04/12/2022
-        \version 1.0
-        \author Matthew Moore
-        \return float Returns the Pokemon's effectiveness against the type param
-    */
-    float getTypeMatchUp(const us type);
 
     /*! \brief Get the Pokemon's name
         \date 04/12/2022
@@ -114,26 +104,9 @@ public:
         \author Matthew Moore
         \return Types The Pokemon's types
     */
-    Types *getTypes() const;
-
-    /*! \brief Get if the Pokemon has dual types
-        \date 04/12/2022
-        \version 1.0
-        \author Matthew Moore
-        \return bool Whether the Pokemon has dual types
-    */
-    bool getDualTyping() const;
+    const PokemonTypes &getTypes() const;
 
     /* Setters */
-
-    /*! \brief Sets the Pokemon's type matchups
-        \post The Pokemon's #typeMatchup will be set initialized
-        \param pokeDualTyping[in] If the pokemon has two types
-        \date 04/12/2022
-        \version 1.0
-        \author Matthew Moore
-    */
-    void setTypeMatchups(const bool pokeDualTyping);
 
     /*! \brief Sets whether the Pokemon is in battle or not
         \post The Pokemon's #inBattle may be changed
@@ -145,11 +118,9 @@ public:
     void setBattleState(const bool pokeInBattle);
 
 private:
-    Stats stats;                               /*!< The Pokemon's stats */
-    MoveAbstract *moves;                       /*!< The Pokemon's moves */
-    bool dualTyping;                           /*!< Whether the Pokemon has two types */
-    std::string name;                          /*!< The Pokemon's name */
-    bool inBattle;                             /*!< Whether the Pokemon is in battle */
-    Types *typing;                             /*!< The Pokemon's type(s) */
-    std::unordered_map<us, float> typeMatchup; /*!< The Pokemon's type matchup */
+    Stats stats;         /*!< The Pokemon's stats */
+    MoveAbstract *moves; /*!< The Pokemon's moves */
+    std::string name;    /*!< The Pokemon's name */
+    bool inBattle;       /*!< Whether the Pokemon is in battle */
+    PokemonTypes typing; /*!< The Pokemon's type(s) */
 };

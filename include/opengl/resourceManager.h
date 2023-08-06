@@ -1,7 +1,7 @@
 /*! \file resourceManager.h
     \brief Header file for managing all OpenGL resources.
     \details Contains the function declarations for a resource manager.
-    \date 04/12/2022
+    \date 08/05/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -24,6 +24,13 @@
 
 using us = u_int16_t; /*!< Shorthand for unsigned short */
 
+/*! \headerfile resourceManager.h
+    \brief A manager for OpenGL resources
+    \details A manager that handles OpenGL Shader and Texture resources
+    \date 08/05/2023
+    \version 1.0
+    \author Matthew Moore
+*/
 class ResourceManager
 {
 public:
@@ -52,7 +59,7 @@ public:
     */
     static Shader getShader(const std::string &name);
 
-    /* Helper Functions */
+    /* Member Functions */
 
     /*! \brief Loads a texture into memory.
         \post A texture is loaded into memory.
@@ -95,7 +102,7 @@ private:
     */
     ResourceManager() {}
 
-    /* Helper Functions */
+    /* Member Functions */
 
     /*! \brief Loads a single texture from file.
         \param file[in] Location of the texture file.

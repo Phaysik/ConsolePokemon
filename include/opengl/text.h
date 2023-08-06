@@ -1,7 +1,7 @@
 /*! \file text.h
     \brief Header file for redering text.
     \details Contains the function declarations for rendering text.
-    \date 04/12/2022
+    \date 08/05/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -45,7 +45,7 @@ struct Character
 /*! \headerfile text.h
     \brief Text class
     \details For rendering text to the OpenGL window
-    \date 04/12/2022
+    \date 08/05/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -64,7 +64,7 @@ public:
     */
     Text(const us width, const us height);
 
-    /* Helper Functions */
+    /* Member Functions */
 
     /*! \brief Pre compile a list of characters from the given font.
         \param font[in] The font to render.

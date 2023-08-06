@@ -1,7 +1,7 @@
 /*! \file shader.h
     \brief Header file for creating shaders.
     \details Contains the function declarations for Shaders.
-    \date 04/12/2022
+    \date 08/05/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -21,7 +21,7 @@ using us = u_int16_t; /*!<  Shorthand for unsigned short */
 /*! \headerfile shader.h
     \brief Shader class.
     \details For creating shaders.
-    \date 04/12/2022
+    \date 08/05/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -157,7 +157,7 @@ public:
     */
     GLuint getShaderID() const;
 
-    /* Helper Functions */
+    /* Member Functions */
 
     /*! \brief Use the shader and return it.
         \pre Shader must be intialized.

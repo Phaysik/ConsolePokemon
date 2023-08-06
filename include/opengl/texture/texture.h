@@ -1,7 +1,7 @@
 /*! \file texture.h
     \brief Header file for creating 2D textures.
     \details Contains the function declarations for creating 2D textures
-    \date 03/27/2023
+    \date 08/05/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -19,7 +19,7 @@ using uc = u_char;    /*!< Shorthand for unsigned char */
 
 /*! \headerfile texture.h
     \brief Creates 2D textures.
-    \date 03/27/2023
+    \date 08/05/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -103,7 +103,7 @@ public:
     */
     void setImageFormat(const GLuint format);
 
-    /* Helper Functions */
+    /* Member Functions */
 
     /*! \brief Generates texture from image data.
         \post Creates and loads a texture.

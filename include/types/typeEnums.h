@@ -1,7 +1,7 @@
 /*! \file typeEnums.h
     \brief Header file for dealing with types.
     \details Contains the enums for BattleType and Types.
-    \date 10/07/2021
+    \date 08/05/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -24,7 +24,7 @@ enum BattleType
 };
 
 /*! \brief All the Pokemon's Possible Types
-    \date 10/07/2021
+    \date 08/05/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -48,18 +48,21 @@ enum Types
     Dark,
     Steel,
     Fairy,
-    TYPES_MAX
+    TYPES_MAX,
+    NO_TYPE
 };
 
 /*! \brief All the Pokemon types possible effectivenesses
-    \date 10/07/2021
+    \date 08/05/2023
     \version 1.0
     \author Matthew Moore
 */
 enum Effectiveness
 {
-    NOE, /*!< Not effective */
-    NVE, /*!< Not very effective */
-    NE,  /*!< Normal effective */
-    SE   /*!< Super effective */
+    IMMUNE, /*!< Not effective */
+    QUART,  /*!< Not very effective (1/4) */
+    HALF,   /*!< Not very effective (1/2) */
+    NORMAL, /*!< Normal effective */
+    SUPER,  /*!< Super effective (2x) */
+    QUAD    /*!< Super effective (4x) */
 };
