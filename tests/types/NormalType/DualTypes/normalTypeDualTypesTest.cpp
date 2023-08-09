@@ -10,8 +10,6 @@
 #include "types/typeEnums.h"
 #include "TypeEffectiveness/NormalType/normalTypeFixture.h"
 
-TypeEffective *TypeEffectivenessTest::typeEffective = nullptr;
-
 TEST_F(NormalTypeDualTypesTest, NormalxNormalAndFire)
 {
     float actualResult = typeEffective->getMatchUp(TypesNormal, NormalxFire);

@@ -8,6 +8,8 @@
 
 #include "TypeEffectiveness/typeFixture.h"
 
+TypeEffective *TypeEffectivenessTest::typeEffective = nullptr;
+
 /* Overrides */
 
 void TypeEffectivenessTest::SetUp()
