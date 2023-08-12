@@ -15,7 +15,7 @@ OUTPUT_FILE = main
 
 VALGRIND_FLAGS = --leak-check=full --show-leak-kinds=all --verbose -s --track-origins=yes
 
-TEST_SOURCES = $(shell find tests src -type f -name '*.cpp')
+TEST_SOURCES = $(shell find tests src -type f -not -path '*/main.cpp' -name '*.cpp')
 TEST_COMPILER_FLAGS = ${COMPILER_VERSION} --coverage -fPIC -O0
 TEST_INCLUDES = -IincludeTests/
 TEST_LIBRARIES = ${LIBRARIES} -lgtest
