@@ -23,21 +23,21 @@ MoveAbstract &MoveAbstract::operator=(MoveAbstract &moves)
 
 /* Member Functions */
 
-void MoveAbstract::effect(Pokemon **trainer, Pokemon **opponent, const us userIndex, const BattleType type) const
-{
-    if (this->name == "Growl")
-    {
-        // Growl will affect the pokemon in front of it, and also to the left and right if possible
-        if (userIndex > 0)
-            opponent[userIndex - 1]->getStats()->setDefenseMultiplier(0.5);
-        if (userIndex < type)
-            opponent[userIndex + 1]->getStats()->setDefenseMultiplier(0.5);
+// void MoveAbstract::effect(Pokemon **trainer, Pokemon **opponent, const us userIndex, const BattleType type) const
+// {
+//     if (this->name == "Growl")
+//     {
+//         // Growl will affect the pokemon in front of it, and also to the left and right if possible
+//         if (userIndex > 0)
+//             opponent[userIndex - 1]->getStats()->setDefenseMultiplier(0.5);
+//         if (userIndex < type)
+//             opponent[userIndex + 1]->getStats()->setDefenseMultiplier(0.5);
 
-        opponent[userIndex]->getStats()->setDefenseMultiplier(0.5);
-    }
-    else if (this->name == "Swords Dance")
-        trainer[userIndex]->getStats()->setAttackMultiplier(2);
-}
+//         opponent[userIndex]->getStats()->setDefenseMultiplier(0.5);
+//     }
+//     else if (this->name == "Swords Dance")
+//         trainer[userIndex]->getStats()->setAttackMultiplier(2);
+// }
 
 /* Getters */
 

@@ -8,9 +8,10 @@
 
 #pragma once
 
-#include <cstdint>
 #include <string>
 #include <iostream>
+#include <memory>
+#include <array>
 
 #include "constants.h"
 #include "aliases.h"
@@ -20,12 +21,10 @@
 #include "types/typeEffectiveness.h"
 #include "types/pokemonTypes.h"
 
-class MoveAbstract;
-
 /*! \headerfile pokemon.h
     \brief What Pokemon can do
     \details Creates the properties of a Pokemon and the functions that will affect it
-    \date 08/05/2023
+    \date 08/11/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -48,18 +47,18 @@ public:
         \param pokeTypes[in] The Pokemon's type(s)
         \param pokeDualTyping[in] Whether the Pokemon has two types
         \param pokeName[in] The Pokemon's name
-        \date 08/05/2023
+        \date 08/11/2023
         \version 1.0
         \author Matthew Moore
     */
-    Pokemon(Stats &pokeStats, MoveAbstract *pokeMoves, PokemonTypes &pokeTypes, const bool pokeDualTyping, const std::string &pokeName);
+    Pokemon(Stats &pokeStats, std::array<MoveAbstract, MAX_MOVES> &pokeMoves, PokemonTypes &pokeTypes, const std::string &pokeName);
 
-    /*! \brief Delete #moves and #typing allocated memory
-        \date 10/08/2021
+    /*! \brief Inline destructor
+        \date 08/11/2023
         \version 1.0
         \author Matthew Moore
     */
-    ~Pokemon();
+    ~Pokemon(){};
 
     /* Getters */
 
@@ -98,7 +97,7 @@ public:
     bool getBattleState() const;
 
     /*! \brief Get the Pokemon's types
-        \date 04/12/2022
+        \date 08/11/2023
         \version 1.0
         \author Matthew Moore
         \return Types The Pokemon's types
@@ -117,9 +116,9 @@ public:
     void setBattleState(const bool pokeInBattle);
 
 private:
-    Stats stats;         /*!< The Pokemon's stats */
-    MoveAbstract *moves; /*!< The Pokemon's moves */
-    std::string name;    /*!< The Pokemon's name */
-    bool inBattle;       /*!< Whether the Pokemon is in battle */
-    PokemonTypes typing; /*!< The Pokemon's type(s) */
+    Stats stats;                               /*!< The Pokemon's stats */
+    std::array<MoveAbstract, MAX_MOVES> moves; /*!< The Pokemon's moves */
+    std::string name;                          /*!< The Pokemon's name */
+    bool inBattle;                             /*!< Whether the Pokemon is in battle */
+    PokemonTypes typing;                       /*!< The Pokemon's type(s) */
 };

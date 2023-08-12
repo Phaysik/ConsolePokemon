@@ -9,15 +9,12 @@
 #pragma once
 
 #include <ncurses.h>
-#include <cstdint>
 #include <string>
 #include <array>
 
 #include "aliases.h"
 #include "trainer/pokemon/pokemon.h"
 #include "types/typeEnums.h"
-
-class Pokemon;
 
 // For ncurses init_color function
 
@@ -78,11 +75,11 @@ public:
     /*! \brief Print some colored text
         \details Print some colored text based on the type of Pokemon passed in
         \param pokemon[in] The Pokemon's name to color
-        \date 08/05/2023
+        \date 08/11/2023
         \version 1.0
         \author Matthew Moore
     */
-    void colorPokemonNames(Pokemon *pokemon) const;
+    void colorPokemonNames(Pokemon &pokemon) const;
 
 private:
     std::array<us, Types::TYPES_MAX> typeColors; /*!< The colors for each Pokemon type */

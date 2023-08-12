@@ -9,7 +9,6 @@
 #pragma once
 
 #include <fstream>
-#include <cstdint>
 
 #include "aliases.h"
 #include "types/typeEnums.h"

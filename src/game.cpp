@@ -1,7 +1,7 @@
 /*! \file game.cpp
     \brief C++ file for the Game.
     \details Contains the function definitions for Game
-    \date 08/05/2023
+    \date 08/11/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -37,41 +37,37 @@ Game::~Game()
 void Game::testing()
 {
     PokemonTypes typing = PokemonTypes(Types::Grass, Types::Poison);
-    std::unique_ptr<Stats> stats = std::make_unique<Stats>(Stats(45, 49, 49, 65, 65, 45));
+    Stats stats = Stats(45, 49, 49, 65, 65, 45);
     Move movelist;
-    MoveAbstract *moves;
+    std::array<MoveAbstract, MAX_MOVES> moves;
+    moves[0] = movelist.growl;
+    moves[1] = movelist.tackle;
+    moves[2] = movelist.headbutt;
+    moves[3] = movelist.vinewhip;
 
     Trainer trainer(&this->display, true);
     Trainer opponent(&this->display);
 
     for (us i = 0; i < MAX_POKEMON; ++i)
     {
-        moves = new MoveAbstract[MAX_MOVES];
-        moves[0] = movelist.growl;
-        moves[1] = movelist.tackle;
-        moves[2] = movelist.headbutt;
-        moves[3] = movelist.vinewhip;
+        Pokemon opponentPokemon = Pokemon(stats, moves, typing, "bulbassaaurs" + std::to_string(static_cast<sl>(i)));
+        Pokemon trainerPokemon = Pokemon(stats, moves, typing, "bulbasaur" + std::to_string(static_cast<sl>(i)));
 
-        opponent.setPokemonAtIndex(new Pokemon(*stats, moves, typing, true, "bulbassaaurs" + std::to_string(static_cast<sl>(i))), i);
-        trainer.setPokemonAtIndex(new Pokemon(*stats, moves, typing, true, "bulbasaur" + std::to_string(static_cast<sl>(i))), i);
-
-        delete[] moves;
+        opponent.setPokemonAtIndex(opponentPokemon, i);
+        trainer.setPokemonAtIndex(trainerPokemon, i);
     }
 
-    stats.reset(nullptr);
-    stats = std::make_unique<Stats>(Stats(39, 52, 43, 60, 50, 65));
+    stats = Stats(39, 52, 43, 60, 50, 65);
     PokemonTypes newTypes = PokemonTypes(Types::Fire);
-    moves = new MoveAbstract[MAX_MOVES];
     moves[0] = movelist.ember;
     moves[1] = movelist.smokescreen;
     moves[2] = movelist.flamethrower;
     moves[3] = movelist.flareblitz;
-    trainer.setPokemonAtIndex(new Pokemon(*stats, moves, newTypes, false, "charmakjhegernder"), 2);
-
-    delete[] moves;
+    Pokemon replaceTrainerPokemon = Pokemon(stats, moves, newTypes, "charmakjhegernder");
+    trainer.setPokemonAtIndex(replaceTrainerPokemon, 2);
 
     // TODO(phaysik) set up a battle simulation
-    opponent.engage(&trainer, BATTLETYPE);
+    // opponent.engage(&trainer, BATTLETYPE);
 
     // See the effect of the move
     // for (us i = 0; i < 5; ++i)

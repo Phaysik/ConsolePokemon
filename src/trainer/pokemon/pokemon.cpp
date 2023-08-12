@@ -1,7 +1,7 @@
 /*! \file pokemon.cpp
     \brief C++ file for Pokemon.
     \details Contains the function definitions for the Pokemon.
-    \date 08/05/2023
+    \date 08/11/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -10,7 +10,7 @@
 
 /* Constructors and Destructors */
 
-Pokemon::Pokemon(Stats &pokeStats, MoveAbstract *pokeMoves, PokemonTypes &pokeTypes, const bool pokeDualTyping, const std::string &pokeName) : moves(new MoveAbstract[MAX_MOVES]), name(pokeName)
+Pokemon::Pokemon(Stats &pokeStats, std::array<MoveAbstract, MAX_MOVES> &pokeMoves, PokemonTypes &pokeTypes, const std::string &pokeName) : name(pokeName)
 {
     this->stats = pokeStats;
 
@@ -18,11 +18,6 @@ Pokemon::Pokemon(Stats &pokeStats, MoveAbstract *pokeMoves, PokemonTypes &pokeTy
         this->moves[i] = pokeMoves[i];
 
     this->typing = pokeTypes;
-}
-
-Pokemon::~Pokemon()
-{
-    delete[] this->moves;
 }
 
 /* Getters */

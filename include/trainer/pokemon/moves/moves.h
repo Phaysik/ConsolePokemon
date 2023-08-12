@@ -8,19 +8,15 @@
 
 #pragma once
 
-#include <cstdint>
 #include <string>
 
 #include "aliases.h"
-#include "trainer/trainer.h"
 #include "types/typeEnums.h"
-
-class Pokemon;
 
 /*! \headerfile moves.h
     \brief What moves can do
     \details Creates the properties of a Pokemon move and the functions that will affect the battle
-    \date 04/12/2022
+    \date 08/11/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -75,7 +71,8 @@ public:
         \version 1.0
         \author Matthew Moore
     */
-    void effect(Pokemon **trainer, Pokemon **opponent, const us userIndex, const BattleType type) const;
+    // TODO(phaysik) Extract this out to a different class to prevent forward declarations
+    // void effect(Pokemon **trainer, Pokemon **opponent, const us userIndex, const BattleType type) const;
 
     /* Getters */
 

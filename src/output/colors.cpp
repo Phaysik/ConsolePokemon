@@ -48,10 +48,10 @@ us ColoredText::initColors(const us typeColor, const us red, const us green, con
     return typeColor;
 }
 
-void ColoredText::colorPokemonNames(Pokemon *pokemon) const
+void ColoredText::colorPokemonNames(Pokemon &pokemon) const
 {
-    PokemonTypes types(pokemon->getTypes());
-    std::string text = pokemon->getName();
+    PokemonTypes types(pokemon.getTypes());
+    std::string text = pokemon.getName();
 
     for (us i = 0; i < static_cast<us>(text.length()); i++)
     {

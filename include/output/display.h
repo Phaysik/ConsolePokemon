@@ -9,14 +9,14 @@
 #pragma once
 
 #include <ncurses.h>
-#include <cstdint>
+#include <array>
 
+#include "constants.h"
 #include "aliases.h"
 #include "output/colors.h"
 #include "trainer/pokemon/pokemon.h"
 #include "types/typeEnums.h"
 
-class Pokemon;
 class ColoredText;
 
 /*! \headerfile display.h
@@ -39,11 +39,11 @@ public:
         \param type[in] The #BattleType of the battle
         \param mainChar[in] If the trainer is the main character
         \param choice[in] The action choice in the battle state
-        \date 04/12/2022
+        \date 08/11/2023
         \version 1.0
         \author Matthew Moore
     */
-    void printBattleState(Pokemon **trainerEngaged, Pokemon **opponentEngaged, const BattleType type, const bool mainChar, const us choice) const;
+    void printBattleState(std::array<Pokemon, MAX_POKEMON> &trainerEngaged, std::array<Pokemon, MAX_POKEMON> &opponentEngaged, const BattleType type, const bool mainChar, const us choice) const;
 
     /*! \brief Gets max widths of all engaged Pokemon
         \pre All pointer params must be the same length
@@ -52,11 +52,11 @@ public:
         \param opponentPoke[in] The engaged trainer's Pokemon
         \param maxWidths[in, out] The maximum width of the top and bottom Pokemon's name at specific iteration of loopCond param
         \param loopCond[in] The loop terminating condition
-        \date 04/12/2022
+        \date 08/11/2023
         \version 1.0
         \author Matthew Moore
     */
-    void getMaxPokemonWidth(Pokemon **trainerPoke, Pokemon **opponentPoke, us *maxWidths, const us loopCond) const;
+    void getMaxPokemonWidth(std::array<Pokemon, MAX_POKEMON> &trainerPoke, std::array<Pokemon, MAX_POKEMON> &opponentPoke, us *maxWidths, const us loopCond) const;
 
     /*! \brief Outputs the Pokemon's colored names
         \details Outputs the Pokemon's colored names where the last character of the top and bottom names will line up
@@ -65,11 +65,11 @@ public:
         \param opponentPoke[in] The engaged trainer's Pokemon
         \param maxWidths[in] The maximum width of the top and bottom Pokemon's name at specific iteration of loopCond param
         \param loopCond[in] The loop terminating condition
-        \date 04/12/2022
+        \date 08/11/2023
         \version 1.0
         \author Matthew Moore
     */
-    void outputNames(Pokemon **trainerPoke, Pokemon **opponentPoke, const us *maxWidths, const us loopCond) const;
+    void outputNames(std::array<Pokemon, MAX_POKEMON> &trainerPoke, std::array<Pokemon, MAX_POKEMON> &opponentPoke, const us *maxWidths, const us loopCond) const;
 
     /*! \brief Outputs the Pokemon's hp
         \details Outputs the Pokemon's hp where the last character of the hp and the name will line up
@@ -78,11 +78,11 @@ public:
         \param opponentPoke[in] The engaged trainer's Pokemon
         \param loopCond[in] The loop terminating condition
         \param mainChar[in] If the trainer is the main character
-        \date 04/12/2022
+        \date 08/11/2023
         \version 1.0
         \author Matthew Moore
     */
-    void outputHp(Pokemon **trainerPoke, Pokemon **opponentPoke, const us loopCond, const bool mainChar) const;
+    void outputHp(std::array<Pokemon, MAX_POKEMON> &trainerPoke, std::array<Pokemon, MAX_POKEMON> &opponentPoke, const us loopCond, const bool mainChar) const;
 
     /*! \brief Outputs the four choices
         \details Outputs the four choices the trainer can make in a battle
@@ -92,18 +92,18 @@ public:
         \param loopCond[in] The loop terminating condition
         \param pokeIndex[in] The index of the Pokemon in action
         \param choice[in] The action choice in the battle state
-        \date 04/12/2022
+        \date 08/11/2023
         \version 1.0
         \author Matthew Moore
     */
-    void displayBattleMenu(Pokemon **trainerPoke, Pokemon **opponentPoke, const us loopCond, const us pokeIndex, const us choice) const;
+    void displayBattleMenu(std::array<Pokemon, MAX_POKEMON> &trainerPoke, std::array<Pokemon, MAX_POKEMON> &opponentPoke, const us loopCond, const us pokeIndex, const us choice) const;
 
     /* Setters */
 
     /*! \brief Sets the display color capabilities
         \post #colorText memory will point to the params
         \param color[in] The ColoredText object to use
-        \date 04/12/2022
+        \date 08/11/2023
         \version 1.0
         \author Matthew Moore
     */

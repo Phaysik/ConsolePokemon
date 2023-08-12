@@ -8,8 +8,6 @@
 
 #pragma once
 
-#include <cstdint>
-
 #include "aliases.h"
 
 /*! \headerfile stats.h

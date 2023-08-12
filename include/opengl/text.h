@@ -11,7 +11,6 @@
 #include <iostream>
 #include <map>
 #include <stdexcept>
-#include <cstdint>
 
 #include <glad/glad.h>
 

@@ -8,111 +8,91 @@
 
 #include "trainer/trainer.h"
 
-/* Constructors and Destructors */
-
-Trainer::Trainer(Display *disp, const bool isMainCharacter) : trainerPokemon(new Pokemon *[MAX_POKEMON]), inBattle(new Pokemon *[MAX_POKEMON]), isPlayableCharacter(isMainCharacter), display(disp)
-{
-    for (us i = 0; i < MAX_POKEMON; ++i)
-    {
-        this->trainerPokemon[i] = nullptr;
-        this->inBattle[i] = nullptr;
-    }
-}
-
-Trainer::~Trainer()
-{
-    for (us i = 0; i < MAX_POKEMON; ++i)
-        delete this->trainerPokemon[i];
-
-    delete[] this->inBattle;
-    delete[] this->trainerPokemon;
-}
-
 /* Member Functions */
 
 void Trainer::engage(Trainer *opponent, const BattleType type)
 {
-    // TODO this should all be in a loop until one sides Pokemon are all out
-    for (us i = 0; i < static_cast<us>(type + 1); ++i)
-    {
-        this->trainerPokemon[i]->setBattleState(true);
-        opponent->trainerPokemon[i]->setBattleState(true);
-    }
+    // TODO(phaysik) this should all be in a loop until one sides Pokemon are all out
+    // for (us i = 0; i < static_cast<us>(type + 1); ++i)
+    // {
+    //     this->trainerPokemon[i].setBattleState(true);
+    //     opponent->trainerPokemon[i].setBattleState(true);
+    // }
 
-    Pokemon **trainerEngaged = this->getAllInBattle(type);
-    Pokemon **opponentEngaged = opponent->getAllInBattle(type);
+    // std::array<Pokemon, MAX_POKEMON> trainerEngaged = this->getAllInBattle(type);
+    // std::array<Pokemon, MAX_POKEMON> opponentEngaged = opponent->getAllInBattle(type);
 
-    us actionPos = 0;
+    // us actionPos = 0;
 
-    this->display->printBattleState(trainerEngaged, opponentEngaged, type, this->getMainCharacter(), actionPos);
+    // this->display->printBattleState(trainerEngaged, opponentEngaged, type, this->getMainCharacter(), actionPos);
 
-    int userInput;
+    // int userInput;
 
-    do
-    {
-        userInput = getch();
+    // do
+    // {
+    //     userInput = getch();
 
-        bool noChange = false;
+    //     bool noChange = false;
 
-        switch (userInput)
-        {
-        case KEY_LEFT:
-            actionPos = static_cast<us>(abs(actionPos - 1) % 2 + (actionPos <= 1 ? 0 : 2));
-            break;
-        case KEY_RIGHT:
-            actionPos = static_cast<us>((actionPos + 1) % 2 + (actionPos <= 1 ? 0 : 2));
-            break;
-        case KEY_UP:
-            actionPos = static_cast<us>((actionPos + 2) % 4);
-            break;
-        case KEY_DOWN:
-            actionPos = static_cast<us>(abs(actionPos - 2) % 4 + (actionPos != 1 ? 0 : 2));
-            break;
-        default:
-            noChange = true;
-            break;
-        }
+    //     switch (userInput)
+    //     {
+    //     case KEY_LEFT:
+    //         actionPos = static_cast<us>(abs(actionPos - 1) % 2 + (actionPos <= 1 ? 0 : 2));
+    //         break;
+    //     case KEY_RIGHT:
+    //         actionPos = static_cast<us>((actionPos + 1) % 2 + (actionPos <= 1 ? 0 : 2));
+    //         break;
+    //     case KEY_UP:
+    //         actionPos = static_cast<us>((actionPos + 2) % 4);
+    //         break;
+    //     case KEY_DOWN:
+    //         actionPos = static_cast<us>(abs(actionPos - 2) % 4 + (actionPos != 1 ? 0 : 2));
+    //         break;
+    //     default:
+    //         noChange = true;
+    //         break;
+    //     }
 
-        if (!noChange) // Don't reprint if a different choice was not made
-        {
-            clear();
+    //     if (!noChange) // Don't reprint if a different choice was not made
+    //     {
+    //         clear();
 
-            this->display->printBattleState(trainerEngaged, opponentEngaged, type, this->getMainCharacter(), actionPos);
-        }
+    //         this->display->printBattleState(trainerEngaged, opponentEngaged, type, this->getMainCharacter(), actionPos);
+    //     }
 
-    } while (userInput != 103); // This is the 'g' key for testing purposes
+    // } while (userInput != 103); // This is the 'g' key for testing purposes
 
-    clear();
+    // clear();
 
-    this->trainerPokemon[2]->getMove(0)->effect(this->getAllPokemon(), opponent->getAllInBattle(type), 2, type);
+    // // this->trainerPokemon[2].getMove(0)->effect(this->getAllPokemon(), opponent->getAllInBattle(type), 2, type);
 
-    for (us i = 0; i < static_cast<us>(type + 1); ++i)
-    {
-        this->trainerPokemon[i]->setBattleState(false);
-        opponent->trainerPokemon[i]->setBattleState(false);
-    }
+    // for (us i = 0; i < static_cast<us>(type + 1); ++i)
+    // {
+    //     this->trainerPokemon[i].setBattleState(false);
+    //     opponent->trainerPokemon[i].setBattleState(false);
+    // }
 }
 
 /* Getters */
 
-Pokemon *Trainer::getPokemonAtIndex(const us index) const
+Pokemon &Trainer::getPokemonAtIndex(const us index)
 {
     return this->trainerPokemon[index];
 }
 
-Pokemon **Trainer::getAllPokemon() const
+std::array<Pokemon, MAX_POKEMON> &Trainer::getAllPokemon()
 {
     return this->trainerPokemon;
 }
 
-Pokemon **Trainer::getAllInBattle(const BattleType type) const
+std::array<Pokemon, MAX_POKEMON> &Trainer::getAllInBattle(const BattleType type)
 {
     // TODO: Instead of looping based on the battle type, loop based on how many Pokemon in party
     us arrIndex = 0;
 
     for (us i = 0; i < static_cast<us>(type + 1); ++i)
         // Determine if a Pokemon is engaged in battle
-        if (this->trainerPokemon[i]->getBattleState())
+        if (this->trainerPokemon[i].getBattleState())
             this->inBattle[arrIndex++] = this->trainerPokemon[i];
 
     return this->inBattle;
@@ -125,10 +105,7 @@ bool Trainer::getMainCharacter() const
 
 /* Setters */
 
-void Trainer::setPokemonAtIndex(Pokemon *pokemon, const us index)
+void Trainer::setPokemonAtIndex(Pokemon &pokemon, const us index)
 {
-    if (this->trainerPokemon[index] != nullptr)
-        delete this->trainerPokemon[index];
-
     this->trainerPokemon[index] = pokemon;
 }
