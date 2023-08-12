@@ -8,19 +8,6 @@
 
 #include "trainer/pokemon/moves/moves.h"
 
-/* Overloaded Operators */
-
-MoveAbstract &MoveAbstract::operator=(const MoveAbstract &moves)
-{
-    this->typing = moves.typing;
-    this->power = moves.power;
-    this->accuracy = moves.accuracy;
-    this->powerPoints = moves.powerPoints;
-    this->name = moves.name;
-
-    return *this;
-}
-
 /* Member Functions */
 
 // void MoveAbstract::effect(Pokemon **trainer, Pokemon **opponent, const us userIndex, const BattleType type) const

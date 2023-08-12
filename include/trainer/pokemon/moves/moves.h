@@ -55,7 +55,7 @@ public:
         \author Matthew Moore
         \return MoveAbstract A clone of the moves param
     */
-    MoveAbstract &operator=(const MoveAbstract &moves);
+    MoveAbstract &operator=(const MoveAbstract &moves) = default;
 
     /* Member Functions */
 

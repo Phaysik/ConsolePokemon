@@ -128,9 +128,9 @@ public:
     void setBattleState(const bool pokeInBattle);
 
 private:
+    std::string name;                          /*!< The Pokemon's name */
     Stats stats;                               /*!< The Pokemon's stats */
     std::array<MoveAbstract, MAX_MOVES> moves; /*!< The Pokemon's moves */
-    std::string name;                          /*!< The Pokemon's name */
     bool inBattle;                             /*!< Whether the Pokemon is in battle */
     PokemonTypes typing;                       /*!< The Pokemon's type(s) */
 };
