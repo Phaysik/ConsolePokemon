@@ -1,7 +1,7 @@
 /*! \file colors.cpp
     \brief C++ file for coloring text.
     \details Contains the function definitions for coloring text.
-    \date 04/12/2021
+    \date 08/11/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -10,7 +10,7 @@
 
 /* Constructors and Destructors */
 
-ColoredText::ColoredText() : typeColors(new us[Types::TYPES_MAX])
+ColoredText::ColoredText()
 {
     this->typeColors[0] = this->initColors(NORMAL_COLOR, 168, 168, 120);
     this->typeColors[1] = this->initColors(FIRE_COLOR, 240, 128, 48);
@@ -30,11 +30,6 @@ ColoredText::ColoredText() : typeColors(new us[Types::TYPES_MAX])
     this->typeColors[15] = this->initColors(DARK_COLOR, 112, 88, 72);
     this->typeColors[16] = this->initColors(STEEL_COLOR, 184, 184, 208);
     this->typeColors[17] = this->initColors(FAIRY_COLOR, 238, 153, 172);
-}
-
-ColoredText::~ColoredText()
-{
-    delete[] this->typeColors;
 }
 
 /* Member Functions */

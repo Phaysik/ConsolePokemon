@@ -11,6 +11,7 @@
 #include <ncurses.h>
 #include <cstdint>
 #include <string>
+#include <array>
 
 #include "aliases.h"
 #include "trainer/pokemon/pokemon.h"
@@ -42,7 +43,7 @@ class Pokemon;
 /*! \headerfile colors.h
     \brief Colors text
     \details Outputs colored text to the console based on the type that was passed in
-    \date 08/05/2023
+    \date 08/11/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -57,13 +58,6 @@ public:
         \author Matthew Moore
     */
     ColoredText();
-
-    /*! \brief Delete #typeColors allocated memory
-        \date 12/19/2021
-        \version 1.0
-        \author Matthew Moore
-    */
-    ~ColoredText();
 
     /* Member Functions */
 
@@ -91,5 +85,5 @@ public:
     void colorPokemonNames(Pokemon *pokemon) const;
 
 private:
-    us *typeColors; /*!< The colors for each Pokemon type */
+    std::array<us, Types::TYPES_MAX> typeColors; /*!< The colors for each Pokemon type */
 };
