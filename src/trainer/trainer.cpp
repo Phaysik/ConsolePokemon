@@ -26,7 +26,7 @@ void Trainer::engage(Trainer *opponent, const BattleType type)
 
     this->display.printBattleState(trainerEngaged, opponentEngaged, type, this->getMainCharacter(), actionPos);
 
-    int userInput;
+    int userInput = 0;
 
     do
     {
@@ -91,9 +91,13 @@ std::array<Pokemon, MAX_POKEMON> &Trainer::getAllInBattle(const BattleType type)
     us arrIndex = 0;
 
     for (us i = 0; i < static_cast<us>(type + 1); ++i)
+    {
         // Determine if a Pokemon is engaged in battle
         if (this->trainerPokemon[i].getBattleState())
+        {
             this->inBattle[arrIndex++] = this->trainerPokemon[i];
+        }
+    }
 
     return this->inBattle;
 }
