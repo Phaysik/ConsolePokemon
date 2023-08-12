@@ -10,12 +10,12 @@
 
 /* Constructors and Destructors */
 
-Pokemon::Pokemon(Stats &pokeStats, std::array<MoveAbstract, MAX_MOVES> &pokeMoves, PokemonTypes &pokeTypes, const std::string &pokeName) : name(pokeName)
+Pokemon::Pokemon(Stats &pokeStats, std::array<MoveAbstract, MAX_MOVES> &pokeMoves, PokemonTypes &pokeTypes, std::string pokeName) : name(std::move(pokeName)), stats(pokeStats)
 {
-    this->stats = pokeStats;
-
     for (us i = 0; i < MAX_MOVES; ++i)
+    {
         this->moves[i] = pokeMoves[i];
+    }
 
     this->typing = pokeTypes;
 }
@@ -23,10 +23,17 @@ Pokemon::Pokemon(Stats &pokeStats, std::array<MoveAbstract, MAX_MOVES> &pokeMove
 /* Overloaded Operators */
 Pokemon &Pokemon::operator=(const Pokemon &pokemon)
 {
+    if (this == &pokemon)
+    {
+        return *this;
+    }
+
     this->stats = pokemon.stats;
 
     for (ub i = 0; i < MAX_MOVES; ++i)
+    {
         this->moves[i] = pokemon.moves[i];
+    }
 
     this->name = pokemon.name;
     this->inBattle = pokemon.inBattle;
@@ -68,5 +75,7 @@ void Pokemon::setBattleState(const bool pokeInBattle)
 {
     this->inBattle = pokeInBattle;
     if (!this->inBattle)
+    {
         this->getStats()->resetMultipliers();
+    }
 }

@@ -51,7 +51,7 @@ public:
         \version 1.0
         \author Matthew Moore
     */
-    Pokemon(Stats &pokeStats, std::array<MoveAbstract, MAX_MOVES> &pokeMoves, PokemonTypes &pokeTypes, const std::string &pokeName);
+    Pokemon(Stats &pokeStats, std::array<MoveAbstract, MAX_MOVES> &pokeMoves, PokemonTypes &pokeTypes, std::string pokeName);
 
     /*! \brief Inline destructor
         \date 08/11/2023
