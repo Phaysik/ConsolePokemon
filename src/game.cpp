@@ -45,8 +45,8 @@ void Game::testing()
     moves[2] = movelist.headbutt;
     moves[3] = movelist.vinewhip;
 
-    Trainer trainer(&this->display, true);
-    Trainer opponent(&this->display);
+    Trainer trainer(this->display, true);
+    Trainer opponent(this->display);
 
     for (us i = 0; i < MAX_POKEMON; ++i)
     {

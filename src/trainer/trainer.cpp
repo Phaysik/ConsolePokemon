@@ -24,7 +24,7 @@ void Trainer::engage(Trainer *opponent, const BattleType type)
 
     us actionPos = 0;
 
-    this->display->printBattleState(trainerEngaged, opponentEngaged, type, this->getMainCharacter(), actionPos);
+    this->display.printBattleState(trainerEngaged, opponentEngaged, type, this->getMainCharacter(), actionPos);
 
     int userInput;
 
@@ -57,7 +57,7 @@ void Trainer::engage(Trainer *opponent, const BattleType type)
         {
             clear();
 
-            this->display->printBattleState(trainerEngaged, opponentEngaged, type, this->getMainCharacter(), actionPos);
+            this->display.printBattleState(trainerEngaged, opponentEngaged, type, this->getMainCharacter(), actionPos);
         }
 
     } while (userInput != 103); // This is the 'g' key for testing purposes

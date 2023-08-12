@@ -14,8 +14,6 @@
 #include "trainer/pokemon/pokemon.h"
 #include "types/typeEnums.h"
 
-class Display;
-
 /*! \headerfile trainer.h
     \brief The Pokemon trainer
     \details Creates the properties of a Pokemon trainer and the functions that will affect the trainer
@@ -36,7 +34,7 @@ public:
         \version 1.0
         \author Matthew Moore
     */
-    Trainer(Display *disp, const bool isMainCharacter = false) : isPlayableCharacter(isMainCharacter), display(disp){};
+    Trainer(Display &disp, const bool isMainCharacter = false) : isPlayableCharacter(isMainCharacter), display(disp){};
 
     /*! \brief Inline destructor
         \date 08/11/2023
@@ -113,5 +111,5 @@ private:
     std::array<Pokemon, MAX_POKEMON> trainerPokemon; /*!< The team of Pokemon the trainer is using */
     std::array<Pokemon, MAX_POKEMON> inBattle;       /*!< Which Pokemon are in battle */
     bool isPlayableCharacter;                        /*!< Is the main character */
-    Display *display;                                /*!< For displaying text */
+    Display display;                                 /*!< For displaying text */
 };
