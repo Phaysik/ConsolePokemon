@@ -13,7 +13,7 @@
 void Display::printBattleState(std::array<Pokemon, MAX_POKEMON> &trainerEngaged, std::array<Pokemon, MAX_POKEMON> &opponentEngaged, const BattleType type, const bool mainChar, const us action) const
 {
     us loopCond = static_cast<us>(type + 1);
-    std::unique_ptr<us[]> maxWidth = std::make_unique_for_overwrite<us[]>(loopCond);
+    std::unique_ptr<us[]> maxWidth(new us[loopCond]);
 
     Display::getMaxPokemonWidth(trainerEngaged, opponentEngaged, maxWidth, loopCond);
 
