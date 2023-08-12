@@ -1,7 +1,7 @@
 /*! \file resourceManager.h
     \brief Header file for managing all OpenGL resources.
     \details Contains the function declarations for a resource manager.
-    \date 08/05/2023
+    \date 08/11/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -19,10 +19,9 @@
 
 #include "stb_image.h"
 
+#include "aliases.h"
 #include "opengl/texture/texture.h"
 #include "opengl/shader.h"
-
-using us = u_int16_t; /*!< Shorthand for unsigned short */
 
 /*! \headerfile resourceManager.h
     \brief A manager for OpenGL resources

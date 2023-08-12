@@ -1,7 +1,7 @@
 /*! \file colors.h
     \brief Header file for coloring text.
     \details Contains the function declarations for coloring text.
-    \date 08/05/2023
+    \date 08/11/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -12,10 +12,9 @@
 #include <cstdint>
 #include <string>
 
+#include "aliases.h"
 #include "trainer/pokemon/pokemon.h"
 #include "types/typeEnums.h"
-
-using us = uint16_t; /*!< Shorthand for unsigned short */
 
 class Pokemon;
 

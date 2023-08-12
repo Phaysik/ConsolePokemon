@@ -1,7 +1,7 @@
 /*! \file pokemon.h
     \brief Header file for Pokemon.
     \details Contains the function declarations for the Pokemon information.
-    \date 08/05/2023
+    \date 08/11/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -13,13 +13,12 @@
 #include <iostream>
 
 #include "constants.h"
+#include "aliases.h"
 #include "trainer/pokemon/stats/stats.h"
 #include "trainer/pokemon/moves/moves.h"
 #include "types/typeEnums.h"
 #include "types/typeEffectiveness.h"
 #include "types/pokemonTypes.h"
-
-using us = uint16_t; /*!< Shorthand for unsigned short */
 
 class MoveAbstract;
 

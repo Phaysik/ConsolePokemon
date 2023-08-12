@@ -1,7 +1,7 @@
 /*! \file game.h
     \brief Header file for Game.
     \details Contains the function declarations for Game information
-    \date 08/05/2023
+    \date 08/11/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -11,11 +11,14 @@
 #include <thread>
 #include <ncurses.h>
 #include <string>
+#include <memory>
+#include <array>
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
 #include "constants.h"
+#include "aliases.h"
 #include "opengl/resourceManager.h"
 #include "opengl/texture/texture.h"
 #include "opengl/texture/subTexture.h"
@@ -44,7 +47,7 @@ void frameBufferResize(GLFWwindow *window, int width, int height);
 /*! \headerfile game.h
     \brief The game
     \details Creates the properties of a Game and the functions that will affect it.
-    \date 04/11/2022
+    \date 08/11/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -85,12 +88,12 @@ public:
     void startWindow();
 
 private:
-    Display display;                /*!< For displaying text */
-    ColoredText *colorText;         /*!< For displaying text in color */
-    std::thread thread;             /*!< For threading the console portion of the application */
-    GLFWwindow *window;             /*!< For creating a OpenGL window */
-    SpriteRenderer *spriteRenderer; /*!< For rendering sprites */
-    Text *textRenderer;             /*!< For displaying text */
+    Display display;                                /*!< For displaying text */
+    ColoredText *colorText;                         /*!< For displaying text in color */
+    std::thread thread;                             /*!< For threading the console portion of the application */
+    GLFWwindow *window;                             /*!< For creating a OpenGL window */
+    std::unique_ptr<SpriteRenderer> spriteRenderer; /*!< For rendering sprites */
+    std::unique_ptr<Text> textRenderer;             /*!< For displaying text */
 
     /* Member Functions */
 
@@ -100,7 +103,7 @@ private:
         \version 1.0
         \author Matthew Moore
     */
-    void initNcurses();
+    static void initNcurses();
 
     /*! \brief Initalize OpenGL information
         \post #window, #text will be initialized.

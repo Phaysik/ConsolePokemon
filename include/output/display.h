@@ -1,7 +1,7 @@
 /*! \file display.h
     \brief Header file for displaying text.
     \details Contains the function declarations for displaying text.
-    \date 04/12/2022
+    \date 08/11/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -11,11 +11,10 @@
 #include <ncurses.h>
 #include <cstdint>
 
+#include "aliases.h"
 #include "output/colors.h"
 #include "trainer/pokemon/pokemon.h"
 #include "types/typeEnums.h"
-
-using us = uint16_t; /*!< Shorthand for unsigned short */
 
 class Pokemon;
 class ColoredText;

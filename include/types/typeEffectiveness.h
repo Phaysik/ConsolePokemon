@@ -1,7 +1,7 @@
 /*! \file types.h
     \brief Header file for getting type effectiveness.
     \details Contains the declarations for comparing types against one another.
-    \date 08/06/2023
+    \date 08/11/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -11,10 +11,9 @@
 #include <fstream>
 #include <cstdint>
 
+#include "aliases.h"
 #include "types/typeEnums.h"
 #include "types/pokemonTypes.h"
-
-using us = uint16_t; /*!< Shorthand for unsigned short */
 
 /*! \headerfile types.h
     \brief Type effectiveness

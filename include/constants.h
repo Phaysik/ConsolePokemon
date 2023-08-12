@@ -1,6 +1,6 @@
 /*! \file constants.h
     \brief Header file for global constants.
-    \date 04/11/2022
+    \date 08/11/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -10,9 +10,8 @@
 #include <cstdint>
 #include <string>
 
+#include "aliases.h"
 #include "types/typeEnums.h"
-
-using us = uint16_t; /*!< Shorthand for unsigned short */
 
 // For Pokemon constants
 const us MAX_POKEMON = 5;

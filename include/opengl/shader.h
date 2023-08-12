@@ -1,7 +1,7 @@
 /*! \file shader.h
     \brief Header file for creating shaders.
     \details Contains the function declarations for Shaders.
-    \date 08/05/2023
+    \date 08/11/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -16,7 +16,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-using us = u_int16_t; /*!<  Shorthand for unsigned short */
+#include "aliases.h"
 
 /*! \headerfile shader.h
     \brief Shader class.

@@ -12,7 +12,7 @@
 
 Game::Game()
 {
-    this->initNcurses();
+    Game::initNcurses();
 
     this->initOpenGL();
 
@@ -37,7 +37,7 @@ Game::~Game()
 void Game::testing()
 {
     PokemonTypes typing = PokemonTypes(Types::Grass, Types::Poison);
-    Stats *stats = new Stats(45, 49, 49, 65, 65, 45);
+    std::unique_ptr<Stats> stats = std::make_unique<Stats>(Stats(45, 49, 49, 65, 65, 45));
     Move movelist;
     MoveAbstract *moves;
 
@@ -52,14 +52,14 @@ void Game::testing()
         moves[2] = movelist.headbutt;
         moves[3] = movelist.vinewhip;
 
-        opponent.setPokemonAtIndex(new Pokemon(*stats, moves, typing, true, "bulbassaaurs" + std::to_string(static_cast<long>(i))), i);
-        trainer.setPokemonAtIndex(new Pokemon(*stats, moves, typing, true, "bulbasaur" + std::to_string(static_cast<long>(i))), i);
+        opponent.setPokemonAtIndex(new Pokemon(*stats, moves, typing, true, "bulbassaaurs" + std::to_string(static_cast<sl>(i))), i);
+        trainer.setPokemonAtIndex(new Pokemon(*stats, moves, typing, true, "bulbasaur" + std::to_string(static_cast<sl>(i))), i);
 
         delete[] moves;
     }
 
-    delete stats;
-    stats = new Stats(39, 52, 43, 60, 50, 65);
+    stats.reset(nullptr);
+    stats = std::make_unique<Stats>(Stats(39, 52, 43, 60, 50, 65));
     PokemonTypes newTypes = PokemonTypes(Types::Fire);
     moves = new MoveAbstract[MAX_MOVES];
     moves[0] = movelist.ember;
@@ -69,9 +69,8 @@ void Game::testing()
     trainer.setPokemonAtIndex(new Pokemon(*stats, moves, newTypes, false, "charmakjhegernder"), 2);
 
     delete[] moves;
-    delete stats;
 
-    // TODO set up a battle simulation
+    // TODO(phaysik) set up a battle simulation
     opponent.engage(&trainer, BATTLETYPE);
 
     // See the effect of the move
@@ -90,18 +89,18 @@ void Game::startWindow()
 
     SubTexture2D subTexture = SubTexture2D::createFromCoords(texture, {10, 2}, {128, 128}, {1, 2});
 
-    while (!glfwWindowShouldClose(window))
+    while (glfwWindowShouldClose(window) == GL_FALSE)
     {
         glfwPollEvents();
 
         // render
         // ------
-        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+        glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        this->spriteRenderer->DrawSprite(subTexture, glm::vec2(0.0f, 0.0f), glm::vec2(WINDOW_WIDTH, WINDOW_HEIGHT));
+        this->spriteRenderer->DrawSprite(subTexture, glm::vec2(0.0F, 0.0F), glm::vec2(WINDOW_WIDTH, WINDOW_HEIGHT));
 
-        this->textRenderer->renderText("This is sample text", 25.0f, 25.0f, 1.0f, glm::vec3(0.5, 0.8f, 0.2f));
+        this->textRenderer->renderText("This is sample text", 25.0F, 25.0F, 1.0F, glm::vec3(0.5, 0.8F, 0.2F));
 
         glfwSwapBuffers(window);
         glFlush();
@@ -109,8 +108,8 @@ void Game::startWindow()
 
     ResourceManager::clear();
 
-    delete this->spriteRenderer;
-    delete this->textRenderer;
+    this->spriteRenderer.reset(nullptr);
+    this->textRenderer.reset(nullptr);
 
     glfwDestroyWindow(this->window);
     glfwTerminate();
@@ -122,19 +121,19 @@ void Game::initNcurses()
 
     curs_set(0); // No cursor
 
-    if (has_colors() == FALSE)
+    if (!has_colors())
     {
         endwin();
-        printf("Your terminal does not support color.");
+        std::cout << "Your terminal does not support color." << std::endl;
         exit(1);
     }
 
     start_color(); /* Start color 			*/
 
-    if (can_change_color() == FALSE)
+    if (!can_change_color())
     {
         endwin();
-        printf("Your terminal does not support color changing.");
+        std::cout << "Your terminal does not support color changing." << std::endl;
         exit(1);
     }
 
@@ -149,11 +148,11 @@ void Game::initOpenGL()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    glfwWindowHint(GLFW_RESIZABLE, false);
+    glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
     this->window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Pokemon Info", nullptr, nullptr);
 
-    if (window == NULL)
+    if (window == nullptr)
     {
         glfwTerminate();
     }
@@ -161,7 +160,7 @@ void Game::initOpenGL()
     glfwMakeContextCurrent(window); // IMPORTANT!!
     // glfwSetFramebufferSizeCallback(window, frameBufferResize);
 
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+    if (gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress)) == GL_FALSE)
     {
         glfwTerminate();
     }
@@ -177,7 +176,7 @@ void Game::initOpenGL()
     ResourceManager::loadShader("resources/shaders/sprite.vert", "resources/shaders/sprite.frag", nullptr, "sprite");
 
     // configure shaders
-    glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(WINDOW_WIDTH), static_cast<float>(WINDOW_HEIGHT), 0.0f, -1.0f, 1.0f);
+    glm::mat4 projection = glm::ortho(0.0F, static_cast<float>(WINDOW_WIDTH), static_cast<float>(WINDOW_HEIGHT), 0.0F, -1.0F, 1.0F);
     ResourceManager::getShader("sprite").Use().setInteger("sprite", 0);
     ResourceManager::getShader("sprite").setMat4("projection", projection);
 
@@ -187,14 +186,18 @@ void Game::initOpenGL()
 
     // Set renderer specific controls
     Shader spriteShader = ResourceManager::getShader("sprite");
-    this->spriteRenderer = new SpriteRenderer(spriteShader);
+    this->spriteRenderer = std::make_unique<SpriteRenderer>(SpriteRenderer(spriteShader));
 
-    this->textRenderer = new Text(WINDOW_WIDTH, WINDOW_HEIGHT);
+    this->textRenderer = std::make_unique<Text>(Text(WINDOW_WIDTH, WINDOW_HEIGHT));
     this->textRenderer->load(TEXTFILE, FONTSIZE);
 }
 
 void frameBufferResize(GLFWwindow *window, int width, int height)
 {
+    if (window != nullptr)
+    {
+    }
+
     // make sure the viewport matches the new window dimensions; note that width and
     // height will be significantly larger than specified on retina displays.
     glViewport(0, 0, width, height);

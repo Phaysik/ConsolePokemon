@@ -1,7 +1,7 @@
 /*! \file stats.h
     \brief Header file for Pokemon stats.
     \details Contains the function declarations for the Pokemon stats.
-    \date 04/12/2022
+    \date 08/11/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -10,7 +10,7 @@
 
 #include <cstdint>
 
-using us = uint16_t; /*!< Shorthand for unsigned short */
+#include "aliases.h"
 
 /*! \headerfile stats.h
     \brief Pokemon stats

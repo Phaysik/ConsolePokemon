@@ -77,6 +77,10 @@ coverage: genhtml
 	rm -rf ${TEST_OUTPUT_FOLDER}
 	rm -rf ${LCOV_OUTPUT_FOLDER}
 
+.PHONY: tidy
+tidy:
+	clang-tidy src/*.cpp -- ${INCLUDE}
+
 .PHONY: docs
 docs:
 	doxygen Doxyfile

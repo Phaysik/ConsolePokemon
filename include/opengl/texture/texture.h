@@ -1,7 +1,7 @@
 /*! \file texture.h
     \brief Header file for creating 2D textures.
     \details Contains the function declarations for creating 2D textures
-    \date 08/05/2023
+    \date 08/11/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -14,8 +14,7 @@
 #include <glad/glad.h>
 #include <glm/glm.hpp>
 
-using us = u_int16_t; /*!< Shorthand for unsigned short */
-using uc = u_char;    /*!< Shorthand for unsigned char */
+#include "aliases.h"
 
 /*! \headerfile texture.h
     \brief Creates 2D textures.
@@ -114,7 +113,7 @@ public:
         \version 1.0
         \author Matthew Moore
     */
-    void generate(const us imageWidth, const us imageHeight, uc *data);
+    void generate(const us imageWidth, const us imageHeight, ub *data);
 
     /*! \brief Binds the texture as the current active GL_TEXTURE_2D texture object.
         \post The texture is bounded
