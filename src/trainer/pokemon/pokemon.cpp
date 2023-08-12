@@ -20,6 +20,21 @@ Pokemon::Pokemon(Stats &pokeStats, std::array<MoveAbstract, MAX_MOVES> &pokeMove
     this->typing = pokeTypes;
 }
 
+/* Overloaded Operators */
+Pokemon &Pokemon::operator=(const Pokemon &pokemon)
+{
+    this->stats = pokemon.stats;
+
+    for (ub i = 0; i < MAX_MOVES; ++i)
+        this->moves[i] = pokemon.moves[i];
+
+    this->name = pokemon.name;
+    this->inBattle = pokemon.inBattle;
+    this->typing = pokemon.typing;
+
+    return *this;
+}
+
 /* Getters */
 
 std::string Pokemon::getName() const

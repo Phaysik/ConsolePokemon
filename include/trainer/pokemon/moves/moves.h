@@ -50,12 +50,12 @@ public:
     /*! \brief Overload operator=
         \details Will allow chaining for MoveAbstract class types
         \param moves[in] The move and all of it's information
-        \date 04/12/2022
+        \date 08/11/2023
         \version 1.0
         \author Matthew Moore
         \return MoveAbstract A clone of the moves param
     */
-    MoveAbstract &operator=(MoveAbstract &moves);
+    MoveAbstract &operator=(const MoveAbstract &moves);
 
     /* Member Functions */
 

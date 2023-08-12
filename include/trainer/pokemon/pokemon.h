@@ -60,6 +60,18 @@ public:
     */
     ~Pokemon(){};
 
+    /* Overloaded Operators */
+
+    /*! \brief Overload operator=
+        \details Will allow chaining for #Pokemon class types
+        \param pokemon[in] The #Pokemon and all of it's information
+        \date 08/11/2023
+        \version 1.0
+        \author Matthew Moore
+        \return #Pokemon A clone of the pokemon param
+    */
+    Pokemon &operator=(const Pokemon &pokemon);
+
     /* Getters */
 
     /*! \brief Get the Pokemon's name

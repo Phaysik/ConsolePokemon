@@ -13,64 +13,64 @@
 void Trainer::engage(Trainer *opponent, const BattleType type)
 {
     // TODO(phaysik) this should all be in a loop until one sides Pokemon are all out
-    // for (us i = 0; i < static_cast<us>(type + 1); ++i)
-    // {
-    //     this->trainerPokemon[i].setBattleState(true);
-    //     opponent->trainerPokemon[i].setBattleState(true);
-    // }
+    for (us i = 0; i < static_cast<us>(type + 1); ++i)
+    {
+        this->trainerPokemon[i].setBattleState(true);
+        opponent->trainerPokemon[i].setBattleState(true);
+    }
 
-    // std::array<Pokemon, MAX_POKEMON> trainerEngaged = this->getAllInBattle(type);
-    // std::array<Pokemon, MAX_POKEMON> opponentEngaged = opponent->getAllInBattle(type);
+    std::array<Pokemon, MAX_POKEMON> trainerEngaged = this->getAllInBattle(type);
+    std::array<Pokemon, MAX_POKEMON> opponentEngaged = opponent->getAllInBattle(type);
 
-    // us actionPos = 0;
+    us actionPos = 0;
 
-    // this->display->printBattleState(trainerEngaged, opponentEngaged, type, this->getMainCharacter(), actionPos);
+    this->display->printBattleState(trainerEngaged, opponentEngaged, type, this->getMainCharacter(), actionPos);
 
-    // int userInput;
+    int userInput;
 
-    // do
-    // {
-    //     userInput = getch();
+    do
+    {
+        userInput = getch();
 
-    //     bool noChange = false;
+        bool noChange = false;
 
-    //     switch (userInput)
-    //     {
-    //     case KEY_LEFT:
-    //         actionPos = static_cast<us>(abs(actionPos - 1) % 2 + (actionPos <= 1 ? 0 : 2));
-    //         break;
-    //     case KEY_RIGHT:
-    //         actionPos = static_cast<us>((actionPos + 1) % 2 + (actionPos <= 1 ? 0 : 2));
-    //         break;
-    //     case KEY_UP:
-    //         actionPos = static_cast<us>((actionPos + 2) % 4);
-    //         break;
-    //     case KEY_DOWN:
-    //         actionPos = static_cast<us>(abs(actionPos - 2) % 4 + (actionPos != 1 ? 0 : 2));
-    //         break;
-    //     default:
-    //         noChange = true;
-    //         break;
-    //     }
+        switch (userInput)
+        {
+        case KEY_LEFT:
+            actionPos = static_cast<us>(abs(actionPos - 1) % 2 + (actionPos <= 1 ? 0 : 2));
+            break;
+        case KEY_RIGHT:
+            actionPos = static_cast<us>((actionPos + 1) % 2 + (actionPos <= 1 ? 0 : 2));
+            break;
+        case KEY_UP:
+            actionPos = static_cast<us>((actionPos + 2) % 4);
+            break;
+        case KEY_DOWN:
+            actionPos = static_cast<us>(abs(actionPos - 2) % 4 + (actionPos != 1 ? 0 : 2));
+            break;
+        default:
+            noChange = true;
+            break;
+        }
 
-    //     if (!noChange) // Don't reprint if a different choice was not made
-    //     {
-    //         clear();
+        if (!noChange) // Don't reprint if a different choice was not made
+        {
+            clear();
 
-    //         this->display->printBattleState(trainerEngaged, opponentEngaged, type, this->getMainCharacter(), actionPos);
-    //     }
+            this->display->printBattleState(trainerEngaged, opponentEngaged, type, this->getMainCharacter(), actionPos);
+        }
 
-    // } while (userInput != 103); // This is the 'g' key for testing purposes
+    } while (userInput != 103); // This is the 'g' key for testing purposes
 
-    // clear();
+    clear();
 
-    // // this->trainerPokemon[2].getMove(0)->effect(this->getAllPokemon(), opponent->getAllInBattle(type), 2, type);
+    // this->trainerPokemon[2].getMove(0)->effect(this->getAllPokemon(), opponent->getAllInBattle(type), 2, type);
 
-    // for (us i = 0; i < static_cast<us>(type + 1); ++i)
-    // {
-    //     this->trainerPokemon[i].setBattleState(false);
-    //     opponent->trainerPokemon[i].setBattleState(false);
-    // }
+    for (us i = 0; i < static_cast<us>(type + 1); ++i)
+    {
+        this->trainerPokemon[i].setBattleState(false);
+        opponent->trainerPokemon[i].setBattleState(false);
+    }
 }
 
 /* Getters */

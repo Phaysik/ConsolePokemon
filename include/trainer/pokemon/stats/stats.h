@@ -43,18 +43,6 @@ public:
     */
     inline Stats(const us hpStat, const us attackStat, const us defenseStat, const us spAStat, const us spDStat, const us speedStat) : hp(hpStat), maxHp(hpStat), attack(attackStat), defense(defenseStat), spA(spAStat), spD(spDStat), speed(speedStat), attackMultiplier(1), defenseMultiplier(1), spAMultiplier(1), spDMultiplier(1), speedMultiplier(1) {}
 
-    /* Overloaded Operators */
-
-    /*! \brief Overload operator=
-        \details Will allow chaining for Stats class types
-        \param stats[in] The stats and all of it's information
-        \date 04/12/2022
-        \version 1.0
-        \author Matthew Moore
-        \return Stats A clone of the stats param
-    */
-    Stats &operator=(const Stats &stats);
-
     /* Member Functions */
 
     /*! \brief Reset all multipliers

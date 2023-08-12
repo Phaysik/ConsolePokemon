@@ -67,7 +67,7 @@ void Game::testing()
     trainer.setPokemonAtIndex(replaceTrainerPokemon, 2);
 
     // TODO(phaysik) set up a battle simulation
-    // opponent.engage(&trainer, BATTLETYPE);
+    opponent.engage(&trainer, BATTLETYPE);
 
     // See the effect of the move
     // for (us i = 0; i < 5; ++i)

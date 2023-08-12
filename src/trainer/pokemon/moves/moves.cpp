@@ -1,7 +1,7 @@
 /*! \file moves.cpp
     \brief C++ file for Pokemon moves.
     \details Contains the function definitions for the Pokemon moves.
-    \date 04/11/2021
+    \date 08/11/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -10,7 +10,7 @@
 
 /* Overloaded Operators */
 
-MoveAbstract &MoveAbstract::operator=(MoveAbstract &moves)
+MoveAbstract &MoveAbstract::operator=(const MoveAbstract &moves)
 {
     this->typing = moves.typing;
     this->power = moves.power;

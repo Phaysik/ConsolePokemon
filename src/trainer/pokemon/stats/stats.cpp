@@ -1,32 +1,12 @@
 /*! \file stats.cpp
     \brief C++ file for Pokemon stats.
     \details Contains the function definitions for the Pokemon stats.
-    \date 04/11/2021
+    \date 08/11/2023
     \version 1.0
     \author Matthew Moore
 */
 
 #include "trainer/pokemon/stats/stats.h"
-
-/* Overloaded Operators */
-
-Stats &Stats::operator=(const Stats &stats)
-{
-    this->hp = stats.hp;
-    this->maxHp = stats.maxHp;
-    this->attack = stats.attack;
-    this->defense = stats.defense;
-    this->spA = stats.spA;
-    this->spD = stats.spD;
-    this->speed = stats.speed;
-    this->attackMultiplier = stats.attackMultiplier;
-    this->defenseMultiplier = stats.defenseMultiplier;
-    this->spAMultiplier = stats.spAMultiplier;
-    this->spDMultiplier = stats.spDMultiplier;
-    this->speedMultiplier = stats.speedMultiplier;
-
-    return *this;
-}
 
 /* Member Functions */
 
