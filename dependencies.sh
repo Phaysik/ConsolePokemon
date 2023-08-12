@@ -3,7 +3,7 @@
 main() {
     sudo apt update && sudo apt upgrade -y
     # Install all required packages
-    sudo apt-get install -y libfreetype6-dev libncurses5-dev libncursesw5-dev make cmake libglfw3 libglfw3-dev libglm-dev valgrind graphviz doxygen libfontconfig1-dev clang-tidy
+    sudo apt-get install -y libfreetype6-dev libncurses5-dev libncursesw5-dev make cmake libglfw3 libglfw3-dev libglm-dev valgrind graphviz doxygen libfontconfig1-dev clang-tidy libgtest-dev
 
     # For getting GLAD installed
     git clone https://github.com/Dav1dde/glad.git
@@ -19,6 +19,12 @@ main() {
     git clone https://github.com/nothings/stb.git
     sudo cp stb/stb_image.h /usr/local/include/
     rm -rf stb
+
+    # For getting Google Test installed
+    cd /usr/src/gtest
+    sudo cmake CMakeLists.txt
+    sudo make
+    sudo cp ./lib/libgtest*.a /usr/lib
 }
 
 main "$@"
