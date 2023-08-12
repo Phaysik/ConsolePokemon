@@ -33,27 +33,27 @@ us Stats::getMaxHp() const
 
 us Stats::getAttack() const
 {
-    return static_cast<us>(this->attack * this->attackMultiplier);
+    return static_cast<us>(static_cast<float>(this->attack) * this->attackMultiplier);
 }
 
 us Stats::getDefense() const
 {
-    return static_cast<us>(this->defense * this->defenseMultiplier);
+    return static_cast<us>(static_cast<float>(this->defense) * this->defenseMultiplier);
 }
 
 us Stats::getSpA() const
 {
-    return static_cast<us>(this->spA * this->spAMultiplier);
+    return static_cast<us>(static_cast<float>(this->spA) * this->spAMultiplier);
 }
 
 us Stats::getSpD() const
 {
-    return static_cast<us>(this->spD * this->spDMultiplier);
+    return static_cast<us>(static_cast<float>(this->spD) * this->spDMultiplier);
 }
 
 us Stats::getSpeed() const
 {
-    return static_cast<us>(this->speed * this->speedMultiplier);
+    return static_cast<us>(static_cast<float>(this->speed) * this->speedMultiplier);
 }
 
 float Stats::getAttackMultiplier() const
