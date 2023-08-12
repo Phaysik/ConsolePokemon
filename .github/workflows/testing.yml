@@ -23,4 +23,4 @@ jobs:
         run: ./dependencies.sh
 
       - name: Make project
-        run: make coverage
+        run: make build_test
