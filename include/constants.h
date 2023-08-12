@@ -30,4 +30,4 @@ const std::string TEXT_VERTEX_SOURCE = "resources/shaders/text.vert";
 const std::string TEXT_FRAGMENT_SOURCE = "resources/shaders/text.frag";
 
 // For Type Effectiveness constants
-const std::string TYPE_MATCH_UP_FILE = "resources/test/typechart.txt";
+const std::string TYPE_MATCH_UP_FILE = "resources/text/typechart.txt";

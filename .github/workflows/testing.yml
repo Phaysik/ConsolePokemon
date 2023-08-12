@@ -9,11 +9,11 @@ on:
 jobs:
   test:
     name: Test
-      runs-on: ubuntu-latest
-      permissions:
-        actions: read
-        contents: read
-        security-events: write
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
 
     steps:
       - name: Checkout repository
@@ -23,4 +23,4 @@ jobs:
         run: ./dependencies.sh
 
       - name: Make project
-        run: make coverage
+        run: make build_test
