@@ -1,7 +1,7 @@
 /*! \file text.cpp
     \brief C++ file for rendering text.
     \details Contains the function definition for rendering text
-    \date 08/05/2023
+    \date 08/12/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -13,7 +13,7 @@
 Text::Text(const us width, const us height)
 {
     // load and configure shader
-    this->textShader = ResourceManager::loadShader(TEXTVERTEXSOURCE.c_str(), TEXTFRAGMENTSOURCE.c_str(), nullptr, "text");
+    this->textShader = ResourceManager::loadShader(TEXT_VERTEX_SOURCE.c_str(), TEXT_FRAGMENT_SOURCE.c_str(), nullptr, "text");
     this->textShader.setMat4("projection", glm::ortho(0.0f, static_cast<float>(width), static_cast<float>(height), 0.0f), true);
     this->textShader.setInteger("text", 0);
 

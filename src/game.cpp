@@ -1,7 +1,7 @@
 /*! \file game.cpp
     \brief C++ file for the Game.
     \details Contains the function definitions for Game
-    \date 08/11/2023
+    \date 08/12/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -183,7 +183,7 @@ void Game::initOpenGL()
     this->spriteRenderer = std::make_unique<SpriteRenderer>(SpriteRenderer(spriteShader));
 
     this->textRenderer = std::make_unique<Text>(Text(WINDOW_WIDTH, WINDOW_HEIGHT));
-    this->textRenderer->load(TEXTFILE, FONTSIZE);
+    this->textRenderer->load(TEXT_FILE, FONT_SIZE);
 }
 
 void frameBufferResize(GLFWwindow *window, int width, int height)

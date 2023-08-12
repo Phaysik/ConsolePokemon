@@ -1,6 +1,6 @@
 /*! \file constants.h
     \brief Header file for global constants.
-    \date 08/11/2023
+    \date 08/12/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -24,7 +24,10 @@ const us WINDOW_WIDTH = 640;
 const us WINDOW_HEIGHT = 480;
 
 // For Text constants
-const std::string TEXTFILE = "resources/fonts/Inconsolata.ttf";
-const us FONTSIZE = 24;
-const std::string TEXTVERTEXSOURCE = "resources/shaders/text.vert";
-const std::string TEXTFRAGMENTSOURCE = "resources/shaders/text.frag";
+const std::string TEXT_FILE = "resources/fonts/Inconsolata.ttf";
+const us FONT_SIZE = 24;
+const std::string TEXT_VERTEX_SOURCE = "resources/shaders/text.vert";
+const std::string TEXT_FRAGMENT_SOURCE = "resources/shaders/text.frag";
+
+// For Type Effectiveness constants
+const std::string TYPE_MATCH_UP_FILE = "resources/test/typechart.txt";

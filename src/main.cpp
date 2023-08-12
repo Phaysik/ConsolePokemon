@@ -7,11 +7,11 @@
 
 #include "game.h"
 
-int main()
-{
-    Game game;
+// int main()
+// {
+//     Game game;
 
-    game.startWindow();
+//     game.startWindow();
 
-    return 0;
-}
+//     return 0;
+// }

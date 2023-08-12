@@ -1,7 +1,7 @@
 /*! \file types.cpp
     \brief C++ file for creating typecharts.
     \details Contains the function definitions for creating type charts on every type.
-    \date 08/11/2023
+    \date 08/12/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -10,7 +10,7 @@
 
 /* Constructers and Desctructors */
 
-TypeEffective::TypeEffective()
+TypeEffective::TypeEffective() : typeAmount(Types::TYPES_MAX)
 {
     readFile();
 }
@@ -19,14 +19,14 @@ TypeEffective::TypeEffective()
 
 void TypeEffective::readFile()
 {
-    std::ifstream file("resources/text/typechart.txt");
+    std::ifstream file(TYPE_MATCH_UP_FILE);
 
     us val = 0;
     us inputAmount = 0;
 
     while (true)
     {
-        if (!file.eof())
+        if (file.eof())
         {
             break;
         }
