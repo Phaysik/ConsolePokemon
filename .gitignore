@@ -4,3 +4,4 @@
 *.gcda
 build/main
 build/test
+build/resources/*
