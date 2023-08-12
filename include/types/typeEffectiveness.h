@@ -9,6 +9,7 @@
 #pragma once
 
 #include <fstream>
+#include <array>
 
 #include "aliases.h"
 #include "types/typeEnums.h"
@@ -17,7 +18,7 @@
 /*! \headerfile types.h
     \brief Type effectiveness
     \details How types stack up against one another.
-    \date 08/06/2023
+    \date 08/11/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -34,13 +35,6 @@ public:
         \author Matthew Moore
     */
     TypeEffective();
-
-    /*! \brief Delete #typeChart allocated memory
-        \date 10/07/2021
-        \version 1.0
-        \author Matthew Moore
-    */
-    ~TypeEffective();
 
     /* Member Functions */
 
@@ -68,6 +62,6 @@ public:
     float getMatchUp(const Types attackType, const PokemonTypes &opponentTypes) const;
 
 private:
-    us typeAmount;             /*!< Amount of Pokemon types */
-    Effectiveness **typeChart; /*!< The 2D array of type matchups */
+    us typeAmount;                                                                       /*!< Amount of Pokemon types */
+    std::array<std::array<Effectiveness, Types::TYPES_MAX>, Types::TYPES_MAX> typeChart; /*!< The 2D array of type matchups */
 };

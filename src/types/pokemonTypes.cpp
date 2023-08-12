@@ -1,7 +1,7 @@
 /*! \file pokemonTypes.cpp
     \brief C++ file for creating Pokemon types.
     \details Contains the function definitions for creating Pokemon types
-    \date 08/05/2023
+    \date 08/11/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -30,13 +30,4 @@ Types PokemonTypes::getFirstType() const
 Types PokemonTypes::getSecondType() const
 {
     return this->typeTwo;
-}
-
-PokemonTypes &PokemonTypes::operator=(const PokemonTypes &types)
-{
-    this->typeOne = types.typeOne;
-    this->typeTwo = types.typeTwo;
-    this->dualTyping = types.dualTyping;
-
-    return *this;
 }

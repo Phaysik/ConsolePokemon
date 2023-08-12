@@ -87,7 +87,7 @@ std::array<Pokemon, MAX_POKEMON> &Trainer::getAllPokemon()
 
 std::array<Pokemon, MAX_POKEMON> &Trainer::getAllInBattle(const BattleType type)
 {
-    // TODO: Instead of looping based on the battle type, loop based on how many Pokemon in party
+    // TODO(phaysik) Instead of looping based on the battle type, loop based on how many Pokemon in party
     us arrIndex = 0;
 
     for (us i = 0; i < static_cast<us>(type + 1); ++i)

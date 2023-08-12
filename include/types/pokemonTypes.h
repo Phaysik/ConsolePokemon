@@ -1,7 +1,7 @@
 /*! \file pokemonTypes.h
     \brief Header file for creating a Pokemon's types
     \details Contains the function declarations for creating a Pokemon's types
-    \date 08/05/2023
+    \date 08/11/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -13,7 +13,7 @@
 /*! \headerfile pokemonTypes.h
     \brief The types of the #Pokemon
     \details Creates the properties of a Pokemon's type
-    \date 08/05/2023
+    \date 08/11/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -79,14 +79,14 @@ public:
     /* Overloaded Operators */
 
     /*! \brief Overload operator=
-        \details Will allow chaining for DualTypes class types
+        \details Will allow chaining for PokemonTypes class types
         \param types[in] The types of the #Pokemon
-        \date 04/12/2022
+        \date 08/11/2023
         \version 1.0
         \author Matthew Moore
-        \return DualTypes A clone of the types param
+        \return PokemonTypes A clone of the types param
     */
-    PokemonTypes &operator=(const PokemonTypes &types);
+    PokemonTypes &operator=(const PokemonTypes &types) = default;
 
 private:
     Types typeOne;   /*!< The first type of the #Pokemon */
