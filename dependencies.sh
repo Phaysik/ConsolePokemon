@@ -3,7 +3,7 @@
 main() {
     sudo apt update && sudo apt upgrade -y
     # Install all required packages
-    sudo apt-get install -y libfreetype6-dev libncurses5-dev libncursesw5-dev make cmake libglfw3 libglfw3-dev libglm-dev valgrind graphviz doxygen libfontconfig1-dev
+    sudo apt-get install -y libfreetype6-dev libncurses5-dev libncursesw5-dev make cmake libglfw3 libglfw3-dev libglm-dev valgrind graphviz doxygen libfontconfig1-dev clang-tidy
 
     # For getting GLAD installed
     git clone https://github.com/Dav1dde/glad.git
