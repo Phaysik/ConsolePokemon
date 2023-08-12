@@ -16,7 +16,7 @@ Game::Game()
 
     this->initOpenGL();
 
-    this->colorText = new ColoredText();
+    this->colorText = ColoredText();
 
     this->display.setColorText(this->colorText);
 
@@ -28,8 +28,6 @@ Game::~Game()
     this->thread.join();
 
     endwin();
-
-    delete this->colorText;
 }
 
 /* Member functions */

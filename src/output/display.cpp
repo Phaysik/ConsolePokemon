@@ -85,12 +85,12 @@ void Display::outputNames(std::array<Pokemon, MAX_POKEMON> &trainerPoke, std::ar
         if (i == 0)
         {
             if (tranLength == maxWidths[i])
-                this->colorText->colorPokemonNames(trainerPoke[i]);
+                this->colorText.colorPokemonNames(trainerPoke[i]);
             else
             {
                 printw("%*s", addVal, "");
                 refresh();
-                this->colorText->colorPokemonNames(trainerPoke[i]);
+                this->colorText.colorPokemonNames(trainerPoke[i]);
             }
         }
         else
@@ -99,13 +99,13 @@ void Display::outputNames(std::array<Pokemon, MAX_POKEMON> &trainerPoke, std::ar
             {
                 printw("%*s", 5 + addVal, "");
                 refresh();
-                this->colorText->colorPokemonNames(trainerPoke[i]);
+                this->colorText.colorPokemonNames(trainerPoke[i]);
             }
             else
             {
                 printw("%*s", 5 + addVal, "");
                 refresh();
-                this->colorText->colorPokemonNames(trainerPoke[i]);
+                this->colorText.colorPokemonNames(trainerPoke[i]);
             }
         }
     }
@@ -238,7 +238,7 @@ void Display::displayBattleMenu(std::array<Pokemon, MAX_POKEMON> &trainerPoke, s
 
 /* Setters */
 
-void Display::setColorText(ColoredText *color)
+void Display::setColorText(ColoredText &color)
 {
     this->colorText = color;
 }

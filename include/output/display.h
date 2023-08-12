@@ -17,8 +17,6 @@
 #include "trainer/pokemon/pokemon.h"
 #include "types/typeEnums.h"
 
-class ColoredText;
-
 /*! \headerfile display.h
     \brief Displays text
     \details Outputs based on the state of the game
@@ -107,8 +105,8 @@ public:
         \version 1.0
         \author Matthew Moore
     */
-    void setColorText(ColoredText *color);
+    void setColorText(ColoredText &color);
 
 private:
-    ColoredText *colorText; /*!< Colors text */
+    ColoredText colorText; /*!< Colors text */
 };

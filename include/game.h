@@ -89,7 +89,7 @@ public:
 
 private:
     Display display;                                /*!< For displaying text */
-    ColoredText *colorText;                         /*!< For displaying text in color */
+    ColoredText colorText;                          /*!< For displaying text in color */
     std::thread thread;                             /*!< For threading the console portion of the application */
     GLFWwindow *window;                             /*!< For creating a OpenGL window */
     std::unique_ptr<SpriteRenderer> spriteRenderer; /*!< For rendering sprites */
