@@ -1,23 +1,24 @@
 /*! \file subTexture.cpp
     \brief C++ file for subTexture.
     \details Contains the function definition for subTexture
-    \date 08/05/2023
+    \date 08/11/2023
     \version 1.0
     \author Matthew Moore
 */
 
 #include "opengl/texture/subTexture.h"
+
 /* Constructors and Destructors */
 
 SubTexture2D::SubTexture2D(const Texture2D &texture, const glm::vec2 &min, const glm::vec2 &max, const glm::vec2 &zeroPosCoords)
     : subTexture(texture)
 {
-    texCoords[0] = {0.0f, zeroPosCoords.y, min.x, max.y};
+    texCoords[0] = {0.0F, zeroPosCoords.y, min.x, max.y};
     texCoords[1] = {zeroPosCoords.x, 0.0f, max.x, min.y};
-    texCoords[2] = {0.0f, 0.0f, min.x, min.y};
-    texCoords[3] = {0.0f, zeroPosCoords.y, min.x, max.y};
+    texCoords[2] = {0.0F, 0.0f, min.x, min.y};
+    texCoords[3] = {0.0F, zeroPosCoords.y, min.x, max.y};
     texCoords[4] = {zeroPosCoords.x, zeroPosCoords.y, max.x, max.y};
-    texCoords[5] = {zeroPosCoords.x, 0.0f, max.x, min.y};
+    texCoords[5] = {zeroPosCoords.x, 0.0F, max.x, min.y};
 }
 
 /* Getters */
@@ -42,5 +43,5 @@ SubTexture2D SubTexture2D::createFromCoords(const Texture2D &texture, const glm:
 
     glm::vec2 zeroPosCoords = {(spriteSize.x * cellSize.x) / texture.getImageWidth(), (spriteSize.y * cellSize.y) / texture.getImageHeight()};
 
-    return SubTexture2D(texture, min, max, zeroPosCoords);
+    return {texture, min, max, zeroPosCoords};
 }

@@ -70,7 +70,7 @@ public:
         \author Matthew Moore
         \return us The type color requested
     */
-    us initColors(const us typeColor, const us red, const us green, const us blue);
+    static us initColors(const us typeColor, const us red, const us green, const us blue);
 
     /*! \brief Print some colored text
         \details Print some colored text based on the type of Pokemon passed in

@@ -34,6 +34,8 @@ LCOV_REMOVE_FILES = '*/tests/*' '*/glad.c' '*/include/*'
 GENHTML_FLAGS = ${BRANCH_COVERAGE}
 GENHTML_OUTPUT_FOLDER = ./coverage
 
+TIDY_SOURCES = $(shell find src -type f -not -path '*/opengl/*' -name '*.cpp')
+
 default: compile
 
 compile: ${SOURCES} glad.c
@@ -77,9 +79,8 @@ coverage: genhtml
 	rm -rf ${TEST_OUTPUT_FOLDER}
 	rm -rf ${LCOV_OUTPUT_FOLDER}
 
-.PHONY: tidy
-tidy:
-	clang-tidy src/*.cpp -- ${INCLUDE}
+tidy: ${TIDY_SOURCES}
+	clang-tidy $^ -- ${INCLUDE}
 
 .PHONY: docs
 docs:

@@ -10,6 +10,7 @@
 
 #include <ncurses.h>
 #include <array>
+#include <memory>
 
 #include "constants.h"
 #include "aliases.h"
@@ -20,7 +21,7 @@
 /*! \headerfile display.h
     \brief Displays text
     \details Outputs based on the state of the game
-    \date 04/12/2022
+    \date 08/11/2023
     \version 1.0
     \author Matthew Moore
 */
@@ -41,7 +42,7 @@ public:
         \version 1.0
         \author Matthew Moore
     */
-    void printBattleState(std::array<Pokemon, MAX_POKEMON> &trainerEngaged, std::array<Pokemon, MAX_POKEMON> &opponentEngaged, const BattleType type, const bool mainChar, const us choice) const;
+    void printBattleState(std::array<Pokemon, MAX_POKEMON> &trainerEngaged, std::array<Pokemon, MAX_POKEMON> &opponentEngaged, const BattleType type, const bool mainChar, const us action) const;
 
     /*! \brief Gets max widths of all engaged Pokemon
         \pre All pointer params must be the same length
@@ -54,7 +55,7 @@ public:
         \version 1.0
         \author Matthew Moore
     */
-    void getMaxPokemonWidth(std::array<Pokemon, MAX_POKEMON> &trainerPoke, std::array<Pokemon, MAX_POKEMON> &opponentPoke, us *maxWidths, const us loopCond) const;
+    static void getMaxPokemonWidth(std::array<Pokemon, MAX_POKEMON> &trainerPoke, std::array<Pokemon, MAX_POKEMON> &opponentPoke, std::unique_ptr<us[]> &maxWidths, const us loopCond);
 
     /*! \brief Outputs the Pokemon's colored names
         \details Outputs the Pokemon's colored names where the last character of the top and bottom names will line up
@@ -67,7 +68,7 @@ public:
         \version 1.0
         \author Matthew Moore
     */
-    void outputNames(std::array<Pokemon, MAX_POKEMON> &trainerPoke, std::array<Pokemon, MAX_POKEMON> &opponentPoke, const us *maxWidths, const us loopCond) const;
+    void outputNames(std::array<Pokemon, MAX_POKEMON> &trainerPoke, std::array<Pokemon, MAX_POKEMON> &opponentPoke, std::unique_ptr<us[]> &maxWidths, const us loopCond) const;
 
     /*! \brief Outputs the Pokemon's hp
         \details Outputs the Pokemon's hp where the last character of the hp and the name will line up
@@ -80,7 +81,7 @@ public:
         \version 1.0
         \author Matthew Moore
     */
-    void outputHp(std::array<Pokemon, MAX_POKEMON> &trainerPoke, std::array<Pokemon, MAX_POKEMON> &opponentPoke, const us loopCond, const bool mainChar) const;
+    static void outputHp(std::array<Pokemon, MAX_POKEMON> &trainerPoke, std::array<Pokemon, MAX_POKEMON> &opponentPoke, const us loopCond, const bool mainChar);
 
     /*! \brief Outputs the four choices
         \details Outputs the four choices the trainer can make in a battle
@@ -94,7 +95,7 @@ public:
         \version 1.0
         \author Matthew Moore
     */
-    void displayBattleMenu(std::array<Pokemon, MAX_POKEMON> &trainerPoke, std::array<Pokemon, MAX_POKEMON> &opponentPoke, const us loopCond, const us pokeIndex, const us choice) const;
+    static void displayBattleMenu(std::array<Pokemon, MAX_POKEMON> &trainerPoke, std::array<Pokemon, MAX_POKEMON> &opponentPoke, const us loopCond, const us pokeIndex, const us action);
 
     /* Setters */
 

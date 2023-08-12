@@ -13,47 +13,58 @@
 void Display::printBattleState(std::array<Pokemon, MAX_POKEMON> &trainerEngaged, std::array<Pokemon, MAX_POKEMON> &opponentEngaged, const BattleType type, const bool mainChar, const us action) const
 {
     us loopCond = static_cast<us>(type + 1);
-    us *maxWidth = new us[loopCond];
+    std::unique_ptr<us[]> maxWidth = std::make_unique_for_overwrite<us[]>(loopCond);
 
-    this->getMaxPokemonWidth(trainerEngaged, opponentEngaged, maxWidth, loopCond);
+    Display::getMaxPokemonWidth(trainerEngaged, opponentEngaged, maxWidth, loopCond);
 
     if (!mainChar)
+    {
         this->outputNames(trainerEngaged, opponentEngaged, maxWidth, loopCond);
+    }
     else
+    {
         this->outputNames(opponentEngaged, trainerEngaged, maxWidth, loopCond);
+    }
 
     printw("\n");
     refresh();
 
-    this->outputHp(trainerEngaged, opponentEngaged, loopCond, mainChar);
+    Display::outputHp(trainerEngaged, opponentEngaged, loopCond, mainChar);
 
     printw("\n\n");
     refresh();
 
     if (!mainChar)
+    {
         this->outputNames(opponentEngaged, trainerEngaged, maxWidth, loopCond);
+    }
     else
+    {
         this->outputNames(trainerEngaged, opponentEngaged, maxWidth, loopCond);
+    }
 
     printw("\n");
     refresh();
 
-    this->outputHp(trainerEngaged, opponentEngaged, loopCond, mainChar);
+    Display::outputHp(trainerEngaged, opponentEngaged, loopCond, mainChar);
 
     printw("\n\n");
     refresh();
 
     if (!mainChar)
-        this->displayBattleMenu(opponentEngaged, trainerEngaged, loopCond, 0, action);
+    {
+        Display::displayBattleMenu(opponentEngaged, trainerEngaged, loopCond, 0, action);
+    }
     else
-        this->displayBattleMenu(trainerEngaged, opponentEngaged, loopCond, 0, action);
-
-    delete[] maxWidth;
+    {
+        Display::displayBattleMenu(trainerEngaged, opponentEngaged, loopCond, 0, action);
+    }
 }
 
-void Display::getMaxPokemonWidth(std::array<Pokemon, MAX_POKEMON> &trainerPoke, std::array<Pokemon, MAX_POKEMON> &opponentPoke, us *maxWidths, const us loopCond) const
+void Display::getMaxPokemonWidth(std::array<Pokemon, MAX_POKEMON> &trainerPoke, std::array<Pokemon, MAX_POKEMON> &opponentPoke, std::unique_ptr<us[]> &maxWidths, const us loopCond)
 {
-    us oppLength, tranLength;
+    us oppLength = 0;
+    us tranLength = 0;
 
     for (us i = 0; i < loopCond; ++i)
     {
@@ -61,16 +72,21 @@ void Display::getMaxPokemonWidth(std::array<Pokemon, MAX_POKEMON> &trainerPoke, 
         tranLength = static_cast<us>(trainerPoke[i].getName().length());
 
         if (oppLength >= tranLength)
+        {
             maxWidths[i] = oppLength;
+        }
         else
+        {
             maxWidths[i] = tranLength;
+        }
     }
 }
 
-void Display::outputNames(std::array<Pokemon, MAX_POKEMON> &trainerPoke, std::array<Pokemon, MAX_POKEMON> &opponentPoke, const us *maxWidths, const us loopCond) const
+void Display::outputNames(std::array<Pokemon, MAX_POKEMON> &trainerPoke, std::array<Pokemon, MAX_POKEMON> &opponentPoke, std::unique_ptr<us[]> &maxWidths, const us loopCond) const
 {
     int addVal = 0;
-    us oppLength, tranLength;
+    us oppLength = 0;
+    us tranLength = 0;
 
     for (us i = 0; i < loopCond; i++)
     {
@@ -78,14 +94,20 @@ void Display::outputNames(std::array<Pokemon, MAX_POKEMON> &trainerPoke, std::ar
         tranLength = static_cast<us>(trainerPoke[i].getName().length());
 
         if (oppLength > tranLength)
+        {
             addVal = oppLength - tranLength;
+        }
         else
+        {
             addVal = 0;
+        }
 
         if (i == 0)
         {
             if (tranLength == maxWidths[i])
+            {
                 this->colorText.colorPokemonNames(trainerPoke[i]);
+            }
             else
             {
                 printw("%*s", addVal, "");
@@ -95,26 +117,19 @@ void Display::outputNames(std::array<Pokemon, MAX_POKEMON> &trainerPoke, std::ar
         }
         else
         {
-            if (tranLength == maxWidths[i])
-            {
-                printw("%*s", 5 + addVal, "");
-                refresh();
-                this->colorText.colorPokemonNames(trainerPoke[i]);
-            }
-            else
-            {
-                printw("%*s", 5 + addVal, "");
-                refresh();
-                this->colorText.colorPokemonNames(trainerPoke[i]);
-            }
+            printw("%*s", 5 + addVal, "");
+            refresh();
+            this->colorText.colorPokemonNames(trainerPoke[i]);
         }
     }
 }
 
-void Display::outputHp(std::array<Pokemon, MAX_POKEMON> &trainerPoke, std::array<Pokemon, MAX_POKEMON> &opponentPoke, const us loopCond, const bool mainChar) const
+void Display::outputHp(std::array<Pokemon, MAX_POKEMON> &trainerPoke, std::array<Pokemon, MAX_POKEMON> &opponentPoke, const us loopCond, const bool mainChar)
 {
-    int width = 0, outWidth;
-    us oppLength, tranLength;
+    int width = 0;
+    int outWidth = 0;
+    us oppLength = 0;
+    us tranLength = 0;
     std::string output;
 
     static bool mainCharacter = mainChar;
@@ -148,25 +163,30 @@ void Display::outputHp(std::array<Pokemon, MAX_POKEMON> &trainerPoke, std::array
     mainCharacter = !mainCharacter;
 }
 
-void Display::displayBattleMenu(std::array<Pokemon, MAX_POKEMON> &trainerPoke, std::array<Pokemon, MAX_POKEMON> &opponentPoke, const us loopCond, const us pokeIndex, const us action) const
+void Display::displayBattleMenu(std::array<Pokemon, MAX_POKEMON> &trainerPoke, std::array<Pokemon, MAX_POKEMON> &opponentPoke, const us loopCond, const us pokeIndex, const us action)
 {
-    int oppLength, tranLength;
+    int oppLength = 0;
+    int tranLength = 0;
     tranLength = static_cast<int>(trainerPoke[pokeIndex].getName().length());
     oppLength = static_cast<int>(opponentPoke[pokeIndex].getName().length());
     int width = tranLength;
 
     if (oppLength > tranLength)
-        width += oppLength - tranLength;
-
-    for (us i = pokeIndex >= loopCond - 1 ? 1 : 0; i < loopCond - 1; ++i)
     {
-        tranLength = static_cast<int>(trainerPoke[i].getName().length());
-        oppLength = static_cast<int>(opponentPoke[i].getName().length());
+        width += oppLength - tranLength;
+    }
 
-        if (i != pokeIndex)
+    for (us index = pokeIndex >= loopCond - 1 ? 1 : 0; index < loopCond - 1; ++index)
+    {
+        tranLength = static_cast<int>(trainerPoke[index].getName().length());
+        oppLength = static_cast<int>(opponentPoke[index].getName().length());
+
+        if (index != pokeIndex)
+        {
             width += oppLength > tranLength ? oppLength : tranLength;
+        }
 
-        width += i == 0 ? 0 : 5;
+        width += index == 0 ? 0 : 5;
     }
 
     std::string name = "What will " + trainerPoke[pokeIndex].getName() + " do?";
@@ -175,8 +195,6 @@ void Display::displayBattleMenu(std::array<Pokemon, MAX_POKEMON> &trainerPoke, s
 
     printw("%*s", width, name.c_str());
     refresh();
-
-    tranLength = static_cast<int>(trainerPoke[pokeIndex].getName().length());
 
     tranLength = static_cast<int>(trainerPoke[loopCond - 1].getName().length());
     oppLength = static_cast<int>(opponentPoke[loopCond - 1].getName().length());
@@ -196,7 +214,9 @@ void Display::displayBattleMenu(std::array<Pokemon, MAX_POKEMON> &trainerPoke, s
         attroff(A_BOLD);
     }
     else
+    {
         printw("%*s", 2 + tranLength, "Fight     ");
+    }
 
     refresh();
 
@@ -207,7 +227,9 @@ void Display::displayBattleMenu(std::array<Pokemon, MAX_POKEMON> &trainerPoke, s
         attroff(A_BOLD);
     }
     else
+    {
         printw("%s\n", "Bag");
+    }
 
     refresh();
 
@@ -218,7 +240,9 @@ void Display::displayBattleMenu(std::array<Pokemon, MAX_POKEMON> &trainerPoke, s
         attroff(A_BOLD);
     }
     else
+    {
         printw("%*s", width + 2 + oppLength - (oppLength - tranLength), "Pokemon     ");
+    }
 
     refresh();
 
@@ -229,11 +253,11 @@ void Display::displayBattleMenu(std::array<Pokemon, MAX_POKEMON> &trainerPoke, s
         attroff(A_BOLD);
     }
     else
+    {
         printw("%s\n", "Run");
+    }
 
     refresh();
-
-    return;
 }
 
 /* Setters */

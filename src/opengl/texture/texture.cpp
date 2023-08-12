@@ -13,12 +13,12 @@
 Texture2D::Texture2D()
     : width(0), height(0), internalFormat(GL_RGB), imageFormat(GL_RGB), wrapS(GL_REPEAT), wrapT(GL_REPEAT), filterMin(GL_LINEAR), filterMax(GL_LINEAR)
 {
-    this->vertices[0] = {0.0f, 1.0f, 0.0f, 1.0f};
-    this->vertices[1] = {1.0f, 0.0f, 1.0f, 0.0f};
-    this->vertices[2] = {0.0f, 0.0f, 0.0f, 0.0f};
-    this->vertices[3] = {0.0f, 1.0f, 0.0f, 1.0f};
-    this->vertices[4] = {1.0f, 1.0f, 1.0f, 1.0f};
-    this->vertices[5] = {1.0f, 0.0f, 1.0f, 0.0f};
+    this->vertices[0] = {0.0F, 1.0F, 0.0F, 1.0F};
+    this->vertices[1] = {1.0F, 0.0F, 1.0F, 0.0F};
+    this->vertices[2] = {0.0F, 0.0F, 0.0F, 0.0F};
+    this->vertices[3] = {0.0F, 1.0F, 0.0F, 1.0F};
+    this->vertices[4] = {1.0F, 1.0F, 1.0F, 1.0F};
+    this->vertices[5] = {1.0F, 0.0F, 1.0F, 0.0F};
 
     glGenTextures(1, &this->ID);
 }
