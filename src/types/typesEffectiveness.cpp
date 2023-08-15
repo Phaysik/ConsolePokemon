@@ -68,7 +68,7 @@ float TypeEffective::getMatchUp(const Types attackType, const PokemonTypes &oppo
 
     for (us i = 0; i < static_cast<us>(opponentTypes.getDualTyping()) + 1; ++i)
     {
-        us effect = this->typeChart[attackType][i == 0 ? opponentTypes.getFirstType() : opponentTypes.getSecondType()];
+        Effectiveness effect = this->typeChart[attackType][i == 0 ? opponentTypes.getFirstType() : opponentTypes.getSecondType()];
 
         if (effect == Effectiveness::IMMUNE)
         {
