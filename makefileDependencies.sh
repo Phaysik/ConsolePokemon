@@ -15,7 +15,7 @@ main() {
         sudo apt update && sudo apt upgrade -y
 
         echo "Installing all the required packages for all commands used in the Makefile"
-        sudo apt-get install -y make cmake valgrind graphviz libgtest-dev lcov python3-pip flex bison
+        sudo apt-get install -y make cmake valgrind graphviz libgtest-dev lcov python3-pip flex bison libfreetype6-dev libncurses5-dev libncursesw5-dev libglfw3 libglfw3-dev libglm-dev libfontconfig1-dev
 
         echo "Setting up g++"
         sudo apt install -y software-properties-common
@@ -36,6 +36,21 @@ main() {
         cd ..
         cd ..
         rm -rf doxygen-1.9.8*
+
+        echo "Setting up GLAD"
+        git clone https://github.com/Dav1dde/glad.git
+        cd glad
+        git checkout master
+        cmake ./
+        make
+        sudo cp -a include /usr/local/
+        cd ..
+        rm -rf glad
+
+        echo "Setting up STB_IMAGE"
+        git clone https://github.com/nothings/stb.git
+        sudo cp stb/stb_image.h /usr/local/include/
+        rm -rf stb
 
         echo "Setting up clang-tidy and clang-format"
         wget https://apt.llvm.org/llvm.sh
