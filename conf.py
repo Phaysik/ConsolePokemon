@@ -3,14 +3,14 @@ from cgitb import html
 extensions = ["breathe"]
 
 master_doc = "rst/index"
-html_title = "Database Normalizer"
+html_title = "Console Pokemon"
 html_theme = "sphinx_book_theme"
 html_static_path = ["docs/_static/"]
 
 html_css_files = ["css/custom.css"]
 
 html_theme_options = {
-    "repository_url": "https://github.com/Phaysik/database-normalizer",
+    "repository_url": "https://github.com/Phaysik/ConsolePokemon",
     "use_repository_button": True,
     "home_page_in_toc": True,
 }

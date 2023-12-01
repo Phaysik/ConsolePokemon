@@ -92,7 +92,7 @@ run_doxygen:
 	rm -f Doxyfile.bak
 
 docs: run_doxygen
-	sphinx-autobuild -b html -Dbreathe_projects.documentation=docs/xml docs/sphinx/"
+	sphinx-autobuild -b html -Dbreathe_projects.documentation=docs/xml . docs/sphinx/
 
 create_folders:
 	mkdir -p ${RESOURCES_FOLDER}
